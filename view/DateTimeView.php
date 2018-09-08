@@ -4,8 +4,11 @@ class DateTimeView {
 
 
 	public function show() {
+		// Setting Date
+		date_default_timezone_set('Europe/Stockholm');
 
-		$timeString = 'TODO, Write servertime here...';
+		$date = getdate();
+		$timeString = "today is: {$date['mday']}/{$date['mon']}/{$date['year']}";
 
 		return '<p>' . $timeString . '</p>';
 	}
