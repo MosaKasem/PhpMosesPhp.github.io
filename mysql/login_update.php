@@ -1,13 +1,6 @@
-<?php
+<?php include_once 'db.php';
 // CREATE
 
-   $connection = mysqli_connect('localhost', 'root', '', 'usersdb');
-   
-   if ($connection) {
-       echo "hello";
-   } else {
-       die("DB connection failed");
-   }
    $query = "SELECT * FROM users";
 
    $result = mysqli_query($connection, $query);
