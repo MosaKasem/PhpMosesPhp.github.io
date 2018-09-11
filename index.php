@@ -22,4 +22,22 @@ $lv->render(false, $v, $dtv);
 // The current URL
 // echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"';
 $router = new Router();
-echo get_class($router);
+$router->add('', ['controller' => 'Home', 'action' => 'index']);
+$router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
+$router->add('posts/new', ['controller' => 'Posts', 'action' => 'new']);
+
+$url = $_SERVER['QUERY_STRING'];
+if ($router->match($url))
+{
+    echo "<pre>";
+    var_dump($router->getParams());
+    echo "</pre>";
+} else {
+    echo "no route found for '$url'";
+}
+
+/* echo '<pre>';
+var_dump($router->getRoutes());
+echo '</pre>'; */
+
+/* echo get_class($router); */
