@@ -37,10 +37,10 @@ if ($router->match($url))
 }
 
 
-if ($database->getConnection()) {
-    echo "yaaohh!";
-}
-
+$sql = "SELECT * FROM users WHERE id=1";
+$result = $database->query($sql);
+$user = mysqli_fetch_array($result);
+echo $user['username'];
 /* echo '<pre>';
 var_dump($router->getRoutes());
 echo '</pre>'; */

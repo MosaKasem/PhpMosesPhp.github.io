@@ -5,6 +5,15 @@ class Router {
 
     public function add($route, $params)
     {
+        // convert route to regular expression
+        $route = preg_replace('/\//', '\\/', $route);
+        
+        // Convert variable to {controller}
+        $route = preg_replace('/\{([a-z]+)\}/', '(?P<\1>[a-z]+)', $route);
+
+        // add delimiters, case insensitive flag
+        $route = '/^' . $route . '$/i';
+
         $this->routes[$route] = $params;
     }
 
@@ -16,7 +25,7 @@ class Router {
     {
         foreach($this->routes as $route => $params)
         {
-            if ($url == $route)
+            if (preg_replace($route, $url, $matches))
             {
                 $this->params = $params;
                 return true;
