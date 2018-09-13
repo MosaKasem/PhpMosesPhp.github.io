@@ -32,4 +32,9 @@ class LayoutView {
       return '<h2>Not logged in</h2>';
     }
   }
+  private function renderRegisterForm($isLoggedIn) {
+    if (!$isLoggedIn) {
+      
+    }
+  }
 }

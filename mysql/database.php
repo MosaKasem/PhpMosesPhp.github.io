@@ -10,8 +10,8 @@ class Database {
     }
     public function open_db_connection() {
         $this->connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        if ($this->connection->connection_error) {
-            die("connection made" . $this->connection->connection_error);
+        if ($this->connection->connect_error) {
+            die("connection made" . $this->connection->connect_error);
         }
     }
     public function getConnection() {
