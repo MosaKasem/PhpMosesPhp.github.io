@@ -34,7 +34,12 @@ class LayoutView {
   }
   private function renderRegisterForm($isLoggedIn) {
     if (!$isLoggedIn) {
-      
+      return '<h2>';
+    }
+  }
+  public function killSession($isLoggedIn) : bool {
+    if ($isLoggedIn) {
+      return "<h1>";
     }
   }
 }
