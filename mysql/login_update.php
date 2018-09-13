@@ -1,12 +1,16 @@
 <?php
 // CREATE
+    require_once("init.php");
 
    $query = "SELECT * FROM users";
+   $result = mysqli_query($connection, $query);
+   echo $connection;
 
-   $result = mysqli_connect('localhost', 'root', '', 'usersdb');
    if(!$result) {
        die('Query failed!' . mysqli_error());
-   } 
+   } else {
+       echo "fuck this";
+   }
 
 
 ?>
@@ -26,7 +30,12 @@
     <input name="password" type="password">
     <input type="submit" name="submit" value="update">
     </form>
-<select name="" id="">
+<select name="id" id="">
+
+<?php
+while($row = mysqli_fetch_assoc($result))
+?>
+
 <option value="">1</option>
 </select>
 </div>

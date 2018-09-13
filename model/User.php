@@ -6,7 +6,7 @@ class User {
     private $name = null;
 
     public function setName(string $newName) {
-        $this->name = $newName
+        $this->name = $newName;
     }
     public function getUserName() {
         return $this->name;
