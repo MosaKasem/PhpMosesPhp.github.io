@@ -1,5 +1,5 @@
 <?php
-
+include("functions.php");
 
 /* print_r($_GET);
 if($_GET["id"] === "") echo "a is an empty string\n";
@@ -10,18 +10,7 @@ if(!empty($_GET["id"])) echo "a is not empty";
  */
 
 
-// CREATE
-  require_once("init.php");
-	$query = "SELECT * FROM users";
-  // $result2 = mysqli_query($database->connection, $query);
-	$result = $database->query($query);
-//    $user = mysqli_fetch_array($result);
 
-   if(!$result) {
-       die('Query failed!' . mysqli_error());
-   } else {
-       echo "fuck this";
-   }
 
 
 ?>
@@ -43,12 +32,7 @@ if(!empty($_GET["id"])) echo "a is not empty";
     </form>
 <select name="id" id="">
 <?php
-while($row = mysqli_fetch_assoc($result)) {
-	// printf($row['id']);
-	$id = $row['id'];
-	echo "<option value='$id'>$id</option>";
-}
-
+getUsersID();
 ?>
 </select>
 </div>
