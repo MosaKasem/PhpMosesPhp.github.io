@@ -4,6 +4,9 @@
 class LayoutView {
   
   public function render($isLoggedIn, LoginView $v, DateTimeView $dtv) {
+    if (!$isLoggedIn)
+    {
+
     echo '<!DOCTYPE html>
       <html>
         <head>
@@ -22,6 +25,8 @@ class LayoutView {
          </body>
       </html>
     ';
+  }
+    
   }
   
   private function renderIsLoggedIn($isLoggedIn) {

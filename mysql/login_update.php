@@ -10,7 +10,14 @@ if(!empty($_GET["id"])) echo "a is not empty";
  */
 
 
-
+if ($_POST['submit']) {
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$id = $_POST['id'];
+	$query = "UPDATE users SET values(username = '$username', password = '$password, WHERE id = '$id')";
+	$result = $database->query($connection, $query);
+	var_dump($result);
+}
 
 
 ?>
