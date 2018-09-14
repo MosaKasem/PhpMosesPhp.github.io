@@ -8,7 +8,7 @@ class RegisterNewAcc {
     private $view;
     public function __construct($user) {
         $this->user = $user;
-        $this->view = new \view\RegisterView($this->user);
+        $this->view = new \View\RegisterView($this->user);
     }
 
     public function register() {
