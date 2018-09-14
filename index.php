@@ -13,18 +13,22 @@ ini_set('display_errors', 'On');
 
 //CREATE OBJECTS OF THE VIEWS
 $r = new RegisterView();
+// $v = new LoginView();
 $v = new LoginView();
 $dtv = new DateTimeView();
 $lv = new LayoutView();
-
+// var_dump($_GET);
 
 $lv->render(false, $v, $dtv, $r);
 
 // The current URL
 // echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"';
 
-$sql = "SELECT * FROM users WHERE id=1";
+
+// GETTING A USER FROM DATABASE
+
+/* $sql = "SELECT * FROM users WHERE id=1";
 $result = $database->query($sql);
 $user = mysqli_fetch_array($result);
-echo $user['username'];
+echo $user['username']; */
 

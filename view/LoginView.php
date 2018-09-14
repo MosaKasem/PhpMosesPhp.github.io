@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+// namespace View; // Varför funkar inte namespace?
 
 class LoginView {
 	private static $login = 'LoginView::Login';
@@ -22,13 +22,12 @@ class LoginView {
 	 */
 	public function response() {
 		$message = '';
-		if(!isset($_SESSION['userLoggedIn'])) {
-			$response = $this->generateLoginFormHTML($message);
-			$response .= $this->generateLogoutButtonHTML($message);
-			return $response;
-		} else {
-			$response = 
-		}
+
+		$response = $this->generateLoginFormHTML($message);
+		// $response .= $this->generateLogoutButtonHTML($message);
+
+		return $response;
+
 	}
 
 	/**

@@ -10,7 +10,7 @@ Interface repository for 1DV608 assignment 2 and 4
 2. Controller---(data)--->View
 3. View---(response)--->User
 
-* **Controllers** is for user to interact with
+* **Controllers** is for user to interact with. It's like triggers, if ($_get [?something])
 * **Models** is basically a database
 * **View** is the HTML, what the users sees
 
