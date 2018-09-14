@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class LayoutView {
   
   public function render($isLoggedIn, LoginView $v, DateTimeView $dtv) {

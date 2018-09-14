@@ -4,7 +4,12 @@ require_once("mysql/init.php");
 require_once('view/LoginView.php');
 require_once('view/DateTimeView.php');
 require_once('view/LayoutView.php');
+
 require_once('view/RegisterView.php');
+require_once('controller/RegisterNewAcc.php');
+
+require_once('model/UserSession.php');
+require_once('model/User.php');
 
 
 //MAKE SURE ERRORS ARE SHOWN... MIGHT WANT TO TURN THIS OFF ON A PUBLIC SERVER
@@ -12,14 +17,20 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 //CREATE OBJECTS OF THE VIEWS
-$r = new RegisterView();
-// $v = new LoginView();
+
+
+$storage = new \Model\UserStorage();
+$user = $storage->loadSession();
+$c = new \controller\RegisterNewAcc($user);
+var_dump($c);
+
 $v = new LoginView();
 $dtv = new DateTimeView();
 $lv = new LayoutView();
+
 // var_dump($_GET);
 
-$lv->render(false, $v, $dtv, $r);
+$lv->render(false, $v, $dtv);
 
 // The current URL
 // echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"';

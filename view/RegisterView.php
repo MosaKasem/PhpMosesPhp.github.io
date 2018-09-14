@@ -1,12 +1,19 @@
 <?php
 
+namespace View;
+
 class RegisterView {
-    private static $sessionKey = __NAMESPACE__ . __CLASS__ . "register";
+    private static $sessionKey = "register";
     private static $username;
     private static $password;
+    private $user;
+
     // private static $password2; // look up password confirmation.
     public function userWantsToRegister() : bool {
-        return isset($_GET[$sessionKey]);
+        return isset($_GET[self::$sessionKey]);
+    }
+    public function __construct(\Model\User $register) {
+        $this->user = $register;
     }
     
 	private function generateRegisterFormHTML($message) {
