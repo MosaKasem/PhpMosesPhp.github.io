@@ -22,7 +22,7 @@ ini_set('display_errors', 'On');
 $storage = new \Model\UserStorage();
 $user = $storage->loadSession();
 $c = new \controller\RegisterNewAcc($user);
-var_dump($c);
+
 
 $v = new LoginView();
 $dtv = new DateTimeView();
