@@ -22,12 +22,12 @@ class LoginView {
 	 */
 	public function response() {
 		$message = '';
-		if ($this->getRequestUserName()) {
-			$message = 'bla';
-		}
-		if ($this->getRequestPassword()) {
-			$message = $_POST[self::password];
-		}
+
+			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"';
+			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"';
+			echo 'Form Submit = "' . $_POST[self::login] . '"';
+
+
 		$response = $this->generateLoginFormHTML($message);
 		// $response .= $this->generateLogoutButtonHTML($message);
 
@@ -79,11 +79,11 @@ class LoginView {
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
 	private function getRequestUserName() {
 		//RETURN REQUEST VARIABLE: USERNAME
-		return "hello";
+
 	}
 	private function getRequestPassword() {
 		//RETURN REQUEST VARIABLE: USERNAME
-		var_dump($_POST[self::password]);
+		return "hello";
 	}
 	
 }
