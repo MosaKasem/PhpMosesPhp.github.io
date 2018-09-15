@@ -16,7 +16,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 $routerStarter = new RouteController();
-var_dump($routerStarter);
+$routerStarter->start();
+// var_dump($routerStarter);
 
 //CREATE OBJECTS OF THE VIEWS
 

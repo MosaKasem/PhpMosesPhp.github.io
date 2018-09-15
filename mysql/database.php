@@ -36,4 +36,4 @@ class Database {
     }
 }
 
-$database = new Database();
+// $database = new Database();
