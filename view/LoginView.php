@@ -23,7 +23,10 @@ class LoginView {
 	public function response() {
 		$message = '';
 		if ($this->getRequestUserName()) {
-			return "hello";
+			$message = 'bla';
+		}
+		if ($this->getRequestPassword()) {
+			$message = $_POST[self::password];
 		}
 		$response = $this->generateLoginFormHTML($message);
 		// $response .= $this->generateLogoutButtonHTML($message);
@@ -77,6 +80,10 @@ class LoginView {
 	private function getRequestUserName() {
 		//RETURN REQUEST VARIABLE: USERNAME
 		return "hello";
+	}
+	private function getRequestPassword() {
+		//RETURN REQUEST VARIABLE: USERNAME
+		var_dump($_POST[self::password]);
 	}
 	
 }
