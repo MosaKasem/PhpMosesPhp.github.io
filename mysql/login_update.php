@@ -1,5 +1,5 @@
 <?php
-require_once("functions.php");
+include "functions.php";
 
 /* print_r($_GET);
 if($_GET["id"] === "") echo "a is an empty string\n";

@@ -25,16 +25,18 @@ class LoginView {
 
 			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
 			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"<br>';
-			echo 'Form Submit Username = "' . $_POST[self::$name] . '"<br>';
-			echo 'Form Submit Password = "' . $_POST[self::$password] . '"<br>';
+			echo 'Form Submit Username = "' . var_dump($_POST[self::$name]) . '"<br>';
+			echo 'Form Submit Password = "' . var_dump($_POST[self::$password]) . '"<br>';
 			echo 'Get Url "' . var_dump($_GET) . '"<br>';
-		if (isset($_POST['submit'])) {
-			if ($this->getRequestUserName()) {
-				$message = "Choose a name";
-			} else if ($this->getRequestPassword()) {
-				$message = "Choose a password";
+			echo '$_POST: "' . var_dump($_POST[self::$login]) . '"<br>';
+
+			if ($_POST[self::$login]) {
+
+				if ($this->getRequestUserName() || $this->getRequestPassword()) {
+					$message = "both fields are required!";
+				}
 			}
-		}
+				
 		$response = $this->generateLoginFormHTML($message);
 		// $response .= $this->generateLogoutButtonHTML($message);
 
