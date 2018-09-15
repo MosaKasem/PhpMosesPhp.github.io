@@ -7,7 +7,7 @@ require_once('view/DateTimeView.php');
 require_once('view/LayoutView.php');
 require_once('view/RegisterView.php');
 
-require_once('Controller/LoginController.php');
+require_once('Controller/RouteController.php');
 
 
 
@@ -15,16 +15,21 @@ require_once('Controller/LoginController.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
+$routerStarter = new RouteController();
+var_dump($routerStarter);
+
 //CREATE OBJECTS OF THE VIEWS
 
-
-$v = new LoginView();
+// Default Begins
+/* $v = new LoginView();
 $dtv = new DateTimeView();
 $lv = new LayoutView();
+$lv->render(false, $v, $dtv); */
+// Default Ends
+
 
 // var_dump($_GET);
 
-$lv->render(false, $v, $dtv);
 
 // The current URL
 // echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"';

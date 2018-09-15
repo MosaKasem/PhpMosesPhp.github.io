@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-class LoginController {
+class RouteController {
 
     private $database;
 
