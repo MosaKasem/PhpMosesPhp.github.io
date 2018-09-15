@@ -7,21 +7,20 @@ class LoginView {
 	private static $logout = 'LoginView::Logout';
 	private static $name = 'LoginView::UserName';
 	private static $password = 'LoginView::Password';
-	private static $cookieName = 'LoginView::CookieName';
-	private static $cookiePassword = 'LoginView::CookiePassword';
+	// private static $cookieName = 'LoginView::CookieName';
+	// private static $cookiePassword = 'LoginView::CookiePassword';
 	private static $keep = 'LoginView::KeepMeLoggedIn';
 	private static $messageId = 'LoginView::Message';
 	
-
 	/**
 	 * Create HTTP response
-	 *
 	 * Should be called after a login attempt has been determined
-	 *
-	 * @return  void BUT writes to standard output and cookies!
+	 * @return void BUT writes to standard output and cookies!
 	 */
 	public function response() {
 		$message = '';
+		$loginController = new \Controller\LoginController;
+		echo $loginController;
 
 			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
 			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"<br>';
@@ -32,7 +31,7 @@ class LoginView {
 
 			if ($_POST[self::$login]) {
 
-				if ($this->getRequestUserName() || $this->getRequestPassword()) {
+				if (!$this->getRequestUserName() || !$this->getRequestPassword()) {
 					$message = "both fields are required!";
 				}
 			}
