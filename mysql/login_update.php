@@ -1,5 +1,5 @@
 <?php
-include("functions.php");
+require_once("functions.php");
 
 /* print_r($_GET);
 if($_GET["id"] === "") echo "a is an empty string\n";
@@ -9,14 +9,22 @@ if(isset($_GET["id"])) echo "a is set\n";
 if(!empty($_GET["id"])) echo "a is not empty";
  */
 
-
-if ($_POST['submit']) {
+if (isset($_POST['submit'])) {
+	var_dump( $_POST );
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$id = $_POST['id'];
-	$query = "UPDATE users SET values(username = '$username', password = '$password, WHERE id = '$id')";
+	// $query = "UPDATE users SET values(username = '$username', password = '$password, WHERE id = '$id')";
+	$query = "UPDATE users SET ";
+	$quert .= "username = '$username' ";
+	$quert .= "password = '$password' ";
+	$quert .= "WHERE id = '$id' ";
+
 	$result = $database->query($connection, $query);
-	var_dump($result);
+	if (!$result) {
+		die("BLABLA query" . mysqli_error($connection));
+	}
+	// var_dump($result);
 }
 
 

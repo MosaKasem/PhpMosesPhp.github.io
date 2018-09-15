@@ -25,14 +25,16 @@ class LoginView {
 
 			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
 			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"<br>';
-			echo 'Form Submit = "' . $_POST[self::$name] . '"<br>';
+			echo 'Form Submit Username = "' . $_POST[self::$name] . '"<br>';
+			echo 'Form Submit Password = "' . $_POST[self::$password] . '"<br>';
 			echo 'Get Url "' . var_dump($_GET) . '"<br>';
+		if (isset($_POST['submit'])) {
 			if ($this->getRequestUserName()) {
 				$message = "Choose a name";
 			} else if ($this->getRequestPassword()) {
 				$message = "Choose a password";
 			}
-
+		}
 		$response = $this->generateLoginFormHTML($message);
 		// $response .= $this->generateLogoutButtonHTML($message);
 
@@ -89,7 +91,7 @@ class LoginView {
 	}
 	private function getRequestPassword() {
 		//RETURN REQUEST VARIABLE: USERNAME
-		return "hello";
+		return $_POST[self::$password];
 	}
 	
 }

@@ -1,5 +1,6 @@
 <?php
 // CREATE
+/*
 if (isset($_POST['submit'])) {
    $username = $_POST['username'];
    $password = $_POST['password'];
@@ -17,7 +18,7 @@ if (isset($_POST['submit'])) {
    if(!$result) {
        die('Query failed!' . mysqli_error());
    } 
-}
+}*/
 ?>
 
  
