@@ -2,6 +2,7 @@
 
 // namespace View; // Varför funkar inte namespace?
 
+
 class LoginView {
 	private static $login = 'LoginView::Login';
 	private static $logout = 'LoginView::Logout';
@@ -19,8 +20,6 @@ class LoginView {
 	 */
 	public function response() {
 		$message = '';
-		$loginController = new \Controller\LoginController;
-		echo $loginController;
 
 			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
 			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"<br>';

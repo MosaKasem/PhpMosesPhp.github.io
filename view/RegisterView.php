@@ -1,21 +1,11 @@
 <?php
 
-namespace View;
-
 class RegisterView {
     private static $sessionKey = "register";
     private static $username = "RegisterView::username";
     private static $password = "RegisterView::password";
 
-    private $user;
 
-    // private static $password2; // look up password confirmation.
-/*     public function userWantsToRegister() : bool {
-        return isset($_GET[self::$sessionKey]);
-    } */
-    public function __construct($wantsToRegister) {
-        $this->user = $wantsToRegister;
-    }
     
 	private function generateRegisterFormHTML($message) {
 		return '
