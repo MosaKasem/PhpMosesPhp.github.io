@@ -23,9 +23,9 @@ class LoginView {
 	public function response() {
 		$message = '';
 
-			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"';
-			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"';
-			echo 'Form Submit = "' . $_POST[self::login] . '"';
+			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
+			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"<br>';
+			echo 'Form Submit = "' . $_POST[self::$name] . '"<br>';
 
 
 		$response = $this->generateLoginFormHTML($message);
