@@ -29,8 +29,7 @@ class LoginView {
 			echo '$_POST: "' . var_dump($_POST[self::$login]) . '"<br>';
 
 			if ($_POST[self::$login]) {
-
-				if (!$this->getRequestUserName()){
+				if (!$this->getRequestUserName($message)){
 					$message = "both fields are required!";
 				}
 			}
@@ -84,9 +83,12 @@ class LoginView {
 	}
 
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
-	private function getRequestUserName() {
+	private function getRequestUserName($message) {
 		//RETURN REQUEST VARIABLE: USERNAME
-		return $_POST[self::$name] && $_POST[self::$password];
+		if ( trim($_POST[self::$name]) || trim($_POST[self::$password]) ) {
+			$message = "only a-z characters please!";
+		}
+		return strip_tags($_POST[self::$name]) && strip_tags($_POST[self::$password]);
 
 	}
 	

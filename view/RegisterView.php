@@ -2,8 +2,10 @@
 
 class RegisterView {
     private static $sessionKey = "register";
-    private static $username = "RegisterView::username";
-    private static $password = "RegisterView::password";
+    private static $username = "RegisterView::Username";
+    private static $password = "RegisterView::Password";
+    private static $password2 = "RegisterView::Password2";
+    private static $register = "RegisterView::Register";
 
 
     
@@ -19,6 +21,11 @@ class RegisterView {
 
 					<label for="' . self::$password . '">Password :</label>
 					<input type="password" id="' . self::$password . '" name="' . self::$password . '" />
+					
+					<label for="' . self::$password2 . '">Password :</label>
+					<input type="password" id="' . self::$password2 . '" name="' . self::$password2 . '" />
+
+					<input type="submit" name="' . self::$register . '" value="login" />
 
 				</fieldset>
 			</form>
