@@ -30,7 +30,7 @@ class LoginView {
 
 			if ($_POST[self::$login]) {
 
-				if (!$this->getRequestUserName() || !$this->getRequestPassword()) {
+				if (!$this->getRequestUserName()){
 					$message = "both fields are required!";
 				}
 			}
@@ -86,12 +86,8 @@ class LoginView {
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
 	private function getRequestUserName() {
 		//RETURN REQUEST VARIABLE: USERNAME
-		return $_POST[self::$name];
+		return $_POST[self::$name] && $_POST[self::$password];
 
-	}
-	private function getRequestPassword() {
-		//RETURN REQUEST VARIABLE: USERNAME
-		return $_POST[self::$password];
 	}
 	
 }

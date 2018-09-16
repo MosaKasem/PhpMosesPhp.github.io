@@ -1,5 +1,5 @@
 <?php
-require_once("mysql/init.php");
+require_once("Model/init.php");
 
 //INCLUDE THE FILES NEEDED...
 require_once('view/LoginView.php');
@@ -9,7 +9,7 @@ require_once('view/RegisterView.php');
 
 require_once('Controller/RouteController.php');
 
-require_once('Model/Session.php');
+require_once('Model/Database.php');
 require_once('Model/Register.php');
 
 

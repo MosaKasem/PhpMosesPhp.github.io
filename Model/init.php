@@ -1,3 +1,3 @@
 <?php 
-include('new_config.php');
+include('DBconfig.php');
 include('database.php');
