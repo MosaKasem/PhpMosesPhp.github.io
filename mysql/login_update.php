@@ -10,7 +10,7 @@ if(!empty($_GET["id"])) echo "a is not empty";
  */
 
 if (isset($_POST['submit'])) {
-	var_dump( $_POST );
+
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$id = $_POST['id'];
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
 
 	$result = $database->query($connection, $query);
 	if (!$result) {
-		die("BLABLA query" . mysqli_error($connection));
+		throw new Exception("BLABLA query" . mysqli_error($connection));
 	}
 	// var_dump($result);
 }

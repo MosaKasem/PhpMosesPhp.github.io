@@ -9,6 +9,9 @@ require_once('view/RegisterView.php');
 
 require_once('Controller/RouteController.php');
 
+require_once('Model/Session.php');
+
+
 session_start();
 
 //MAKE SURE ERRORS ARE SHOWN... MIGHT WANT TO TURN THIS OFF ON A PUBLIC SERVER
