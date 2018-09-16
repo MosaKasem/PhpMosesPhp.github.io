@@ -11,6 +11,7 @@ class RouteController {
         $registerView = new RegisterView();
         $dateTimeView = new DateTimeView();
 
+        $layoutView->render(false, $loginView, $dateTimeView);
     }
 
 }
