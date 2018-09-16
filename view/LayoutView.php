@@ -3,10 +3,9 @@
 class LayoutView {
   
   public function render($isLoggedIn, LoginView $loginView, DateTimeView $dtv, RegisterView $registerView) {
-    
 
     $page = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
-    var_dump($page);
+    $navLink = $page == $loginView ? $navLink = '<a href="?register">Register</a>' : $navLink = '<a href="?">Login</a>';
     echo '<!DOCTYPE html>
       <html>
         <head>
@@ -15,7 +14,7 @@ class LayoutView {
         </head>
         <body>
           <h1>Assignment 2</h1>
-          <a href="?register">Register</a>
+          ' . $navLink . '
           ' . $this->renderIsLoggedIn($isLoggedIn) . '
           
           <div class="container">
