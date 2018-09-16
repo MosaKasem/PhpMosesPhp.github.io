@@ -10,6 +10,7 @@ require_once('view/RegisterView.php');
 require_once('Controller/RouteController.php');
 
 require_once('Model/Session.php');
+require_once('Model/Register.php');
 
 
 session_start();

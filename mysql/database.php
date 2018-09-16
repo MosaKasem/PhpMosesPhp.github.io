@@ -11,7 +11,7 @@ class Database {
     public function open_db_connection() {
         $this->connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if ($this->connection->connect_error) {
-            die("connection made" . $this->connection->connect_error);
+            throw new Exception("connection made" . $this->connection->connect_error);
         }
     }
     public function getConnection() {
@@ -26,7 +26,7 @@ class Database {
     private function confirmQuery($result) {
 
         if(!$result) {
-            die('Query failed' . $this->connection->error);
+            throw new Exception('Query failed' . $this->connection->error);
         }
     }
     public function escape($string) {
