@@ -3,7 +3,10 @@
 class LayoutView {
   
   public function render($isLoggedIn, LoginView $loginView, DateTimeView $dtv, RegisterView $registerView) {
-    $page = $_GET['register'] ? $page = $registerView : $page = $loginView;
+    
+    $page;
+    $page2 = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
+    var_dump($page);
     echo '<!DOCTYPE html>
       <html>
         <head>
@@ -28,8 +31,7 @@ class LayoutView {
   private function renderIsLoggedIn($isLoggedIn) {
     if ($isLoggedIn) {
       return '<h2>Logged in</h2>';
-    }
-    else {
+    } else {
       return '<h2>Not logged in</h2>';
     }
   }

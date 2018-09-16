@@ -28,11 +28,11 @@ class LoginView {
 			echo 'Get Url "' . var_dump($_GET) . '"<br>';
 			echo '$_POST: "' . var_dump($_POST[self::$login]) . '"<br>'; */
 
-			if ($_POST[self::$login]) {
+/* 			if ($_POST[self::$login]) {
 				if (!$this->checkFormFields()){
 					$message = "Both fields required!";
 				} 
-			}
+			} */
 				
 		$response = $this->generateLoginFormHTML($message);
 		// $response .= $this->generateLogoutButtonHTML($message);

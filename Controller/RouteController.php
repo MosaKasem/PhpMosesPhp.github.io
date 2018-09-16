@@ -28,18 +28,10 @@ class RouteController {
         $this->layoutView   = new   LayoutView();
         $this->registerView = new RegisterView();
         $this->dateTimeView = new DateTimeView();
-
-        // $layoutView->render(false, $loginView, $dateTimeView);
     }
     public function start() {
         var_dump($_GET);
-        if (isset($_GET['register'])) {
-
-            $this->layoutView->render(false, $this->registerView, $this->dateTimeView);
-        } else {
-            $this->layoutView->render(false, $this->loginView, $this->dateTimeView);
+        $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
         }
-        // $this->layoutView->render(false, $this->loginView, $this->dateTimeView);
-    }
 
 }
