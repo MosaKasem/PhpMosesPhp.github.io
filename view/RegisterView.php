@@ -5,9 +5,13 @@ class RegisterView {
     private static $username = "RegisterView::Username";
     private static $password = "RegisterView::Password";
     private static $password2 = "RegisterView::Password2";
-    private static $register = "RegisterView::Register";
-
-
+	private static $register = "RegisterView::Register";
+	
+	public function initiateRegeister() {
+		if ($_SERVER['QUERY_STRING'] == "register") {
+			echo "OOOOHHHHHHHHH HEEEEEEEEEEEEEELP.... SEND FIRST AID KIT.. THIS COURSE IS KILLING ME!";
+		}
+	}
     
 	private function generateRegisterFormHTML($message) {
 		return '

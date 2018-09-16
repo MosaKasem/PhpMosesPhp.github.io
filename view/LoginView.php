@@ -28,11 +28,6 @@ class LoginView {
 			echo 'Get Url "' . var_dump($_GET) . '"<br>';
 			echo '$_POST: "' . var_dump($_POST[self::$login]) . '"<br>';
 
-			$blap = "t";
-			if (trim($blap)) {
-				echo "true";
-			}
-
 			if ($_POST[self::$login]) {
 				if (!$this->getRequestUserName()){
 					if (trim($_POST[self::$name]) || trim($_POST[self::$password])) {
