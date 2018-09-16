@@ -28,10 +28,19 @@ class LoginView {
 			echo 'Get Url "' . var_dump($_GET) . '"<br>';
 			echo '$_POST: "' . var_dump($_POST[self::$login]) . '"<br>';
 
+			$blap = "t";
+			if (trim($blap)) {
+				echo "true";
+			}
+
 			if ($_POST[self::$login]) {
-				if (!$this->getRequestUserName($message)){
-					$message = "both fields are required!";
-				}
+				if (!$this->getRequestUserName()){
+					if (trim($_POST[self::$name]) || trim($_POST[self::$password])) {
+						$message = "only a-z characters please!";
+					}
+					$message = "Both fields required!";
+				} 
+
 			}
 				
 		$response = $this->generateLoginFormHTML($message);
@@ -83,11 +92,8 @@ class LoginView {
 	}
 
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
-	private function getRequestUserName($message) {
+	private function getRequestUserName() {
 		//RETURN REQUEST VARIABLE: USERNAME
-		if ( trim($_POST[self::$name]) || trim($_POST[self::$password]) ) {
-			$message = "only a-z characters please!";
-		}
 		return strip_tags($_POST[self::$name]) && strip_tags($_POST[self::$password]);
 
 	}
