@@ -4,8 +4,8 @@ class LayoutView {
   
   public function render($isLoggedIn, LoginView $loginView, DateTimeView $dtv, RegisterView $registerView) {
     
-    $page;
-    $page2 = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
+
+    $page = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
     var_dump($page);
     echo '<!DOCTYPE html>
       <html>
