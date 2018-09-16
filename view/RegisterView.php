@@ -6,16 +6,20 @@ class RegisterView {
     private static $password = "RegisterView::Password";
     private static $password2 = "RegisterView::Password2";
 	private static $register = "RegisterView::Register";
+	private static $messageId = "RegisterView::Message";
+	private $message = null;
 	
 	public function initiateRegeister() {
-		if ($_SERVER['QUERY_STRING'] == "register") {
-			echo "OOOOHHHHHHHHH HEEEEEEEEEEEEEELP.... SEND FIRST AID KIT.. THIS COURSE IS KILLING ME!";
+		$message = '';
+		echo '$_POST: "' . var_dump($_POST) . '"<br>';
+		if ($_POST[self::$register]) {
+			$this->generateRegisterFormHTML($message);
 		}
 	}
     
 	private function generateRegisterFormHTML($message) {
 		return '
-			<form method="post" > 
+			<form method="post" action="?register"> 
 				<fieldset>
 					<legend>Register - enter Username and password</legend>
 					<p id="' . self::$messageId . '">' . $message . '</p>
