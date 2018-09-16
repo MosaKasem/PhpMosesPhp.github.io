@@ -32,8 +32,14 @@ class RouteController {
         // $layoutView->render(false, $loginView, $dateTimeView);
     }
     public function start() {
-        $pageswap =
-        $this->layoutView->render(false, $this->loginView, $this->dateTimeView);
+        var_dump($_GET);
+        if (isset($_GET['register'])) {
+
+            $this->layoutView->render(false, $this->registerView, $this->dateTimeView);
+        } else {
+            $this->layoutView->render(false, $this->loginView, $this->dateTimeView);
+        }
+        // $this->layoutView->render(false, $this->loginView, $this->dateTimeView);
     }
 
 }

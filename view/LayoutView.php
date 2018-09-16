@@ -2,7 +2,8 @@
 
 class LayoutView {
   
-  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv) {
+  public function render($isLoggedIn, LoginView $loginView, DateTimeView $dtv, RegisterView $registerView) {
+    $page = $_GET['register'] ? $page = $registerView : $page = $loginView;
     echo '<!DOCTYPE html>
       <html>
         <head>
@@ -15,7 +16,7 @@ class LayoutView {
           ' . $this->renderIsLoggedIn($isLoggedIn) . '
           
           <div class="container">
-              ' . $v->response() . '
+              ' . $page->response() . '
 
               ' . $dtv->show() . '
           </div>
