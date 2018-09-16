@@ -3,7 +3,7 @@
 class Register {
     public function register() {
 
-            $connection = mysqli_connect('localhost', 'root', '', 'usersdb');
+/*             $connection = mysqli_connect('localhost', 'root', '', 'usersdb');
             $query = "SELECT * FROM users";
     
             if ($result = mysqli_query($connection, $query)) {
@@ -13,7 +13,7 @@ class Register {
     
             } else {
                 throw new Exception("FAILED!!!!!!!!!!!!!" . mysqli_error());
-            }
+            } */
         
     }
 }

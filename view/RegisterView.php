@@ -9,12 +9,12 @@ class RegisterView {
 	private static $messageId = "RegisterView::Message";
 	private $message = null;
 	
-	public function initiateRegeister() {
+	public function response() {
 		$message = '';
-		echo '$_POST: "' . var_dump($_POST) . '"<br>';
-		if ($_POST[self::$register]) {
-			$this->generateRegisterFormHTML($message);
-		}
+
+		$response =	$this->generateRegisterFormHTML($message);
+
+		return $response;
 	}
     
 	private function generateRegisterFormHTML($message) {
