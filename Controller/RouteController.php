@@ -1,9 +1,15 @@
 <?php
 
 class RouteController {
+    
+    // for This current folder.
+    private $pageswap        ;
 
+    // for Models folder
     private $register        ;
     private $database        ;
+
+    // for Views folder
     private $loginView       ;
     private $layoutView      ;
     private $registerView    ;
@@ -26,6 +32,7 @@ class RouteController {
         // $layoutView->render(false, $loginView, $dateTimeView);
     }
     public function start() {
+        $pageswap =
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView);
     }
 
