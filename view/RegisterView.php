@@ -15,9 +15,8 @@ class RegisterView {
 		$response =	$this->generateRegisterFormHTML($message);
 		if(isset($_POST[self::$register])) {
 			$userRequest = $this->formValidation();
-			var_dump($userRequest);
 		}
-
+		$this->validateInput();
 		return $response;
 	}
     
@@ -43,6 +42,12 @@ class RegisterView {
 			</form>
 		';
 	}
+	private function validateInput() {
+		if (isset($_POST[self::$username]) && isset($_POST[self::$password]) && isset($_POST[self::$password])) {
+			echo 'hello';
+		}
+	}
+
 	private function formValidation() {
 		return strip_tags($_POST[self::$username]) && strip_tags($_POST[self::$password]) && strip_tags($_POST[self::$password2]);
 	}

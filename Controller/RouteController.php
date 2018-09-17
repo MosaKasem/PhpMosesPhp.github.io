@@ -20,7 +20,6 @@ class RouteController {
     public function __construct() {
         
         // Model's folder decleration
-        $this->formPost     = new     FormPost();
         $this->database     = new     Database();
 
         // View's Folder decleration
@@ -31,7 +30,7 @@ class RouteController {
         $this->formSecurity = new FormSecurity();
     }
     public function start() {
-        $this->formPost->register();
+
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 
