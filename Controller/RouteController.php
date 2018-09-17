@@ -2,8 +2,8 @@
 
 class RouteController {
     
-    // for This current folder.
-    private $pageswap        ;
+    // for controllers
+    private $formSecurity    ;
 
     // for Models folder
     private $register        ;
@@ -28,10 +28,11 @@ class RouteController {
         $this->layoutView   = new   LayoutView();
         $this->registerView = new RegisterView();
         $this->dateTimeView = new DateTimeView();
+        $this->formSecurity = new FormSecurity();
     }
     public function start() {
-        var_dump($_GET);
+
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
-        }
+    }
 
 }

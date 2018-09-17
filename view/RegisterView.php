@@ -13,6 +13,7 @@ class RegisterView {
 		$message = '';
 
 		$response =	$this->generateRegisterFormHTML($message);
+		var_dump($_POST[self::$register]);
 
 		return $response;
 	}
@@ -30,13 +31,16 @@ class RegisterView {
 					<label for="' . self::$password . '">Password :</label>
 					<input type="password" id="' . self::$password . '" name="' . self::$password . '" />
 					
-					<label for="' . self::$password2 . '">Password :</label>
+					<label for="' . self::$password2 . '">Confirm Password :</label>
 					<input type="password" id="' . self::$password2 . '" name="' . self::$password2 . '" />
 
-					<input type="submit" name="' . self::$register . '" value="login" />
+					<input type="submit" name="' . self::$register . '" value="register" />
 
 				</fieldset>
 			</form>
 		';
+	}
+	private function registerUser() {
+		echo $_POST;
 	}
 }

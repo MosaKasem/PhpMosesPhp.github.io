@@ -6,10 +6,12 @@ class DateTimeView {
 	public function show() {
 		// configuring date settings
 		date_default_timezone_set('Europe/Stockholm');
-		// From 
+		// From http://php.net/manual/en/function.date.php
+		// l for day, j for 1-31, S for 1th-31th, F for month, Y for Year.
+		// H for hour, i for minutes, s for seconds.
 		$date = "Today is " . date('l') . " of ". date('jS') ."/" . date('F Y');
 		$date .= "<br> Time: " . date('H:i:s');
-		// $timeString = "{$date['mday']}/{$date['mon']}/{$date['year']}";
+
 		$timeString = $date;
 
 		return '<p>' . $timeString . '</p>';

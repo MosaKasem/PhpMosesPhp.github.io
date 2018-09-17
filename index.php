@@ -8,6 +8,7 @@ require_once('view/LayoutView.php');
 require_once('view/RegisterView.php');
 
 require_once('Controller/RouteController.php');
+require_once('Controller/FormSecurity.php');
 
 require_once('Model/Database.php');
 require_once('Model/Register.php');
