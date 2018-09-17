@@ -1,8 +1,8 @@
 <?php
 
-class Register {
-    public function register() {
-
+class FormPost {
+    public function postMethod() {
+        return $_POST;
 /*             $connection = mysqli_connect('localhost', 'root', '', 'usersdb');
             $query = "SELECT * FROM users";
     

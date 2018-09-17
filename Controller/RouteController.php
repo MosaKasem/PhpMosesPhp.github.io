@@ -3,24 +3,24 @@
 class RouteController {
     
     // for controllers
-    private $formSecurity    ;
+    private $formSecurity    ; // Controllers
 
     // for Models folder
-    private $register        ;
-    private $database        ;
+    private $register        ; // Model
+    private $database        ; // Model
 
     // for Views folder
-    private $loginView       ;
-    private $layoutView      ;
-    private $registerView    ;
-    private $dateTimeView    ;
+    private $loginView       ; // View
+    private $layoutView      ; // View
+    private $registerView    ; // View
+    private $dateTimeView    ; // View
 
 
 
     public function __construct() {
         
         // Model's folder decleration
-        $this->register     = new     Register();
+        $this->formPost     = new     FormPost();
         $this->database     = new     Database();
 
         // View's Folder decleration
@@ -31,7 +31,7 @@ class RouteController {
         $this->formSecurity = new FormSecurity();
     }
     public function start() {
-
+        $this->formPost->register();
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 

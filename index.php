@@ -11,7 +11,7 @@ require_once('Controller/RouteController.php');
 require_once('Controller/FormSecurity.php');
 
 require_once('Model/Database.php');
-require_once('Model/Register.php');
+require_once('Model/FormPost.php');
 
 
 session_start();

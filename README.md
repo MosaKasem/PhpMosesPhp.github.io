@@ -38,3 +38,6 @@ URL
 Request URL | URL | Controller | Action
  ---------- | --- | ---------- | ------
 localhost/?posts/new | "[controller]/[action]" | Posts | new
+
+# Controller
+Controls the flow
