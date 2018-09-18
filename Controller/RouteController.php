@@ -1,6 +1,15 @@
 <?php
 
 class RouteController {
+
+    private static $login       = 'LoginView::Login'            ;
+	private static $logout      = 'LoginView::Logout'           ;
+	private static $name        = 'LoginView::UserName'         ;
+	private static $password    = 'LoginView::Password'         ;
+	// private static $cookieName = 'LoginView::CookieName';
+	// private static $cookiePassword = 'LoginView::CookiePassword';
+	private static $keep        = 'LoginView::KeepMeLoggedIn'   ;
+	private static $messageId   = 'LoginView::Message'          ;
     
     // for controllers
     private $formSecurity    ; // Controllers
@@ -30,7 +39,8 @@ class RouteController {
         $this->formSecurity = new FormSecurity();
     }
     public function start() {
-
+        var_dump($_POST);
+        // var_dump($_GET);
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 
