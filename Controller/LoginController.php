@@ -1,11 +1,11 @@
 <?php
-class FormSecurity {
+class LoginController {
 
      private $username;
      private $password;
      private $password2;
 
-/*     public function __construct() {
+    public function __construct() {
         //TODO: UNSURE ABOUT THIS ONE...
-    } */
+    }
 }

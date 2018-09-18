@@ -36,11 +36,12 @@ class RouteController {
         $this->layoutView   = new   LayoutView();
         $this->registerView = new RegisterView();
         $this->dateTimeView = new DateTimeView();
-        $this->formSecurity = new FormSecurity();
+        $this->formSecurity = new LoginController();
     }
     public function start() {
-        var_dump($_POST);
+        // var_dump($_POST);
         // var_dump($_GET);
+        // if ($this->loginView->getuser)
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 

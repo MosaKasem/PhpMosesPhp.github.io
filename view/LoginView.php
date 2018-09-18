@@ -86,6 +86,7 @@ class LoginView {
 	private function getRequestUserName() {
 		//RETURN REQUEST VARIABLE: USERNAME
 		if (isset($_POST[self::$name])) {
+			var_dump($_POST[self::$name]);
 			return $_POST[self::$name];
 		}
 
