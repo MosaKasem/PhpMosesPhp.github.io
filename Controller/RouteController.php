@@ -42,6 +42,8 @@ class RouteController {
         // var_dump($_POST);
         // var_dump($_GET);
         // if ($this->loginView->getuser)
+        $username = $this->loginView->getRequestUserName();
+        $this->formSecurity->loginValidation($username);
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 
