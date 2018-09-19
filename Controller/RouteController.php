@@ -1,15 +1,6 @@
 <?php
 
 class RouteController {
-
-    private static $login       = 'LoginView::Login'            ;
-	private static $logout      = 'LoginView::Logout'           ;
-	private static $name        = 'LoginView::UserName'         ;
-	private static $password    = 'LoginView::Password'         ;
-	// private static $cookieName = 'LoginView::CookieName';
-	// private static $cookiePassword = 'LoginView::CookiePassword';
-	private static $keep        = 'LoginView::KeepMeLoggedIn'   ;
-	private static $messageId   = 'LoginView::Message'          ;
     
     // for controllers
     private $formSecurity    ; // Controllers
@@ -43,7 +34,8 @@ class RouteController {
         // var_dump($_GET);
         // if ($this->loginView->getuser)
         $username = $this->loginView->getRequestUserName();
-        $this->formSecurity->loginValidation($username);
+        $password = $this->loginView->getRequestPassword();
+        $this->formSecurity->loginValidation($username, $password);
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 

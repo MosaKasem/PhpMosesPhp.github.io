@@ -13,13 +13,25 @@ class LoginView {
 	private static $keep = 'LoginView::KeepMeLoggedIn';
 	private static $messageId = 'LoginView::Message';
 	
+
+	private $message;
+
+	public function __construct() {
+		$this->message = 'okej';
+	}
+
+	public function returnMessage () : String {
+		return $this->message;
+	}
+
 	/**
 	 * Create HTTP response
 	 * Should be called after a login attempt has been determined
 	 * @return void BUT writes to standard output and cookies!
 	 */
 	public function response() {
-		$message = '';
+		echo $this->returnMessage();
+		// $message = '';
 
 /* 			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
 			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"<br>';
@@ -34,7 +46,7 @@ class LoginView {
 				} 
 			} */
 				
-		$response = $this->generateLoginFormHTML($message);
+		$response = $this->generateLoginFormHTML($this->message);
 		// $response .= $this->generateLogoutButtonHTML($message);
 
 		return $response;
