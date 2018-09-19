@@ -20,9 +20,7 @@ class LoginView {
 		$this->message = 'okej';
 	}
 
-	public function returnMessage () : String {
-		return $this->message;
-	}
+
 
 	/**
 	 * Create HTTP response
@@ -30,7 +28,6 @@ class LoginView {
 	 * @return void BUT writes to standard output and cookies!
 	 */
 	public function response() {
-		echo $this->returnMessage();
 		// $message = '';
 
 /* 			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
@@ -77,7 +74,7 @@ class LoginView {
 			<form method="post" > 
 				<fieldset>
 					<legend>Login - enter Username and password</legend>
-					<p id="' . self::$messageId . '">' . $message . '</p>
+					<p id="' . self::$messageId . '">' . $this->setMessage($message) . '</p>
 					
 					<label for="' . self::$name . '">Username :</label>
 					<input type="text" id="' . self::$name . '" name="' . self::$name . '" value="' . $this->getRequestUserName() . '" />
@@ -107,6 +104,15 @@ class LoginView {
 		if (isset($_POST[self::$password])) {
 			return $_POST[self::$password];
 		}
+	}
+	public function setMessage ($msg) {
+		var_dump($msg);
+		$this->message = $msg;
+		var_dump($this->message);
+		return $msg;
+	}
+	public function userWantsToLogin() {
+		return isset($_POST[self::$login]);
 	}
 	
 }

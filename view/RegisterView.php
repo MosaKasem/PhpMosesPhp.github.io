@@ -13,10 +13,7 @@ class RegisterView {
 		$message = '';
 
 		$response =	$this->generateRegisterFormHTML($message);
-		if(isset($_POST[self::$register])) {
-			$userRequest = $this->formValidation();
-		}
-		$this->validateInput();
+
 		return $response;
 	}
     
@@ -42,13 +39,27 @@ class RegisterView {
 			</form>
 		';
 	}
+	public function getRequestUserName() {
+		if(isset($_POST[self::$register])) {
+			return $username;
+		}
+	}
+	public function UserWantsToRegister() {
+		if (isset($_POST[self::$register])) {
+			$this->validateInput();
+		} else {
+			$message = "type sometihng dam it";
+		}
+		return false;
+	}
 	private function validateInput() {
-		if (isset($_POST[self::$username]) && isset($_POST[self::$password]) && isset($_POST[self::$password])) {
-			echo 'hello';
+		var_dump($_POST[self::$username]);
+		if (preg_match('/[^A-Za-z0-9]/' ,$_POST[self::$username])) {
+			echo "Invalid username";
 		}
 	}
 
-	private function formValidation() {
+/* 	private function formValidation() {
 		return strip_tags($_POST[self::$username]) && strip_tags($_POST[self::$password]) && strip_tags($_POST[self::$password2]);
-	}
+	} */
 }

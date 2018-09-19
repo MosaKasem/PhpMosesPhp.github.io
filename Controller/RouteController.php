@@ -20,22 +20,28 @@ class RouteController {
     public function __construct() {
         
         // Model's folder decleration
-        $this->database     = new     Database();
+        $this->database         = new        Database();
 
         // View's Folder decleration
-        $this->loginView    = new    LoginView();
-        $this->layoutView   = new   LayoutView();
-        $this->registerView = new RegisterView();
-        $this->dateTimeView = new DateTimeView();
-        $this->formSecurity = new LoginController();
+        $this->loginView        = new       LoginView();
+        $this->layoutView       = new      LayoutView();
+        $this->registerView     = new    RegisterView();
+        $this->dateTimeView     = new    DateTimeView();
+        $this->loginController  = new LoginController();
     }
     public function start() {
         // var_dump($_POST);
         // var_dump($_GET);
         // if ($this->loginView->getuser)
+        
+    if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
-        $this->formSecurity->loginValidation($username, $password);
+        // $this->loginController->loginValidation($username, $password);
+    }
+    if ($this->registerView->UserWantsToRegister()) {
+        $username = $this->registerView->getRequestUserName();
+    }
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 

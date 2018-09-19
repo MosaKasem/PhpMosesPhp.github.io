@@ -2,17 +2,17 @@
 class LoginController {
     private $message;
 
-    public function __construct() {
-        $this->message = new LoginView();
-    }
+/*     public function __construct() {
+        // $this->message = new LoginView();
+    } */
     public function loginValidation ($username, $password) {
-        if (!$username); {
+        if (!$username) {
             // var_dump($_GET);
-            $this->message = "username is missing"; 
+            $this->message->setMessage('no username');
             // var_dump($this->message);   
             // var_dump($_POST["LoginView::Login"]);
         }
-        $this->message = "username is missing"; 
+        // $this->message->returnMessage('OK YASMIN WHAT DO U WANT?!');
         // echo $username;
     }
 }
