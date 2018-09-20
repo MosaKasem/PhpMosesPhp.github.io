@@ -63,13 +63,16 @@ class RegisterView {
 	private function validateInput() {
 		$userName = $this->getRequestUserName();
 		$passWord = $this->getRequestPassword();
-		var_dump($userName);
-		var_dump($passWord);
+/* 		var_dump($userName);
+		var_dump($passWord); */
 		if (empty($userName) && empty($passWord)) {
 			$this->setMessage("Username is missing");
 		}
 		if (empty($passWord)) {
 			$this->setMessage('Password is missing');
+		}
+		if (empty($userName)) {
+			$this->setMessage('Username is missing');
 		}
 		if (preg_match('/[^A-Za-z0-9]/', $userName)) {
 			$this->setMessage("Invalid username");
