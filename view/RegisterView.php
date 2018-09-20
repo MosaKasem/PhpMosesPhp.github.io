@@ -7,12 +7,16 @@ class RegisterView {
     private static $password2 = "RegisterView::Password2";
 	private static $register = "RegisterView::Register";
 	private static $messageId = "RegisterView::Message";
-	private $message = null;
+	private $message;
+
+	public function __construct() {
+		$this->message = 'Message';
+	}
 	
 	public function response() {
-		$message = '';
+		// $message = 'Message';
 
-		$response =	$this->generateRegisterFormHTML($message);
+		$response =	$this->generateRegisterFormHTML($this->message);
 
 		return $response;
 	}
@@ -55,8 +59,11 @@ class RegisterView {
 	private function validateInput() {
 		var_dump($_POST[self::$username]);
 		if (preg_match('/[^A-Za-z0-9]/' ,$_POST[self::$username])) {
-			echo "Invalid username";
+			$this->setMessage("Invalid username");
 		}
+	}
+	public function setMessage($message) {
+		$this->message = $message;
 	}
 
 /* 	private function formValidation() {
