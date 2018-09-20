@@ -58,7 +58,7 @@ class LoginView {
 	private function generateLogoutButtonHTML($message) {
 		return '
 			<form  method="post" >
-				<p id="' . self::$messageId . '">' . $message .'</p>
+				<p id="' . self::$messageId . '">' . $this->setMessage($message) .'</p>
 				<input type="submit" name="' . self::$logout . '" value="logout"/>
 			</form>
 		';
@@ -74,7 +74,7 @@ class LoginView {
 			<form method="post" > 
 				<fieldset>
 					<legend>Login - enter Username and password</legend>
-					<p id="' . self::$messageId . '">' . $this->setMessage($message) . '</p>
+					<p id="' . self::$messageId . '">' . $message . '</p>
 					
 					<label for="' . self::$name . '">Username :</label>
 					<input type="text" id="' . self::$name . '" name="' . self::$name . '" value="' . $this->getRequestUserName() . '" />
@@ -106,13 +106,26 @@ class LoginView {
 		}
 	}
 	public function setMessage ($msg) {
-		// var_dump($msg);
 		$this->message = $msg;
-		// var_dump($this->message);
-		return $msg;
 	}
 	public function userWantsToLogin() {
-		return isset($_POST[self::$login]);
+			return isset($_POST[self::$login]) && $this->validateInput(); 
+/* 		if (isset($_POST[self::$login])) {
+			return $this->validateInput();
+		} */
 	}
+	private function validateInput() {
+		$username = $this->getRequestUserName();
+		switch ($username) {
+			case $username == "":
+				$this->setMessage('Username is missing');
+				break;
+
+			default:
+				return true;
+				break;
+		}
+	}
+
 	
 }

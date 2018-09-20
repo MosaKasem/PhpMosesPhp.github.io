@@ -59,11 +59,9 @@ class RegisterView {
 		return isset($_POST[self::$register]) && $this->validateInput();
 	}
 	private function validateInput() {
-		echo "BLABLABLA user wants to";
 		$userName = $this->getRequestUserName();
 		$passWord = $this->getRequestPassword();
-/* 		var_dump($userName);
-		var_dump($passWord); */
+
 		if (empty($userName) && empty($passWord)) {
 			$this->setMessage("Username is missing");
 		}
