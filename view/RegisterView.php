@@ -44,9 +44,9 @@ class RegisterView {
 		';
 	}
 	public function getRequestUserName() {
-		if(isset($_POST[self::$register])) {
-			return $username;
-		}
+
+			return $_POST[self::$username];
+
 	}
 	public function UserWantsToRegister() {
 		if (isset($_POST[self::$register])) {
@@ -57,10 +57,12 @@ class RegisterView {
 		return false;
 	}
 	private function validateInput() {
-		var_dump($_POST[self::$username]);
-		if (preg_match('/[^A-Za-z0-9]/' ,$_POST[self::$username])) {
+		// $userName = getRequestUserName();
+		// echo $userName;
+		if (preg_match('/[^A-Za-z0-9]/', $_POST[self::$username])) {
 			$this->setMessage("Invalid username");
 		}
+		// if ()
 	}
 	public function setMessage($message) {
 		$this->message = $message;

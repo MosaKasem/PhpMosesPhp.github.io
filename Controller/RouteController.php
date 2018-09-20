@@ -34,13 +34,14 @@ class RouteController {
         // var_dump($_GET);
         // if ($this->loginView->getuser)
         
-    if ($this->loginView->userWantsToLogin()) {
+/*     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
         // $this->loginController->loginValidation($username, $password);
-    }
+    } */
     if ($this->registerView->UserWantsToRegister()) {
         $username = $this->registerView->getRequestUserName();
+        echo $username;
         $password = $this->loginView->getRequestPassword();
         
     }
