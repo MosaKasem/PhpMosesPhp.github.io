@@ -17,7 +17,7 @@ class LoginView {
 	private $message;
 
 	public function __construct() {
-		$this->message = 'okej';
+		$this->message = '';
 	}
 
 

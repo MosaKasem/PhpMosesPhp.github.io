@@ -10,7 +10,7 @@ class RegisterView {
 	private $message;
 
 	public function __construct() {
-		$this->message = 'Message';
+		$this->message = '';
 	}
 	
 	public function response() {
