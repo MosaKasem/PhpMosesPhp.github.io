@@ -51,17 +51,26 @@ class RegisterView {
 	}
 	public function getRequestPassword() {
 		if (isset($_POST[self::$password])) {
-			echo "fuck my life";
+			return $_POST[self::$password];
 		}
 
 	}
 	public function UserWantsToRegister() {
+		if (isset($_POST[self::$register])) {
 			$this->validateInput();
+		}
 	}
 	private function validateInput() {
 		$userName = $this->getRequestUserName();
 		$passWord = $this->getRequestPassword();
-		echo $userName;
+		var_dump($userName);
+		var_dump($passWord);
+		if (empty($userName) && empty($passWord)) {
+			$this->setMessage("Username is missing");
+		}
+		if (empty($passWord)) {
+			$this->setMessage('Password is missing');
+		}
 		if (preg_match('/[^A-Za-z0-9]/', $userName)) {
 			$this->setMessage("Invalid username");
 		}

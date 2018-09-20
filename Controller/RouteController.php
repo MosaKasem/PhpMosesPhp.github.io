@@ -40,10 +40,7 @@ class RouteController {
         // $this->loginController->loginValidation($username, $password);
     } */
     if ($this->registerView->UserWantsToRegister()) {
-        $username = $this->registerView->getRequestUserName();
-        // var_dump( $username );
-        // $password = $this->registerView->getRequestPassword();
-        // var_dump( $password );
+
         
     }
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
