@@ -55,12 +55,11 @@ class RegisterView {
 		}
 
 	}
-	public function UserWantsToRegister() {
-		if (isset($_POST[self::$register])) {
-			$this->validateInput();
-		}
+	public function userWantsToRegister() {
+		return isset($_POST[self::$register]) && $this->validateInput();
 	}
 	private function validateInput() {
+		echo "BLABLABLA user wants to";
 		$userName = $this->getRequestUserName();
 		$passWord = $this->getRequestPassword();
 /* 		var_dump($userName);
@@ -77,7 +76,10 @@ class RegisterView {
 		if (preg_match('/[^A-Za-z0-9]/', $userName)) {
 			$this->setMessage("Invalid username");
 		}
-		// if ()
+		if ($passWord !== $_POST[self::$password2]) {
+			$this->setMessage('Password do not match.');
+		}
+		return true;
 	}
 	public function setMessage($message) {
 		$this->message = $message;

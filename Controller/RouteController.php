@@ -34,14 +34,19 @@ class RouteController {
         // var_dump($_GET);
         // if ($this->loginView->getuser)
         
-/*     if ($this->loginView->userWantsToLogin()) {
+    if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
+        if ($username == "Admin" && $password == "Admin") {
+            $this->loginView->setMessage('User exists, pick another username.');
+        }
         // $this->loginController->loginValidation($username, $password);
-    } */
-    if ($this->registerView->UserWantsToRegister()) {
-
-        
+    }
+    if ($this->registerView->userWantsToRegister()) {
+        $username = $this->registerView->getRequestUserName();
+        $password = $this->registerView->getRequestPassword();
+        // if ($username == "Admin")
+        // echo $username;
     }
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }
