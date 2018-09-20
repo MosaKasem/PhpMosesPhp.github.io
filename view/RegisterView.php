@@ -44,22 +44,25 @@ class RegisterView {
 		';
 	}
 	public function getRequestUserName() {
-
+		if (isset($_POST[self::$username])) {
 			return $_POST[self::$username];
+		}
+
+	}
+	public function getRequestPassword() {
+		if (isset($_POST[self::$password])) {
+			echo "fuck my life";
+		}
 
 	}
 	public function UserWantsToRegister() {
-		if (isset($_POST[self::$register])) {
 			$this->validateInput();
-		} else {
-			$message = "type sometihng dam it";
-		}
-		return false;
 	}
 	private function validateInput() {
-		// $userName = getRequestUserName();
-		// echo $userName;
-		if (preg_match('/[^A-Za-z0-9]/', $_POST[self::$username])) {
+		$userName = $this->getRequestUserName();
+		$passWord = $this->getRequestPassword();
+		echo $userName;
+		if (preg_match('/[^A-Za-z0-9]/', $userName)) {
 			$this->setMessage("Invalid username");
 		}
 		// if ()

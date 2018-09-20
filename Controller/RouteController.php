@@ -41,8 +41,9 @@ class RouteController {
     } */
     if ($this->registerView->UserWantsToRegister()) {
         $username = $this->registerView->getRequestUserName();
-        echo $username;
-        $password = $this->loginView->getRequestPassword();
+        // var_dump( $username );
+        // $password = $this->registerView->getRequestPassword();
+        // var_dump( $password );
         
     }
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
