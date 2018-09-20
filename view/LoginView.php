@@ -28,14 +28,6 @@ class LoginView {
 	 * @return void BUT writes to standard output and cookies!
 	 */
 	public function response() {
-		// $message = '';
-
-/* 			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
-			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"<br>';
-			echo 'Form Submit Username = "' . var_dump($_POST[self::$name]) . '"<br>';
-			echo 'Form Submit Password = "' . var_dump($_POST[self::$password]) . '"<br>';
-			echo 'Get Url "' . var_dump($_GET) . '"<br>';
-			echo '$_POST: "' . var_dump($_POST[self::$login]) . '"<br>'; */
 
 /* 			if ($_POST[self::$login]) {
 				if (!$this->checkFormFields()){
@@ -109,16 +101,20 @@ class LoginView {
 		$this->message = $msg;
 	}
 	public function userWantsToLogin() {
-			return isset($_POST[self::$login]) && $this->validateInput(); 
-/* 		if (isset($_POST[self::$login])) {
-			return $this->validateInput();
-		} */
+			return isset($_POST[self::$login]) && $this->validateInput();
 	}
 	private function validateInput() {
 		$username = $this->getRequestUserName();
-		if ($username == "") {
+		$password = $this->getRequestPassword();
+		if ($username == "" || empty($username)) {
 			$this->setMessage('Username is missing');
+			return false;
 		}
+		if ($password == "") {
+			$this->setMessage('Password is missing');
+			return false;
+		}
+		return true;
 	}
 
 	

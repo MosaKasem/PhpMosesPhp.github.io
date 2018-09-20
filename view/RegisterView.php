@@ -82,8 +82,4 @@ class RegisterView {
 	public function setMessage($message) {
 		$this->message = $message;
 	}
-
-/* 	private function formValidation() {
-		return strip_tags($_POST[self::$username]) && strip_tags($_POST[self::$password]) && strip_tags($_POST[self::$password2]);
-	} */
 }

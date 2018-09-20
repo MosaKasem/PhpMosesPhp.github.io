@@ -37,16 +37,15 @@ class RouteController {
     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
-        if ($username == "Admin" && $password == "Admin") {
-            $this->loginView->setMessage('User exists, pick another username.');
-        }
+
         // $this->loginController->loginValidation($username, $password);
     }
     if ($this->registerView->userWantsToRegister()) {
         $username = $this->registerView->getRequestUserName();
         $password = $this->registerView->getRequestPassword();
-        // if ($username == "Admin")
-        // echo $username;
+        if ($username == "Admin" && $password == "Admin") {
+            $this->registerView->setMessage('User exists, pick another username.');
+        }
     }
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }

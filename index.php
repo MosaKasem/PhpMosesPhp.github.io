@@ -20,6 +20,13 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
+// Hard coded " user "
+if (!$_SESSION) {
+    $_SESSION['username'] = 'Admin';
+    $_SESSION['password'] = 'Admin';
+    $_SESSION['message']  = '';
+}
+
 $routerStarter = new RouteController();
 $routerStarter->start();
 // var_dump($routerStarter);
@@ -48,3 +55,10 @@ $result = $database->query($sql);
 $user = mysqli_fetch_array($result);
 echo $user['username']; */
 
+
+/* 			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
+			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"<br>';
+			echo 'Form Submit Username = "' . var_dump($_POST[self::$name]) . '"<br>';
+			echo 'Form Submit Password = "' . var_dump($_POST[self::$password]) . '"<br>';
+			echo 'Get Url "' . var_dump($_GET) . '"<br>';
+			echo '$_POST: "' . var_dump($_POST[self::$login]) . '"<br>'; */
