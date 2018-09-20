@@ -116,14 +116,8 @@ class LoginView {
 	}
 	private function validateInput() {
 		$username = $this->getRequestUserName();
-		switch ($username) {
-			case $username == "":
-				$this->setMessage('Username is missing');
-				break;
-
-			default:
-				return true;
-				break;
+		if ($username == "") {
+			$this->setMessage('Username is missing');
 		}
 	}
 
