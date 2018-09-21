@@ -29,7 +29,7 @@ class LoginView {
 	 */
 	public function response() {
 		$session = new SessionModel();
-		var_dump($session);
+		// var_dump($session);
 
 		$response = $this->generateLogoutButtonHTML($this->message);
 		$response = $this->generateLoginFormHTML($this->message);
