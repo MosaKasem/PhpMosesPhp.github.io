@@ -28,14 +28,12 @@ class LoginView {
 	 * @return void BUT writes to standard output and cookies!
 	 */
 	public function response() {
+		$session = new SessionModel();
+		var_dump($session);
 
-/* 			if ($_POST[self::$login]) {
-				if (!$this->checkFormFields()){
-					$message = "Both fields required!";
-				} 
-			} */
-				
+		$response = $this->generateLogoutButtonHTML($this->message);
 		$response = $this->generateLoginFormHTML($this->message);
+
 		// $response .= $this->generateLogoutButtonHTML($message);
 
 		return $response;
