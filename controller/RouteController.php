@@ -1,6 +1,8 @@
 <?php
 
 class RouteController {
+
+    private $isLoggedIn      ;
     
     // for controllers
     private $formSecurity    ; // Controllers
@@ -8,6 +10,8 @@ class RouteController {
     // for Models folder
     private $register        ; // Model
     private $database        ; // Model
+    private $sessionModel    ; // Model
+    private $loginModel      ; // Model
 
     // for Views folder
     private $loginView       ; // View
@@ -21,6 +25,7 @@ class RouteController {
     public function __construct() {
         
         // Model's folder decleration
+        $this->loginModel       = new      LoginModel();
         $this->database         = new        Database();
 
         // View's Folder decleration
@@ -28,6 +33,7 @@ class RouteController {
         $this->layoutView       = new      LayoutView();
         $this->registerView     = new    RegisterView();
         $this->dateTimeView     = new    DateTimeView();
+        $this->sessionModel     = new    SessionModel();
         // $this->loginController  = new LoginController();
     }
     public function start() {
@@ -38,6 +44,15 @@ class RouteController {
     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
+        $successLogin = $this->loginModel->validateLogin($username, $password);
+		if ($successLogin) {
+            $this->sessionModel->initilizeSession("LoggedIn");
+            $this->sessionModel->storeUserToSession($username);
+            $this->loginView->setMessage("Welcome");
+            var_dump($_SESSION['SessionModel::Session']);
+		} else {
+			$this->loginView->setMessage('Wrong name or password');
+		}
         // $successLogin = $
         // $this->loginController->loginValidation($username, $password);
     }

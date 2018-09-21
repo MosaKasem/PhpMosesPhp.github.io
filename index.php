@@ -19,8 +19,7 @@ require_once('controller/RouteController.php');
 require_once('model/Database.php');
 require_once('model/LoginModel.php');
 require_once('model/RegisterModel.php');
-
-// TODO: FUCK THIS SHIT... testing;
+require_once('model/SessionModel.php');
 
 session_start();
 
