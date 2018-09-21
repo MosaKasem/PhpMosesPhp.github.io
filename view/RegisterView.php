@@ -2,9 +2,9 @@
 
 class RegisterView {
     private static $sessionKey = "register";
-    private static $username = "RegisterView::Username";
+    private static $username = "RegisterView::UserName";
     private static $password = "RegisterView::Password";
-    private static $password2 = "RegisterView::Password2";
+    private static $passwordRepeat = "RegisterView::PasswordRepeat";
 	private static $register = "RegisterView::Register";
 	private static $messageId = "RegisterView::Message";
 	private $message;
@@ -34,8 +34,8 @@ class RegisterView {
 					<label for="' . self::$password . '">Password :</label>
 					<input type="password" id="' . self::$password . '" name="' . self::$password . '" />
 					
-					<label for="' . self::$password2 . '">Confirm Password :</label>
-					<input type="password" id="' . self::$password2 . '" name="' . self::$password2 . '" />
+					<label for="' . self::$passwordRepeat . '">Confirm Password :</label>
+					<input type="password" id="' . self::$passwordRepeat . '" name="' . self::$passwordRepeat . '" />
 
 					<input type="submit" name="' . self::$register . '" value="register" />
 
@@ -74,7 +74,7 @@ class RegisterView {
 		if (preg_match('/[^A-Za-z0-9]/', $userName)) {
 			$this->setMessage("Invalid username");
 		}
-		if ($passWord !== $_POST[self::$password2]) {
+		if ($passWord !== $_POST[self::$passwordRepeat]) {
 			$this->setMessage('Password do not match.');
 		}
 		return true;

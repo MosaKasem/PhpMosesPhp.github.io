@@ -6,7 +6,7 @@ class LayoutView {
 
     // render register page if url == "register"
     $page = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
-    $navLink = $page == $loginView ? $navLink = '<a href="?register">Register</a>' : $navLink = '<a href="?">Login</a>';
+    $navLink = $page == $loginView ? $navLink = '<a href="?register">Register a new user</a>' : $navLink = '<a href="?">Back to login</a>';
 
     echo '<!DOCTYPE html>
       <html>
