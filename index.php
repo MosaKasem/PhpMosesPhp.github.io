@@ -29,11 +29,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 // Hard coded " user "
-if (!$_SESSION) {
+/* if (!$_SESSION) {
     $_SESSION['username'] = 'Admin';
     $_SESSION['password'] = 'Admin';
     $_SESSION['message']  = '';
-}
+} */
 
 $routerStarter = new RouteController();
 $routerStarter->start();
