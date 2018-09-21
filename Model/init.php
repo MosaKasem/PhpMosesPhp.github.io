@@ -1,3 +1,3 @@
 <?php 
 include('DBconfig.php');
-include('database.php');
+include('Database.php');
