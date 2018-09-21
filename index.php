@@ -20,7 +20,7 @@ require_once('Model/Database.php');
 require_once('Model/LoginModel.php');
 require_once('Model/RegisterModel.php');
 
-
+// TODO: FUCK THIS SHIT... testing;
 
 session_start();
 
