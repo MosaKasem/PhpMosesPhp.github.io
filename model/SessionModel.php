@@ -1,13 +1,11 @@
 <?php 
 class SessionModel {
-    private static $session = 'SessionModel::Session';
-    public function initilizeSession($isLoggedIn) {
-        if (!isset($_SESSION[$session])) {
-            $_SESSION[$session] = $isLoggedIn;
-            return true;
-        }
-    }
+    // private static $session = 'SessionModel::Session';
+    private static $user = 'SessionModel::User';
+/*     public function initilizeSession($isLoggedIn) {
+        $_SESSION[$session] = $isLoggedIn;
+    } */
     public function storeUserToSession($user) {
-        $_SESSION[$session] = $user;
+        $_SESSION[$user] = $user;
     }
 }

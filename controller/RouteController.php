@@ -40,16 +40,15 @@ class RouteController {
         // var_dump($_POST);
         // var_dump($_GET);
         // if ($this->loginView->getuser)
-        
+        $isLoggedIn = false;
     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
         $successLogin = $this->loginModel->validateLogin($username, $password);
 		if ($successLogin) {
-            $this->sessionModel->initilizeSession("LoggedIn");
             $this->sessionModel->storeUserToSession($username);
             $this->loginView->setMessage("Welcome");
-            var_dump($_SESSION['SessionModel::Session']);
+            $isLoggedIn = true;
 		} else {
 			$this->loginView->setMessage('Wrong name or password');
 		}
@@ -61,11 +60,13 @@ class RouteController {
     if ($this->registerView->userWantsToRegister()) {
         $username = $this->registerView->getRequestUserName();
         $password = $this->registerView->getRequestPassword();
+        $isLoggedIn = false;
 /*         if ($username == "Admin" && $password == "Admin") {
             $this->registerView->setMessage('User exists, pick another username.');
         } */
     }
-        $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
+    // $isLoggedIn = false;
+        $this->layoutView->render($isLoggedIn, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 
 }
