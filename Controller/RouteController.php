@@ -14,6 +14,7 @@ class RouteController {
     private $layoutView      ; // View
     private $registerView    ; // View
     private $dateTimeView    ; // View
+    private $loginController ; // View
 
 
 
@@ -27,7 +28,7 @@ class RouteController {
         $this->layoutView       = new      LayoutView();
         $this->registerView     = new    RegisterView();
         $this->dateTimeView     = new    DateTimeView();
-        $this->loginController  = new LoginController();
+        // $this->loginController  = new LoginController();
     }
     public function start() {
         // var_dump($_POST);

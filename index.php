@@ -12,7 +12,7 @@ require_once('View/RegisterView.php');
 
 // Controllers
 require_once('Controller/RouteController.php');
-require_once('Controller/LoginController.php');
+// require_once('Controller/LoginController.php');
 
 
 // Models

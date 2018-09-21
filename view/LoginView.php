@@ -114,12 +114,12 @@ class LoginView {
 			$this->setMessage('Password is missing');
 			return false;
 		}
-/* 		$logginSuccess = new LoginModel($username, $password);
+		$logginSuccess = new LoginModel($username, $password);
 		if ($logginSuccess->validateLogin($username, $password)) {
 			// TODO: Add cookie, Fix IsLoggedIn = True.
 			// TODO: Do the TODO inside controller or here? Research.
 			$this->setMessage("Welcome");
-		} */
+		}
 		
 	}
 

@@ -1,10 +1,10 @@
 <?php
-class LoginController {
+/* class LoginController {
     private $message;
 
-/*     public function __construct() {
+    public function __construct() {
         // $this->message = new LoginView();
-    } */
+    }
     public function loginValidation ($username, $password) {
         if (!$username) {
             // var_dump($_GET);
@@ -15,4 +15,4 @@ class LoginController {
         // $this->message->returnMessage('OK YASMIN WHAT DO U WANT?!');
         // echo $username;
     }
-}
+} */
