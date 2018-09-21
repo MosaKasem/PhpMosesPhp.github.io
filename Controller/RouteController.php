@@ -43,9 +43,9 @@ class RouteController {
     if ($this->registerView->userWantsToRegister()) {
         $username = $this->registerView->getRequestUserName();
         $password = $this->registerView->getRequestPassword();
-        if ($username == "Admin" && $password == "Admin") {
+/*         if ($username == "Admin" && $password == "Admin") {
             $this->registerView->setMessage('User exists, pick another username.');
-        }
+        } */
     }
         $this->layoutView->render(false, $this->loginView, $this->dateTimeView, $this->registerView);
     }
