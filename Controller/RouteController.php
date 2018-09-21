@@ -37,7 +37,7 @@ class RouteController {
     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
-
+        // $successLogin = $
         // $this->loginController->loginValidation($username, $password);
     }
     if ($this->registerView->userWantsToRegister()) {

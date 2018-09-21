@@ -1,6 +1,6 @@
 <?php
 // We'll pretend this is the database.
-class LoginModel {
+class RegisterModel {
     private $username;
     private $password;
 
@@ -8,7 +8,7 @@ class LoginModel {
         $this->username = $username;
         $this->password = $password;
     }
-    public function validateLogin($username, $password) {
+    public function validateRegister($username, $password) {
         if ($username == "Admin" && $password == "Admin") {
             return true;
         } else {

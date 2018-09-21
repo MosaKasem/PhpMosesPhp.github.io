@@ -2,15 +2,23 @@
 require_once("Model/init.php");
 
 //INCLUDE THE FILES NEEDED...
-require_once('view/LoginView.php');
-require_once('view/DateTimeView.php');
-require_once('view/LayoutView.php');
-require_once('view/RegisterView.php');
 
+// View
+require_once('View/LoginView.php');
+require_once('View/DateTimeView.php');
+require_once('View/LayoutView.php');
+require_once('View/RegisterView.php');
+
+
+// Controllers
 require_once('Controller/RouteController.php');
 require_once('Controller/LoginController.php');
 
+
+// Models
 require_once('Model/Database.php');
+require_once('Model/LoginModel.php');
+require_once('Model/RegisterModel.php');
 
 
 
