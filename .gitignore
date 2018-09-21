@@ -111,5 +111,6 @@ $RECYCLE.BIN/
 
 # Ignore these files
 Model/DBconfig.php
+model/DBconfig.php
 
 # End of https://www.gitignore.io/api/node,visualstudiocode,windows
