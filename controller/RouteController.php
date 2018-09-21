@@ -37,10 +37,10 @@ class RouteController {
         // $this->loginController  = new LoginController();
     }
     public function start() {
+        $isLoggedIn = false;
         // var_dump($_POST);
         // var_dump($_GET);
         // if ($this->loginView->getuser)
-        $isLoggedIn = false;
     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
