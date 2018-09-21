@@ -1,24 +1,24 @@
 <?php
-require_once("Model/init.php");
+require_once("model/init.php");
 
 //INCLUDE THE FILES NEEDED...
 
 // View
-require_once('View/LoginView.php');
-require_once('View/DateTimeView.php');
-require_once('View/LayoutView.php');
-require_once('View/RegisterView.php');
+require_once('view/LoginView.php');
+require_once('view/DateTimeView.php');
+require_once('view/LayoutView.php');
+require_once('view/RegisterView.php');
 
 
 // Controllers
-require_once('Controller/RouteController.php');
+require_once('controller/RouteController.php');
 // require_once('Controller/LoginController.php');
 
 
 // Models
-require_once('Model/Database.php');
-require_once('Model/LoginModel.php');
-require_once('Model/RegisterModel.php');
+require_once('model/Database.php');
+require_once('model/LoginModel.php');
+require_once('model/RegisterModel.php');
 
 // TODO: FUCK THIS SHIT... testing;
 
