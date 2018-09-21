@@ -33,4 +33,4 @@ class Database {
         return $escape;
     }
 }
-new Database();
+// $database = new Database();
