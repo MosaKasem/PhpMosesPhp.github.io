@@ -56,6 +56,7 @@ class RouteController {
     }
     if ($this->loginView->loggingOut()) {
         $this->sessionModel->destroySession();
+        $this->loginView->setMessage("Bye bye!");
     }
     
     // Event listener for register

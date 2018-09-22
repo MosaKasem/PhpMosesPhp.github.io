@@ -9,7 +9,7 @@ class LoginModel {
         $this->password = $password;
     } */
     public function validateLogin($username, $password) {
-        if ($username == "Admin" && $password == "Admin") {
+        if ($username == "Admin" && $password == "Password") {
             return true;
         } else {
             return false;
