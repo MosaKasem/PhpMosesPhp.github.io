@@ -40,6 +40,7 @@ class RouteController {
         $isLoggedIn = false;
         if ($this->sessionModel->getUserSession()) {
             $isLoggedIn = true;
+            $this->loginView->setMessage('');
         }
         // Event listener for login
     if ($this->loginView->userWantsToLogin()) {
