@@ -32,7 +32,6 @@ class LoginView {
 	public function response() {
 		$userIsLogged = $this->session->loggedIn();
 		if ($userIsLogged) {
-			var_dump($this->message);
 			$response = $this->generateLogoutButtonHTML($this->message);
 		} else {
 			$response = $this->generateLoginFormHTML($this->message);
@@ -83,6 +82,11 @@ class LoginView {
 				</fieldset>
 			</form>
 		';
+	}
+	public function loggingOut() {
+		if(isset($_POST[self::$logout])) {
+			return true;
+		}
 	}
 
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES

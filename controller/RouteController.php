@@ -38,6 +38,7 @@ class RouteController {
     }
     public function start() {
         $isLoggedIn = false;
+
         // Event listener for login
     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
@@ -52,6 +53,9 @@ class RouteController {
 		}
         // $successLogin = $
         // $this->loginController->loginValidation($username, $password);
+    }
+    if ($this->loginView->loggingOut()) {
+        $this->sessionModel->destroySession();
     }
     
     // Event listener for register
