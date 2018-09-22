@@ -2,7 +2,7 @@
 
 class RouteController {
 
-    private $isLoggedIn      ;
+    private $isLoggedIn      ; // variable
     
     // for controllers
     private $formSecurity    ; // Controllers
