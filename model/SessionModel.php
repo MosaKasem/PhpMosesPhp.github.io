@@ -21,6 +21,7 @@ class SessionModel {
     }
     public function destroySession() {
         session_destroy();
+        unset($_SESSION[$user]);
         $_SESSION = [];
     }
 }

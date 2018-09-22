@@ -32,6 +32,7 @@ class LoginView {
 	public function response() {
 		$userIsLogged = $this->session->loggedIn();
 		if ($userIsLogged) {
+			var_dump($this->message);
 			$response = $this->generateLogoutButtonHTML($this->message);
 		} else {
 			$response = $this->generateLoginFormHTML($this->message);
@@ -51,7 +52,7 @@ class LoginView {
 	private function generateLogoutButtonHTML($message) {
 		return '
 			<form  method="post" >
-				<p id="' . self::$messageId . '">' . $this->setMessage($message) .'</p>
+				<p id="' . self::$messageId . '">' . $message .'</p>
 				<input type="submit" name="' . self::$logout . '" value="logout"/>
 			</form>
 		';
@@ -86,13 +87,10 @@ class LoginView {
 
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
 	public function getRequestUserName() {
-		var_dump($this->session->getUserSession());
 		//RETURN REQUEST VARIABLE: USERNAME
 		if (isset($_POST[self::$name])) {
 			return $_POST[self::$name];
-		} //else if ($this->session->gettUserSession()) {
-
-		//}
+		}
 	}
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
 	public function getRequestPassword() {
