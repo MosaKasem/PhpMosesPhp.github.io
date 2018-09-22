@@ -38,9 +38,7 @@ class RouteController {
     }
     public function start() {
         $isLoggedIn = false;
-        // var_dump($_POST);
-        // var_dump($_GET);
-        // if ($this->loginView->getuser)
+        // Event listener for login
     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
@@ -56,7 +54,7 @@ class RouteController {
         // $this->loginController->loginValidation($username, $password);
     }
     
-
+    // Event listener for register
     if ($this->registerView->userWantsToRegister()) {
         $username = $this->registerView->getRequestUserName();
         $password = $this->registerView->getRequestPassword();

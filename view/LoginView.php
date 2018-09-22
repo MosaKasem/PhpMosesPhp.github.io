@@ -15,9 +15,11 @@ class LoginView {
 	
 
 	private $message;
+	private $session;
 
 	public function __construct() {
 		$this->message = '';
+		$this->session = new SessionModel();
 	}
 
 
@@ -28,11 +30,12 @@ class LoginView {
 	 * @return void BUT writes to standard output and cookies!
 	 */
 	public function response() {
-		$session = new SessionModel();
-		// var_dump($session);
-
-		$response = $this->generateLogoutButtonHTML($this->message);
-		$response = $this->generateLoginFormHTML($this->message);
+		$userIsLogged = $this->session->loggedIn();
+		if ($userIsLogged) {
+			$response = $this->generateLogoutButtonHTML($this->message);
+		} else {
+			$response = $this->generateLoginFormHTML($this->message);
+		}
 
 		// $response .= $this->generateLogoutButtonHTML($message);
 
@@ -83,10 +86,13 @@ class LoginView {
 
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
 	public function getRequestUserName() {
+		var_dump($this->session->getUserSession());
 		//RETURN REQUEST VARIABLE: USERNAME
 		if (isset($_POST[self::$name])) {
 			return $_POST[self::$name];
-		}
+		} //else if ($this->session->gettUserSession()) {
+
+		//}
 	}
 	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
 	public function getRequestPassword() {

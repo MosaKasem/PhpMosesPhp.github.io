@@ -15,8 +15,12 @@ class SessionModel {
     }
     public function loggedIn() {
         if (isset($_SESSION[self::$user])) {
-            return 'true';
+            return true;
         }
-        return 'false';
+        return false;
+    }
+    public function destroySession() {
+        session_destroy();
+        $_SESSION = [];
     }
 }
