@@ -38,7 +38,9 @@ class RouteController {
     }
     public function start() {
         $isLoggedIn = false;
-
+        if ($this->sessionModel->getUserSession()) {
+            $isLoggedIn = true;
+        }
         // Event listener for login
     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
