@@ -132,7 +132,7 @@ class LoginView {
 	}
 	public function keepMeLoggedIn() {
 		if (isset($_POST[self::$keep])) {
-			var_dump("bla");
+			return $_POST[self::$keep];
 		}
 	}
 
