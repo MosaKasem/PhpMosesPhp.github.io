@@ -135,6 +135,10 @@ class LoginView {
 			return $_POST[self::$keep];
 		}
 	}
+	public function saveCookie($username, $password) { // 86400 is equivalent to 24 hours.
+		setcookie(self::$cookieName, $username, time() + 86400, "/");
+		setcookie(self::$cookiePassword, $password, time() + 86400, "/");
+	}
 
 	
 }

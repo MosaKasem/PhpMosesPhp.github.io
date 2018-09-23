@@ -40,11 +40,7 @@ class RouteController {
         $isLoggedIn = false;
         // Event listener for login
 
-    if ($this->loginView->keepMeLoggedIn()) {
-        echo "blabla";
-    }
     if ($this->loginView->userWantsToLogin()) {
-
 
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
@@ -52,12 +48,25 @@ class RouteController {
 
 
 		if ($successLogin) {
-            $this->loginView->setMessage("Welcome");
+
             $isLoggedIn = true;
+
+            if ($this->loginView->keepMeLoggedIn()) {
+
+                $this->loginView->saveCookie($username, $password);
+                $this->loginView->setMessage('Welcome and you will be remembered');
+            
+            } else {
+                $this->loginView->setMessage("Welcome");
+            }
+            
             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');   
             }
+
             $this->sessionModel->storeUserToSession($username);
+
+            // var_dump($_COOKIE);
 		} else {
 			$this->loginView->setMessage('Wrong name or password');
 		}
@@ -66,6 +75,8 @@ class RouteController {
     }
     if ($this->loginView->userWantsToLogOut()) {
         $this->loginView->setMessage("Bye bye!");
+    
+
         if (!$this->sessionModel->getUserSession()) {
             $isLoggedIn = false;
             $this->loginView->setMessage("");
