@@ -39,10 +39,18 @@ class RouteController {
     public function start() {
         $isLoggedIn = false;
         // Event listener for login
+
+    if ($this->loginView->keepMeLoggedIn()) {
+        echo "blabla";
+    }
     if ($this->loginView->userWantsToLogin()) {
+
+
         $username = $this->loginView->getRequestUserName();
         $password = $this->loginView->getRequestPassword();
         $successLogin = $this->loginModel->validateLogin($username, $password);
+
+
 		if ($successLogin) {
             $this->loginView->setMessage("Welcome");
             $isLoggedIn = true;
