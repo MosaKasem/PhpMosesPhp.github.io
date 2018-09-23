@@ -44,9 +44,12 @@ class RouteController {
         $password = $this->loginView->getRequestPassword();
         $successLogin = $this->loginModel->validateLogin($username, $password);
 		if ($successLogin) {
-            $this->sessionModel->storeUserToSession($username);
             $this->loginView->setMessage("Welcome");
             $isLoggedIn = true;
+            if ($this->sessionModel->getUserSession()) {
+                $this->loginView->setMessage('');   
+            }
+            $this->sessionModel->storeUserToSession($username);
 		} else {
 			$this->loginView->setMessage('Wrong name or password');
 		}
@@ -54,11 +57,12 @@ class RouteController {
         // $this->loginController->loginValidation($username, $password);
     }
     if ($this->loginView->userWantsToLogOut()) {
-        $this->sessionModel->destroySession();
         $this->loginView->setMessage("Bye bye!");
-    } else if (!$this->sessionModel->getUserSession()) {
-        $isLoggedIn = false;
-        $this->loginView->setMessage("");
+        if (!$this->sessionModel->getUserSession()) {
+            $isLoggedIn = false;
+            $this->loginView->setMessage("");
+        }
+        $this->sessionModel->destroySession();
     }
     
     // Event listener for register
@@ -70,10 +74,6 @@ class RouteController {
             $this->registerView->setMessage('User exists, pick another username.');
         } */
     }
-    if ($this->sessionModel->getUserSession()) {
-        $isLoggedIn = true;
-        $this->loginView->setMessage("");
-    } 
     // $isLoggedIn = false;
         $this->layoutView->render($isLoggedIn, $this->loginView, $this->dateTimeView, $this->registerView);
     }

@@ -10,6 +10,7 @@ class SessionModel {
         if (isset($_SESSION[self::$user])) {
             return $_SESSION[self::$user];
         }
+        return false;
     }
     public function loggedIn() {
         if (isset($_SESSION[self::$user])) {
