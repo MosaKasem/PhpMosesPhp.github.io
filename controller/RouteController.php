@@ -38,10 +38,6 @@ class RouteController {
     }
     public function start() {
         $isLoggedIn = false;
-        if ($this->sessionModel->getUserSession()) {
-            $isLoggedIn = true;
-            $this->loginView->setMessage('');
-        }
         // Event listener for login
     if ($this->loginView->userWantsToLogin()) {
         $username = $this->loginView->getRequestUserName();
@@ -57,9 +53,12 @@ class RouteController {
         // $successLogin = $
         // $this->loginController->loginValidation($username, $password);
     }
-    if ($this->loginView->loggingOut()) {
+    if ($this->loginView->userWantsToLogOut()) {
         $this->sessionModel->destroySession();
         $this->loginView->setMessage("Bye bye!");
+    } else if (!$this->sessionModel->getUserSession()) {
+        $isLoggedIn = false;
+        $this->loginView->setMessage("");
     }
     
     // Event listener for register
@@ -71,6 +70,10 @@ class RouteController {
             $this->registerView->setMessage('User exists, pick another username.');
         } */
     }
+    if ($this->sessionModel->getUserSession()) {
+        $isLoggedIn = true;
+        $this->loginView->setMessage("");
+    } 
     // $isLoggedIn = false;
         $this->layoutView->render($isLoggedIn, $this->loginView, $this->dateTimeView, $this->registerView);
     }

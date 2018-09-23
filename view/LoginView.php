@@ -14,11 +14,11 @@ class LoginView {
 	private static $messageId = 'LoginView::Message';
 	
 
-	private $message;
+	public $message;
 	private $session;
 
 	public function __construct() {
-		$this->message = '';
+		$this->message = "";
 		$this->session = new SessionModel();
 	}
 
@@ -31,6 +31,7 @@ class LoginView {
 	 */
 	public function response() {
 		$userIsLogged = $this->session->loggedIn();
+		// var_dump($this->message);
 		if ($userIsLogged) {
 			$response = $this->generateLogoutButtonHTML($this->message);
 		} else {
@@ -49,6 +50,7 @@ class LoginView {
 	* @return  void, BUT writes to standard output!
 	*/
 	private function generateLogoutButtonHTML($message) {
+
 		return '
 			<form  method="post" >
 				<p id="' . self::$messageId . '">' . $message .'</p>
@@ -83,7 +85,7 @@ class LoginView {
 			</form>
 		';
 	}
-	public function loggingOut() {
+	public function userWantsToLogOut() {
 		if(isset($_POST[self::$logout])) {
 			return true;
 		}
@@ -105,6 +107,11 @@ class LoginView {
 	}
 	public function setMessage ($msg) {
 		$this->message = $msg;
+		return $msg;
+	}
+	public function getMessage () {
+		var_dump($this->message);
+		return $this->message;
 	}
 	public function userWantsToLogin() {
 			return isset($_POST[self::$login]) && $this->validateInput();
