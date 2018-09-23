@@ -61,12 +61,12 @@ class RegisterView {
 	private function validateInput() {
 		$userName = $this->getRequestUserName();
 		$passWord = $this->getRequestPassword();
-		if (strlen($passWord) < 6) {
-			$this->setMessage('Password has too few characters, at least 6 characters.');
-			return false;
-		}
 		if (strlen($userName) < 3) {
 			$this->setMessage('Username has too few characters, at least 3 characters.');
+			return false;
+		}
+		if (strlen($passWord) < 6) {
+			$this->setMessage('Password has too few characters, at least 6 characters.');
 			return false;
 		}
 
