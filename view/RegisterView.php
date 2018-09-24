@@ -66,21 +66,20 @@ class RegisterView {
 		if (preg_match('/[^A-Za-z0-9]/', trim($userName))) {
 			$this->setMessage("Username contains invalid characters.");
 			return false;
-		} else if (empty($userName) && empty($passWord)) {
+		} if (empty($userName) && empty($passWord)) {
 			$this->setMessage('Username has too few characters, at least 3 characters. Password has too few characters, at least 6 characters.');
 			return false;
-		} else if (empty($userName) || strlen($userName) < 3) {
+		} if (empty($userName) || strlen($userName) < 3) {
 			$this->setMessage('Username has too few characters, at least 3 characters.');
 			return false;
-		} else if (empty($password) || strlen($passWord) < 6) {
+		} if (strlen($passWord) < 6) {
 			$this->setMessage('Password has too few characters, at least 6 characters.');
 			return false;
-		} else if ($passWord !== $_POST[self::$passwordRepeat]) {
+		}  else if ($passWord !== $_POST[self::$passwordRepeat]) {
 			$this->setMessage('Password do not match.');
 			return false;
-		} else {
-			return true;
-		}
+		} 
+		return true;
 	}
 	public function setMessage($message) {
 		$this->message = $message;
