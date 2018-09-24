@@ -1,5 +1,7 @@
 <?php 
+    session_start();
 class SessionModel {
+    
     // private static $session = 'SessionModel::Session';
     private static $user = 'SessionModel::User';
 
