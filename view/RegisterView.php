@@ -61,7 +61,7 @@ class RegisterView {
 	private function validateInput() {
 		$userName = $this->getRequestUserName();
 		$passWord = $this->getRequestPassword();
-		if (preg_match('/[^A-Za-z0-9]/', $userName)) {
+		if (preg_match('/[^A-Za-z0-9]/', trim($userName))) {
 			$this->setMessage("Username contains invalid characters.");
 			return false;
 		}
