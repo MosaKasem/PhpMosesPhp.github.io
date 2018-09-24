@@ -86,7 +86,7 @@ class RegisterView {
 	public function setMessage($message) {
 		$this->message = $message;
 	}
-	public function getMessage($message) {
+	public function getMessage() {
 		return $this->message;
 	}
 
