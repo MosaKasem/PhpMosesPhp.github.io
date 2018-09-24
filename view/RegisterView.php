@@ -69,15 +69,14 @@ class RegisterView {
 			$this->setMessage('Username has too few characters, at least 3 characters. Password has too few characters, at least 6 characters.');
 			return false;
 		}
-		if (empty($userName) || strlen($userName) < 3) {
-			$this->setMessage('Username has too few characters, at least 3 characters.');
-			return false;
-		}
 		if (empty($password) || strlen($passWord) < 6) {
 			$this->setMessage('Password has too few characters, at least 6 characters.');
 			return false;
 		}
-
+		if (empty($userName) || strlen($userName) < 3) {
+			$this->setMessage('Username has too few characters, at least 3 characters.');
+			return false;
+		}
 
 
 
