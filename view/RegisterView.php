@@ -26,7 +26,7 @@ class RegisterView {
 			<form method="post" action="?register"> 
 				<fieldset>
 					<legend>Register - enter Username and password</legend>
-					<p id="' . self::$messageId . '">' . $message . '</p>
+					<p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
 
 					<label for="' . self::$username . '">Username :</label>
 					<input type="text" id="' . self::$username . '" name="' . self::$username . '" value="" />
@@ -77,28 +77,10 @@ class RegisterView {
 			$this->setMessage('Password has too few characters, at least 6 characters.');
 			return false;
 		}
-
-
-
-
-/* 
-		if (empty($userName) && empty($passWord)) {
-			$this->setMessage("Username is missing");
-			return false;
-		}
-		if (empty($passWord)) {
-			$this->setMessage('Password is missing');
-			return false;
-		}
-		if (empty($userName)) {
-			$this->setMessage('Username is missing');
-			return false;
-		} */
 		if ($passWord !== $_POST[self::$passwordRepeat]) {
 			$this->setMessage('Password do not match.');
 			return false;
 		}
-
 		return true;
 	}
 	public function setMessage($message) {
