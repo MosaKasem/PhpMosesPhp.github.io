@@ -27,6 +27,7 @@ class RouteController {
     public function __construct() {
         
         // Model's folder decleration
+        $this->registerModel    = new   RegisterModel();
         $this->loginModel       = new      LoginModel();
         $this->database         = new        Database();
 
@@ -99,8 +100,11 @@ class RouteController {
         $username = $this->registerView->getRequestUserName();
         $password = $this->registerView->getRequestPassword();
         $isLoggedIn = false;
-        $successRegister = $this->registerModel->validateRegister($username, $password);
-        var_dump($successRegister);
+        $unsuccessful = $this->registerModel->validateRegister($username, $password);
+        if ($unsuccessful) {
+            $userNameTaken = $this->registerModel->userExists();
+            $this->registerView->setMessage($userNameTaken);
+        }
 /*         if ($username == "Admin" && $password == "Admin") {
             $this->registerView->setMessage('User exists, pick another username.');
         } */

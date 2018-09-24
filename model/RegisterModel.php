@@ -3,11 +3,11 @@
 class RegisterModel {
     private $username;
     private $password;
-
+/* 
     public function __construct($username, $password) {
         $this->username = $username;
         $this->password = $password;
-    }
+    } */
     public function validateRegister($username, $password) {
         if ($username == "Admin" && $password == "Password") {
             return true;
@@ -15,7 +15,7 @@ class RegisterModel {
             return false;
         }
     }
-    public function userExists() {
-        var_dump($this->LoginView->getMessage());
+    public function userExists() : String {
+        return "User exists, pick another username.";
     }
 }
