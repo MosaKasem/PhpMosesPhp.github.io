@@ -29,7 +29,7 @@ class RegisterView {
 					<p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
 
 					<label for="' . self::$username . '">Username :</label>
-					<input type="text" id="' . self::$username . '" name="' . self::$username . '" value="' . strip_tags($this->getRequestUserName()) .' " />
+					<input type="text" id="' . self::$username . '" name="' . self::$username . '" value="' . strip_tags($this->getRequestUserName()) . '" />
 
 					<label for="' . self::$password . '">Password :</label>
 					<input type="password" id="' . self::$password . '" name="' . self::$password . '" />
@@ -59,8 +59,10 @@ class RegisterView {
 		return isset($_POST[self::$register]) && $this->validateInput();
 	}
 	private function validateInput() {
+
 		$userName = $this->getRequestUserName();
 		$passWord = $this->getRequestPassword();
+
 		if (preg_match('/[^A-Za-z0-9]/', trim($userName))) {
 			$this->setMessage("Username contains invalid characters.");
 			return false;
