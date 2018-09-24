@@ -29,7 +29,7 @@ class RegisterView {
 					<p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
 
 					<label for="' . self::$username . '">Username :</label>
-					<input type="text" id="' . self::$username . '" name="' . self::$username . '" value="" />
+					<input type="text" id="' . self::$username . '" name="' . self::$username . '" value="' . $this->getRequestUserName()  .' " />
 
 					<label for="' . self::$password . '">Password :</label>
 					<input type="password" id="' . self::$password . '" name="' . self::$password . '" />
