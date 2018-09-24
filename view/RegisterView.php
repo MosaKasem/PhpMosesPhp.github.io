@@ -23,7 +23,7 @@ class RegisterView {
     
 	private function generateRegisterFormHTML($message) {
 		return '
-			<form method="post"> 
+			<form method="post">
 				<fieldset>
 					<legend>Register - enter Username and password</legend>
 					<p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
@@ -45,13 +45,13 @@ class RegisterView {
 	}
 	public function getRequestUserName() {
 		if (isset($_POST[self::$username])) {
-			return $_POST[self::$username];
+			return trim(strip_tags($_POST[self::$username]));
 		}
 
 	}
 	public function getRequestPassword() {
 		if (isset($_POST[self::$password])) {
-			return $_POST[self::$password];
+			return trim($_POST[self::$password]);
 		}
 
 	}
