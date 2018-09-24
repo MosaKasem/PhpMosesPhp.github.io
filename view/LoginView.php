@@ -111,7 +111,7 @@ class LoginView {
 		return $msg;
 	}
 	public function getMessage () {
-		var_dump($this->message);
+		// var_dump($this->message);
 		return $this->message;
 	}
 	public function userWantsToLogin() {
