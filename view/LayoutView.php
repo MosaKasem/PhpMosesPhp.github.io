@@ -35,11 +35,7 @@ class LayoutView {
       return '<h2>Not logged in</h2>';
     }
   }
-/*   private function renderRegisterForm($isLoggedIn) {
-    if (!$isLoggedIn) {
-      return '<h1>TODO: RENDER form register? </h1>';
-    }
-  } */
+  
   public function killSession($isLoggedIn) : bool {
     if ($isLoggedIn) {
       return "<h1>TODO: Kill session</h1>";

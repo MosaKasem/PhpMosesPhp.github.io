@@ -1,6 +1,7 @@
 <?php
 
 // TODO: write to self != writing to reader
+// TODO: 
 
 
 class RouteController {
@@ -40,7 +41,10 @@ class RouteController {
     public function start() {
         $isLoggedIn = false;
         // Event listener for login
-
+    if ($this->sessionModel->getUserSession()) {
+        $isLoggedIn = true;
+        // var_dump($this->sessionModel->getUserSession());
+    }
     if ($this->loginView->userWantsToLogin()) {
 
                         //Get username
@@ -67,18 +71,16 @@ class RouteController {
                 $this->loginView->setMessage("Welcome");
             }
 
-/*             if ($this->sessionModel->getUserSession()) {
+            if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');   
-            } */
+            }
 
             $this->sessionModel->storeUserToSession($username);
 
-            // var_dump($_COOKIE);
 		} else {
 			$this->loginView->setMessage('Wrong name or password');
 		}
-        // $successLogin = $
-        // $this->loginController->loginValidation($username, $password);
+
     }
     if ($this->loginView->userWantsToLogOut()) {
         $this->loginView->setMessage("Bye bye!");
@@ -100,7 +102,7 @@ class RouteController {
             $this->registerView->setMessage('User exists, pick another username.');
         } */
     }
-    // $isLoggedIn = false;
+
         $this->layoutView->render($isLoggedIn, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 
