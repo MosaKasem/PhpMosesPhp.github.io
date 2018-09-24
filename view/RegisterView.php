@@ -76,7 +76,7 @@ class RegisterView {
 			$this->setMessage('Password has too few characters, at least 6 characters.');
 			return false;
 		}  else if ($passWord !== $_POST[self::$passwordRepeat]) {
-			$this->setMessage('Password do not match.');
+			$this->setMessage('Passwords do not match.');
 			return false;
 		} 
 		return true;
