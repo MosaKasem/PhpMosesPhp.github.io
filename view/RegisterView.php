@@ -25,7 +25,7 @@ class RegisterView {
 		return '
 			<form method="post">
 				<fieldset>
-					<legend>Register - enter Username and password</legend>
+					<legend>Register a new user - Write Username and password</legend>
 					<p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
 
 					<label for="' . self::$username . '">Username :</label>
