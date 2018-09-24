@@ -15,4 +15,7 @@ class RegisterModel {
             return false;
         }
     }
+    public function userExists() {
+        var_dump($this->LoginView->getMessage());
+    }
 }
