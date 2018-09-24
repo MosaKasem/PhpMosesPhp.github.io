@@ -42,10 +42,10 @@ class RouteController {
 
     if ($this->loginView->userWantsToLogin()) {
 
-        $username = $this->loginView->getRequestUserName();
-        $password = $this->loginView->getRequestPassword();
+        $username     = $this->loginView->getRequestUserName();
+        $password     = $this->loginView->getRequestPassword();
         $successLogin = $this->loginModel->validateLogin($username, $password);
-
+        $cookie       = $this->loginView->keepMeLoggedIn();
 
 		if ($successLogin) {
 
@@ -59,7 +59,7 @@ class RouteController {
             } else {
                 $this->loginView->setMessage("Welcome");
             }
-            
+
             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');   
             }
