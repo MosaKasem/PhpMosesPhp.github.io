@@ -84,7 +84,8 @@ class RouteController {
     }
     if ($this->loginView->userWantsToLogOut()) {
         $this->loginView->setMessage("Bye bye!");
-    
+        $isLoggedIn = false;
+
 
         if (!$this->sessionModel->getUserSession()) {
             $isLoggedIn = false;
