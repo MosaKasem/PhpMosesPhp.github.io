@@ -1,19 +1,20 @@
 <?php
 
+// TODO: write to self != writing to reader
+
+
 class RouteController {
 
-    private $isLoggedIn      ; // variable
+    private $isLoggedIn      ; // Variable
     
-    // for controllers
     private $formSecurity    ; // Controllers
 
-    // for Models folder
     private $register        ; // Model
     private $database        ; // Model
     private $sessionModel    ; // Model
     private $loginModel      ; // Model
 
-    // for Views folder
+
     private $loginView       ; // View
     private $layoutView      ; // View
     private $registerView    ; // View
@@ -42,9 +43,15 @@ class RouteController {
 
     if ($this->loginView->userWantsToLogin()) {
 
+                        //Get username
         $username     = $this->loginView->getRequestUserName();
+                        //Get password
         $password     = $this->loginView->getRequestPassword();
+
+                        //Returns true or false
         $successLogin = $this->loginModel->validateLogin($username, $password);
+
+                        //If keepMeLogged in is checked
         $cookie       = $this->loginView->keepMeLoggedIn();
 
 		if ($successLogin) {
@@ -55,14 +62,14 @@ class RouteController {
 
                 $this->loginView->saveCookie($username, $password);
                 $this->loginView->setMessage('Welcome and you will be remembered');
-            
+
             } else {
                 $this->loginView->setMessage("Welcome");
             }
 
-            if ($this->sessionModel->getUserSession()) {
+/*             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');   
-            }
+            } */
 
             $this->sessionModel->storeUserToSession($username);
 
