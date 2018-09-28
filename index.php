@@ -1,5 +1,5 @@
 <?php
-require_once("model/init.php");
+// require_once("model/init.php"); // LOCAL DATABASE
 
 //INCLUDE THE FILES NEEDED...
 
@@ -12,7 +12,6 @@ require_once('view/RegisterView.php');
 
 // Controllers
 require_once('controller/RouteController.php');
-// require_once('Controller/LoginController.php');
 
 
 // Models
@@ -29,36 +28,4 @@ ini_set('display_errors', 'On');
 
 $routerStarter = new RouteController();
 $routerStarter->start();
-// var_dump($routerStarter);
 
-//CREATE OBJECTS OF THE VIEWS
-
-// Default Begins
-/* $v = new LoginView();
-$dtv = new DateTimeView();
-$lv = new LayoutView();
-$lv->render(false, $v, $dtv); */
-// Default Ends
-
-
-// var_dump($_GET);
-
-
-// The current URL
-// echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"';
-
-
-// GETTING A USER FROM DATABASE
-
-/* $sql = "SELECT * FROM users WHERE id=1";
-$result = $database->query($sql);
-$user = mysqli_fetch_array($result);
-echo $user['username']; */
-
-
-/* 			echo 'Requested URL = "' . $_SERVER['QUERY_STRING'] . '"<br>';
-			echo 'Request Method = "' . $_SERVER['REQUEST_METHOD'] . '"<br>';
-			echo 'Form Submit Username = "' . var_dump($_POST[self::$name]) . '"<br>';
-			echo 'Form Submit Password = "' . var_dump($_POST[self::$password]) . '"<br>';
-			echo 'Get Url "' . var_dump($_GET) . '"<br>';
-			echo '$_POST: "' . var_dump($_POST[self::$login]) . '"<br>'; */

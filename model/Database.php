@@ -1,6 +1,7 @@
 <?php
-
-class Database {
+// Experimenting, getting to know how to use MYSQL database..
+// LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
+/* class Database {
     private $connection;
     
     function __construct() {
@@ -32,5 +33,5 @@ class Database {
         $escape = $this->connection->query($sql);
         return $escape;
     }
-}
+} */
 // $database = new Database();

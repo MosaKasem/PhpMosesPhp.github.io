@@ -1,14 +1,13 @@
 <?php
 
 // TODO: write to self != writing to reader
-// TODO: 
 
 
 class RouteController {
 
     private $isLoggedIn      ; // Variable
     
-    private $formSecurity    ; // Controllers
+    private $formSecurity    ; // Controllers // TODO: Decide whether controller for form validation is necessary.
 
     private $register        ; // Model
     private $database        ; // Model
@@ -29,7 +28,7 @@ class RouteController {
         // Model's folder decleration
         $this->registerModel    = new   RegisterModel();
         $this->loginModel       = new      LoginModel();
-        $this->database         = new        Database();
+        // $this->database         = new        Database(); // LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
 
         // View's Folder decleration
         $this->loginView        = new       LoginView();
@@ -41,11 +40,11 @@ class RouteController {
     }
     public function start() {
         $isLoggedIn = false;
-        // Event listener for login
+
     if ($this->sessionModel->getUserSession()) {
         $isLoggedIn = true;
-        // var_dump($this->sessionModel->getUserSession());
     }
+            // Event listener for login
     if ($this->loginView->userWantsToLogin()) {
 
                         //Get username
@@ -99,15 +98,15 @@ class RouteController {
     if ($this->registerView->userWantsToRegister()) {
         $username = $this->registerView->getRequestUserName();
         $password = $this->registerView->getRequestPassword();
+
+
         $isLoggedIn = false;
         $unsuccessful = $this->registerModel->validateRegister($username, $password);
+
         if ($unsuccessful) {
             $userNameTaken = $this->registerModel->userExists();
             $this->registerView->setMessage($userNameTaken);
         }
-/*         if ($username == "Admin" && $password == "Admin") {
-            $this->registerView->setMessage('User exists, pick another username.');
-        } */
     }
 
         $this->layoutView->render($isLoggedIn, $this->loginView, $this->dateTimeView, $this->registerView);

@@ -1,5 +1,6 @@
 <?php
-
+// LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
+/* 
 function getUsersID() {
     require_once("/../Model/init.php");
 
@@ -20,4 +21,4 @@ function getUsersID() {
        echo "<option value='$id'>$id</option>";
     }
 
-};
+}; */

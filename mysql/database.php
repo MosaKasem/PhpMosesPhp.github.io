@@ -1,8 +1,11 @@
 <?php
+
+// LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
+
 // Am following a tutorial on Udemy.
 // The course can be found here https://www.udemy.com/oop-php-object-oriented-programing-with-project-1-course/
 // I am trying out some of the concepts to get familiar with PHP and communication to MYSQL Database.
-class Database {
+/* class Database {
     private $connection;
     
     function __construct() {
@@ -36,4 +39,4 @@ class Database {
     }
 }
 
-$database = new Database();
+$database = new Database(); */

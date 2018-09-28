@@ -1,5 +1,8 @@
 <?php
 require_once("functions.php");
+
+// LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
+
 /* print_r($_GET);
 if($_GET["id"] === "") echo "a is an empty string\n";
 if($_GET["id"] === false) echo "a is false\n";
@@ -8,7 +11,7 @@ if(isset($_GET["id"])) echo "a is set\n";
 if(!empty($_GET["id"])) echo "a is not empty";
 */
 
-if (isset($_POST['submit'])) {
+/* if (isset($_POST['submit'])) {
 
 	$username = $_POST['username'];
 	$password = $_POST['password'];
@@ -26,10 +29,10 @@ if (isset($_POST['submit'])) {
 	// var_dump($result);
 }
 
-
+ */
 ?>
 
- 
+<!--  
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -51,4 +54,4 @@ getUsersID();
 </select>
 </div>
 </body>
-</html>
+</html> -->

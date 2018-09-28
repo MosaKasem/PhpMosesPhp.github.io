@@ -1,7 +1,7 @@
 <?php
 // CREATE
-
-if (isset($_POST['submit'])) {
+// LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
+/* if (isset($_POST['submit'])) {
    $username = $_POST['username'];
    $password = $_POST['password'];
 
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
    $result = mysqli_query($connection, $query);
    if(!$result) {
        throw new Exception('Query failed!' . mysqli_error());
-   } 
+   }
 }
 ?>
 
@@ -36,4 +36,4 @@ if (isset($_POST['submit'])) {
     <input type="submit" name="submit" value="submit">
     </form>
 </body>
-</html>
+</html> */

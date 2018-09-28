@@ -1,7 +1,7 @@
 <?php
 // CREATE
-
-   $connection = mysqli_connect('localhost', 'root', '', 'usersdb');
+// LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
+/*    $connection = mysqli_connect('localhost', 'root', '', 'usersdb');
    
    if ($connection) {
        echo "hello";
@@ -22,4 +22,4 @@
      echo "</li>";
    }
 
-?>
+?> */
