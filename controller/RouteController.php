@@ -62,14 +62,7 @@ class RouteController {
 
             $isLoggedIn = true;
 
-            if ($this->loginView->keepMeLoggedIn()) {
-
-                $this->loginView->saveCookie($username, $password);
-                $this->loginView->setMessage('Welcome and you will be remembered');
-
-            } else {
-                $this->loginView->setMessage("Welcome");
-            }
+            $this->loginView->keepMeLoggedValidation($username, $password);
 
             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');   
@@ -101,7 +94,7 @@ class RouteController {
 
 
         $isLoggedIn = false;
-        $unsuccessful = $this->registerModel->validateRegister($username, $password);
+        $unsuccessful = $this->registerModel->validateName($username);
 
         if ($unsuccessful) {
             $userNameTaken = $this->registerModel->userExists();

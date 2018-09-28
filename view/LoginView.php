@@ -134,6 +134,18 @@ class LoginView {
 			return $_POST[self::$keep];
 		}
 	}
+
+	public function keepMeLoggedValidation($username, $password)
+	{
+		if ($this->keepMeLoggedIn()) {
+			$this->saveCookie($username, $password);
+			$this->setMessage('Welcome and you will be remembered');
+
+		} else {
+			$this->setMessage("Welcome");
+		}
+	}
+	
 	public function saveCookie($username, $password) { // 86400 is equivalent to 24 hours.
 		setcookie(self::$cookieName, $username, time() + 86400, "/");
 		setcookie(self::$cookiePassword, $password, time() + 86400, "/");

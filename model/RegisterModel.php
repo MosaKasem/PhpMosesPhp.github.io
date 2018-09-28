@@ -8,8 +8,8 @@ class RegisterModel {
         $this->username = $username;
         $this->password = $password;
     } */
-    public function validateRegister($username, $password) {
-        if ($username == "Admin" && $password == "Password") {
+    public function validateName($username) {
+        if ($username == "Admin") {
             return true;
         } else {
             return false;
