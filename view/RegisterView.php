@@ -16,7 +16,6 @@ class RegisterView {
 	}
 	
 	public function response() {
-		// $message = 'Message';
 
 		$response =	$this->generateRegisterFormHTML($this->message);
 
@@ -45,23 +44,18 @@ class RegisterView {
 			</form>
 		';
 	}
-	public function getRequestUserName() {
-		if (isset($_POST[self::$username])) {
-			return trim($_POST[self::$username]);
-		}
-
-	}
-	public function getRequestPassword() {
-		if (isset($_POST[self::$password])) {
-			return trim($_POST[self::$password]);
-		}
-
-	}
 	public function userWantsToRegister() {
 		return isset($_POST[self::$register]) && $this->validateInput();
 	}
-	private function validateInput() {
+	
+	public function getRequestUserName() {
+		if (isset($_POST[self::$username])) return trim($_POST[self::$username]);
+	}
+	public function getRequestPassword() {
+		if (isset($_POST[self::$password])) return trim($_POST[self::$password]);
+	}
 
+	private function validateInput() {
 		$userName = $this->getRequestUserName();
 		$passWord = $this->getRequestPassword();
 
@@ -83,6 +77,7 @@ class RegisterView {
 		} 
 		return true;
 	}
+
 	public function setMessage($message) {
 		$this->message = $message;
 	}
