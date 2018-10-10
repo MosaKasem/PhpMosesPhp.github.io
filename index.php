@@ -25,13 +25,19 @@ ini_set('display_errors', 'On');
 session_start();
 
 
+$registerModel    = new   \model\RegisterModel();
 $sessionModel     = new   \model\SessionModel();
 $loginModel       = new   \model\LoginModel();
+// $this->database         = new        Database(); // LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
 
-$loginView  = new   \view\LoginView();
+// View's Folder initiation
+$loginView        = new    \view\LoginView();
+$layoutView       = new    \view\LayoutView();
+$registerView     = new    \view\RegisterView();
+$dateTimeView     = new    \view\DateTimeView();
 
 
-$LoginRouter = new \controller\LoginController($loginView, $loginModel, $sessionModel);
-$routerStarter = new \controller\RouteController(LoginRouter);
+// $LoginRouter = new \controller\LoginController($loginView, $loginModel, $sessionModel);
+$routerStarter = new \controller\RouteController($registerModel, $sessionModel, $loginModel, $loginView, $layoutView, $registerView, $dateTimeView);
 $routerStarter->start();
 
