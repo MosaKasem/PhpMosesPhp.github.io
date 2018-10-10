@@ -24,6 +24,7 @@ ini_set('display_errors', 'On');
 
 session_start();
 
-$r = new \controller\RouteController();
-$r->start();
+
+$routerStarter = new \controller\RouteController();
+$routerStarter->start();
 

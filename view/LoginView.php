@@ -16,12 +16,12 @@ class LoginView {
 	private static $messageId 		=	'LoginView::Message'		;
 	
 
-	private $message = "";
+	private $message;
 	private $session;
 
 	public function __construct() {
-		$this->message = $message;
-		$this->session = new SessionModel();
+		$this->message = "";
+		$this->session = new \model\SessionModel();
 	}
 
 	/**

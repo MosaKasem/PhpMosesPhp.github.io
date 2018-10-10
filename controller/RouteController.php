@@ -25,16 +25,16 @@ class RouteController {
     public function __construct() {
 
         // Model's folder decleration
-        $this->registerModel    = new   RegisterModel();
-        $this->loginModel       = new      LoginModel();
+        $this->registerModel    = new   \model\RegisterModel();
+        $this->loginModel       = new   \model\LoginModel();
         // $this->database         = new        Database(); // LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
 
         // View's Folder decleration
-        $this->loginView        = new       LoginView();
-        $this->layoutView       = new      LayoutView();
-        $this->registerView     = new    RegisterView();
-        $this->dateTimeView     = new    DateTimeView();
-        $this->sessionModel     = new    SessionModel();
+        $this->loginView        = new    \view\LoginView();
+        $this->layoutView       = new    \view\LayoutView();
+        $this->registerView     = new    \view\RegisterView();
+        $this->dateTimeView     = new    \view\DateTimeView();
+        $this->sessionModel     = new    \view\SessionModel();
         // $this->loginController  = new LoginController();
     }
     public function start() {
