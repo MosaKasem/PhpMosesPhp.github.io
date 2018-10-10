@@ -81,36 +81,30 @@ class LoginView {
 			</form>
 		';
 	}
-	public function userWantsToLogOut() {
-		if(isset($_POST[self::$logout])) {
-			return true;
-		}
+	public function userWantsToLogin() {
+		return isset($_POST[self::$login]) && $this->validateInput();
 	}
-
+	public function userWantsToLogOut() {
+		if(isset($_POST[self::$logout])) return true;
+	}
+	public function keepMeLoggedIn() {
+		if (isset($_POST[self::$keep])) return $_POST[self::$keep];
+	}
 
 	public function getRequestUserName() {
-		//RETURN REQUEST VARIABLE: USERNAME
-		if (isset($_POST[self::$name])) {
-			return $_POST[self::$name];
-		}
+		if (isset($_POST[self::$name])) return $_POST[self::$name];
+	}
+	public function getRequestPassword() {
+		if (isset($_POST[self::$password])) return $_POST[self::$password];
 	}
 
-	public function getRequestPassword() {
-		//RETURN REQUEST VARIABLE: USERNAME
-		if (isset($_POST[self::$password])) {
-			return $_POST[self::$password];
-		}
-	}
 	public function setMessage ($msg) {
 		$this->message = $msg;
-		// return $msg;
 	}
 	public function getMessage () {
 		return $this->message;
 	}
-	public function userWantsToLogin() {
-			return isset($_POST[self::$login]) && $this->validateInput();
-	}
+
 	private function validateInput() {
 		$username = $this->getRequestUserName();
 		$password = $this->getRequestPassword();
@@ -125,11 +119,7 @@ class LoginView {
 		return true;
 		
 	}
-	public function keepMeLoggedIn() {
-		if (isset($_POST[self::$keep])) {
-			return $_POST[self::$keep];
-		}
-	}
+
 
 	public function keepMeLoggedValidation($username, $password)
 	{

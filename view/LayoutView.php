@@ -7,9 +7,6 @@ class LayoutView {
   // public function render($isLoggedIn, LoginView $loginView, DateTimeView $dtv, RegisterView $registerView) {
   public function render($isLoggedIn, $page, DateTimeView $dtv) {
 
-/*       $page = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
-      $navLink = $page == $loginView ? $navLink = '<a href="?register">Register a new user</a>' : $navLink = '<a href="?">Back to login</a>';
- */
     echo '<!DOCTYPE html>
       <html>
         <head>
