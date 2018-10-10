@@ -15,24 +15,33 @@ class LoginController {
         $this->sessionModel     = $sm;
     }
     public function loginControl() {
-        // if ($this->loginView->userWantsToLogin()) {
-            //Get username // Get password
-            $username     = $this->loginView->getRequestUserName();
-            $password     = $this->loginView->getRequestPassword();
-            //Returns true or false
-            $successLogin = $this->loginModel->validateLogin($username, $password);
-            $cookie       = $this->loginView->keepMeLoggedIn();
-            if ($successLogin) {
-                $isLoggedIn = true;
-                $this->loginView->keepMeLoggedValidation($username, $password);
-                if ($this->sessionModel->getUserSession()) {
-                    $this->loginView->setMessage('');
-                }
-                $this->sessionModel->storeUserToSession($username);
-            } else {
-                $this->loginView->setMessage('Wrong name or password');
+        
+        //Get username // Get password
+        $username     = $this->loginView->getRequestUserName();
+        $password     = $this->loginView->getRequestPassword();
+
+        //Returns true or false
+        $successLogin = $this->loginModel->validateLogin($username, $password);
+        $cookie       = $this->loginView->keepMeLoggedIn();
+        if ($successLogin) {
+            $isLoggedIn = true;
+            $this->loginView->keepMeLoggedValidation($username, $password);
+            if ($this->sessionModel->getUserSession()) {
+                $this->loginView->setMessage('');
             }
-        // }
+            $this->sessionModel->storeUserToSession($username);
+        } else {
+            $this->loginView->setMessage('Wrong name or password');
+        }
+    }
+    public function logoutControl() {
+        $this->loginView->setMessage("Bye bye!");
+        $isLoggedIn = false;
+        if (!$this->sessionModel->getUserSession()) {
+            $isLoggedIn = false;
+            $this->loginView->setMessage("");
+        }
+        $this->sessionModel->destroySession();
     }
 
 }

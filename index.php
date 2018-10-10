@@ -10,6 +10,7 @@ require_once('view/RegisterView.php');
 
 // Controllers
 require_once('controller/RouteController.php');
+require_once('controller/LoginController.php');
 
 
 // Models
@@ -24,7 +25,6 @@ ini_set('display_errors', 'On');
 
 session_start();
 
-
 $registerModel    = new   \model\RegisterModel();
 $sessionModel     = new   \model\SessionModel();
 $loginModel       = new   \model\LoginModel();
@@ -37,7 +37,7 @@ $registerView     = new    \view\RegisterView();
 $dateTimeView     = new    \view\DateTimeView();
 
 
-$LoginRouter = new \controller\LoginController();
+$LoginRouter = new \controller\LoginController($loginView, $loginModel, $sessionModel);
 $routerStarter = new \controller\RouteController($registerModel, $sessionModel, $loginModel, $loginView, $layoutView, $registerView, $dateTimeView, $LoginRouter);
 $routerStarter->start();
 

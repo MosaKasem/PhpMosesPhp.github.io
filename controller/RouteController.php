@@ -36,7 +36,7 @@ class RouteController {
         $this->dateTimeView     = $dtv;
 
         // Controller's folder initiation
-        $this->loginController  = lc;
+        $this->loginController  = $lc;
     }
     public function start() {
         $isLoggedIn = false;
@@ -44,7 +44,7 @@ class RouteController {
             $isLoggedIn = true;
         }
             // Event listener for login
-            if ($this->loginView->userWantsToLogin()) {
+/*             if ($this->loginView->userWantsToLogin()) {
                 //Get username // Get password
                 $username     = $this->loginView->getRequestUserName();
                 $password     = $this->loginView->getRequestPassword();
@@ -61,12 +61,15 @@ class RouteController {
                 } else {
                     $this->loginView->setMessage('Wrong name or password');
                 }
-            }
-/*             if ($this->loginView->userWantsToLogin()) {
-                $this->loginController->loginControl();
             } */
+            if ($this->loginView->userWantsToLogin()) {
+                $this->loginController->loginControl();
+            }
 
             if ($this->loginView->userWantsToLogOut()) {
+                $this->loginController->logoutControl();
+            }
+/*             if ($this->loginView->userWantsToLogOut()) {
                 $this->loginView->setMessage("Bye bye!");
                 $isLoggedIn = false;
                 if (!$this->sessionModel->getUserSession()) {
@@ -74,7 +77,7 @@ class RouteController {
                     $this->loginView->setMessage("");
                 }
                 $this->sessionModel->destroySession();
-            }
+            } */
             // Event listener for register
             if ($this->registerView->userWantsToRegister()) {
                 $username = $this->registerView->getRequestUserName();
