@@ -6,8 +6,8 @@ class LayoutView {
   
   public function render($isLoggedIn, LoginView $loginView, DateTimeView $dtv, RegisterView $registerView) {
 
-    $page = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
-    $navLink = $page == $loginView ? $navLink = '<a href="?register">Register a new user</a>' : $navLink = '<a href="?">Back to login</a>';
+      $page = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
+      $navLink = $page == $loginView ? $navLink = '<a href="?register">Register a new user</a>' : $navLink = '<a href="?">Back to login</a>';
 
     echo '<!DOCTYPE html>
       <html>
@@ -18,7 +18,6 @@ class LayoutView {
         <body>
           <h1>Assignment 2</h1>
           ' . $navLink . '
-
           ' . $this->renderIsLoggedIn($isLoggedIn) . '
           <div class="container">
               ' . $page->response() . '
@@ -30,17 +29,15 @@ class LayoutView {
     ';
   }
   
-  private function renderIsLoggedIn($isLoggedIn) {
+  private function renderIsLoggedIn($isLoggedIn) : string {
     if ($isLoggedIn) {
       return '<h2>Logged in</h2>';
     } else {
       return '<h2>Not logged in</h2>';
     }
   }
-  
-  public function killSession($isLoggedIn) : bool {
-    if ($isLoggedIn) {
-      return "<h1>TODO: Kill session</h1>";
-    }
+  public function getRegisterView() : bool {
+    return isset($_GET['register']);
   }
+
 }

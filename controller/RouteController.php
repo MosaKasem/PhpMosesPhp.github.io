@@ -1,8 +1,8 @@
 <?php
 
-    // TODO: write to self != writing to reader
+// TODO: write to self != writing to reader
 
-    namespace controller;
+namespace controller;
 
 class RouteController {
 
@@ -26,6 +26,7 @@ class RouteController {
 
         // Model's folder decleration
         $this->registerModel    = new   \model\RegisterModel();
+        $this->sessionModel     = new   \model\SessionModel();
         $this->loginModel       = new   \model\LoginModel();
         // $this->database         = new        Database(); // LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
 
@@ -34,7 +35,6 @@ class RouteController {
         $this->layoutView       = new    \view\LayoutView();
         $this->registerView     = new    \view\RegisterView();
         $this->dateTimeView     = new    \view\DateTimeView();
-        $this->sessionModel     = new    \view\SessionModel();
         // $this->loginController  = new LoginController();
     }
     public function start() {
@@ -46,33 +46,25 @@ class RouteController {
             // Event listener for login
     if ($this->loginView->userWantsToLogin()) {
 
-                        //Get username
+        //Get username // Get password
         $username     = $this->loginView->getRequestUserName();
-                        //Get password
         $password     = $this->loginView->getRequestPassword();
 
-                        //Returns true or false
+        //Returns true or false
         $successLogin = $this->loginModel->validateLogin($username, $password);
-
-                        //If keepMeLogged in is checked
         $cookie       = $this->loginView->keepMeLoggedIn();
 
+
 		if ($successLogin) {
-
             $isLoggedIn = true;
-
             $this->loginView->keepMeLoggedValidation($username, $password);
-
             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');
             }
-
             $this->sessionModel->storeUserToSession($username);
-
 		} else {
 			$this->loginView->setMessage('Wrong name or password');
 		}
-
     }
     if ($this->loginView->userWantsToLogOut()) {
         $this->loginView->setMessage("Bye bye!");
@@ -100,8 +92,11 @@ class RouteController {
             $this->registerView->setMessage($userNameTaken);
         }
     }
-
-        $this->layoutView->render($isLoggedIn, $this->loginView, $this->dateTimeView, $this->registerView);
+    $registerView = $this->layoutView->getRegisterView();
+    if ($registerView) {
+        var_dump($registerView);
+    }
+    $this->layoutView->render($isLoggedIn, $this->loginView, $this->dateTimeView, $this->registerView);
     }
 
 }
