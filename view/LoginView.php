@@ -120,7 +120,6 @@ class LoginView {
 		
 	}
 
-
 	public function keepMeLoggedValidation($username, $password)
 	{
 		if ($this->keepMeLoggedIn()) {

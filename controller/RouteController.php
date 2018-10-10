@@ -18,24 +18,26 @@ class RouteController {
     private $layoutView      ; // View
     private $registerView    ; // View
     private $dateTimeView    ; // View
-    private $loginController ; // View
 
+    private $loginController ; // Controller
 
 
     public function __construct() {
 
-        // Model's folder decleration
+        // Model's folder initiation
         $this->registerModel    = new   \model\RegisterModel();
         $this->sessionModel     = new   \model\SessionModel();
         $this->loginModel       = new   \model\LoginModel();
         // $this->database         = new        Database(); // LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
 
-        // View's Folder decleration
+        // View's Folder initiation
         $this->loginView        = new    \view\LoginView();
         $this->layoutView       = new    \view\LayoutView();
         $this->registerView     = new    \view\RegisterView();
         $this->dateTimeView     = new    \view\DateTimeView();
-        // $this->loginController  = new LoginController();
+
+        // Controller's folder initiation
+        $this->loginController  = new    \controller\LoginController(loginView, loginModel, €sessionModel);
     }
     public function start() {
         $isLoggedIn = false;
@@ -43,7 +45,7 @@ class RouteController {
             $isLoggedIn = true;
         }
             // Event listener for login
-            if ($this->loginView->userWantsToLogin()) {
+/*             if ($this->loginView->userWantsToLogin()) {
                 //Get username // Get password
                 $username     = $this->loginView->getRequestUserName();
                 $password     = $this->loginView->getRequestPassword();
@@ -60,7 +62,11 @@ class RouteController {
                 } else {
                     $this->loginView->setMessage('Wrong name or password');
                 }
+            } */
+            if ($this->loginView->userWantsToLogin()) {
+                $this->loginController->loginControl();
             }
+
             if ($this->loginView->userWantsToLogOut()) {
                 $this->loginView->setMessage("Bye bye!");
                 $isLoggedIn = false;
