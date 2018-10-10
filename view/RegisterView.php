@@ -1,5 +1,7 @@
 <?php
 
+namespace view;
+
 class RegisterView {
     private static $sessionKey = "register";
     private static $username = "RegisterView::UserName";

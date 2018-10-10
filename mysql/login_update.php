@@ -49,7 +49,9 @@ if(!empty($_GET["id"])) echo "a is not empty";
     </form>
 <select name="id" id="">
 <?php
+/*
 getUsersID();
+*/
 ?>
 </select>
 </div>

@@ -1,5 +1,7 @@
 <?php 
-    session_start();
+
+namespace model;
+
 class SessionModel {
     
     // private static $session = 'SessionModel::Session';

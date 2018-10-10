@@ -1,13 +1,12 @@
 <?php
 
-// TODO: write to self != writing to reader
+    // TODO: write to self != writing to reader
 
+    namespace controller;
 
 class RouteController {
 
     private $isLoggedIn      ; // Variable
-    
-    private $formSecurity    ; // Controllers // TODO: Decide whether controller for form validation is necessary.
 
     private $register        ; // Model
     private $database        ; // Model
@@ -24,7 +23,7 @@ class RouteController {
 
 
     public function __construct() {
-        
+
         // Model's folder decleration
         $this->registerModel    = new   RegisterModel();
         $this->loginModel       = new      LoginModel();
@@ -65,7 +64,7 @@ class RouteController {
             $this->loginView->keepMeLoggedValidation($username, $password);
 
             if ($this->sessionModel->getUserSession()) {
-                $this->loginView->setMessage('');   
+                $this->loginView->setMessage('');
             }
 
             $this->sessionModel->storeUserToSession($username);

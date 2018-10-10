@@ -1,5 +1,9 @@
 <?php
+
+namespace model;
+
 // We'll pretend this is the database.
+
 class LoginModel {
     private $username;
     private $password;

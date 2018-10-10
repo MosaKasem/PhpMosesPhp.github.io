@@ -1,28 +1,28 @@
 <?php
 
-// namespace View; // Varför funkar inte namespace?
-
+namespace view;
 
 class LoginView {
-	private static $login = 'LoginView::Login';
-	private static $logout = 'LoginView::Logout';
-	private static $name = 'LoginView::UserName';
-	private static $password = 'LoginView::Password';
-	private static $cookieName = 'LoginView::CookieName';
-	private static $cookiePassword = 'LoginView::CookiePassword';
-	private static $keep = 'LoginView::KeepMeLoggedIn';
-	private static $messageId = 'LoginView::Message';
+	private static $login 			= 	'LoginView::Login'			;
+	private static $logout 			= 	'LoginView::Logout'			;
+
+	private static $name 			= 	'LoginView::UserName'		;
+	private static $password	    =  	'LoginView::Password'		;
+
+	private static $cookieName	    = 	'LoginView::CookieName'		;
+	private static $cookiePassword  = 	'LoginView::CookiePassword' ;
+	private static $keep 			= 	'LoginView::KeepMeLoggedIn' ;
+
+	private static $messageId 		=	'LoginView::Message'		;
 	
 
-	public $message;
+	private $message = "";
 	private $session;
 
 	public function __construct() {
-		$this->message = "";
+		$this->message = $message;
 		$this->session = new SessionModel();
 	}
-
-
 
 	/**
 	 * Create HTTP response
@@ -37,11 +37,7 @@ class LoginView {
 		} else {
 			$response = $this->generateLoginFormHTML($this->message);
 		}
-
-		// $response .= $this->generateLogoutButtonHTML($message);
-
 		return $response;
-
 	}
 
 	/**
@@ -91,14 +87,14 @@ class LoginView {
 		}
 	}
 
-	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
+
 	public function getRequestUserName() {
 		//RETURN REQUEST VARIABLE: USERNAME
 		if (isset($_POST[self::$name])) {
 			return $_POST[self::$name];
 		}
 	}
-	//CREATE GET-FUNCTIONS TO FETCH REQUEST VARIABLES
+
 	public function getRequestPassword() {
 		//RETURN REQUEST VARIABLE: USERNAME
 		if (isset($_POST[self::$password])) {
@@ -107,7 +103,7 @@ class LoginView {
 	}
 	public function setMessage ($msg) {
 		$this->message = $msg;
-		return $msg;
+		// return $msg;
 	}
 	public function getMessage () {
 		return $this->message;

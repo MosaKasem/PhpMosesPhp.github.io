@@ -1,8 +1,6 @@
 <?php
 // require_once("model/init.php"); // LOCAL DATABASE
 
-//INCLUDE THE FILES NEEDED...
-
 // View
 require_once('view/LoginView.php');
 require_once('view/DateTimeView.php');
@@ -20,12 +18,12 @@ require_once('model/LoginModel.php');
 require_once('model/RegisterModel.php');
 require_once('model/SessionModel.php');
 
-// session_start();
-
 //MAKE SURE ERRORS ARE SHOWN... MIGHT WANT TO TURN THIS OFF ON A PUBLIC SERVER
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
-$routerStarter = new RouteController();
-$routerStarter->start();
+session_start();
+
+$r = new \controller\RouteController();
+$r->start();
 
