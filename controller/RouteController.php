@@ -13,21 +13,20 @@ class RouteController {
     private $sessionModel    ; // Model
     private $loginModel      ; // Model
 
-
     private $loginView       ; // View
     private $layoutView      ; // View
     private $registerView    ; // View
     private $dateTimeView    ; // View
 
-    private $loginController ; // Controller
+    private $loginController    ; // Controller
+    private $registerController ; // Controller
 
 
-    public function __construct($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $lc) {
+    public function __construct($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $lic, $rlc) {
         // Model's folder initiation
         $this->registerModel    = $rm;
         $this->sessionModel     = $sm;
         $this->loginModel       = $lm;
-        // $this->database         = new        Database(); // LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
 
         // View's Folder initiation
         $this->loginView        = $lv;
@@ -36,7 +35,8 @@ class RouteController {
         $this->dateTimeView     = $dtv;
 
         // Controller's folder initiation
-        $this->loginController  = $lc;
+        $this->loginController      = $lic;
+        $this->registerController   = $rlc;
     }
     public function start() {
         $isLoggedIn = false;
@@ -80,15 +80,18 @@ class RouteController {
             } */
             // Event listener for register
             if ($this->registerView->userWantsToRegister()) {
-                $username = $this->registerView->getRequestUserName();
+                var_dump($this->registerController);
+                $this->registerController->registerControl();
+
+/*                 $username = $this->registerView->getRequestUserName();
                 $password = $this->registerView->getRequestPassword();
 
                 $isLoggedIn = false;
                 $unsuccessful = $this->registerModel->validateName($username);
                 if ($unsuccessful) {
                     $userNameTaken = $this->registerModel->userExists();
-                    $this->registerView->setMessage($userNameTaken);
-                }
+                    $this->registerView->setMessage($userNameTaken); 
+                }*/
             }
             $registerView = $this->layoutView->getRegisterView();
             if ($registerView) {

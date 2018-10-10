@@ -11,6 +11,7 @@ require_once('view/RegisterView.php');
 // Controllers
 require_once('controller/RouteController.php');
 require_once('controller/LoginController.php');
+require_once('controller/RegisterController.php');
 
 
 // Models
@@ -25,19 +26,17 @@ ini_set('display_errors', 'On');
 
 session_start();
 
-$registerModel    = new   \model\RegisterModel();
-$sessionModel     = new   \model\SessionModel();
-$loginModel       = new   \model\LoginModel();
-// $this->database         = new        Database(); // LOCAL DATABASE REQUIRED IN ORDER FOR THIS TO WORK
+$rm     = new    \model\RegisterModel();
+$sm     = new    \model\SessionModel();
+$lm     = new    \model\LoginModel();
 
-// View's Folder initiation
-$loginView        = new    \view\LoginView();
-$layoutView       = new    \view\LayoutView();
-$registerView     = new    \view\RegisterView();
-$dateTimeView     = new    \view\DateTimeView();
+$lv     = new    \view\LoginView();
+$lov    = new    \view\LayoutView();
+$rv     = new    \view\RegisterView();
+$dtv    = new    \view\DateTimeView();
 
-
-$LoginRouter = new \controller\LoginController($loginView, $loginModel, $sessionModel);
-$routerStarter = new \controller\RouteController($registerModel, $sessionModel, $loginModel, $loginView, $layoutView, $registerView, $dateTimeView, $LoginRouter);
-$routerStarter->start();
+$lic            = new \controller\RegisterController($rv, $rm);
+$rlc            = new \controller\LoginController($lv, $lm, $sm);
+$mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $lic, $rlc);
+$mainController->start();
 

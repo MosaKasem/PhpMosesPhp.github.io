@@ -14,8 +14,8 @@ class LoginController {
         $this->loginModel       = $lm;
         $this->sessionModel     = $sm;
     }
+
     public function loginControl() {
-        
         //Get username // Get password
         $username     = $this->loginView->getRequestUserName();
         $password     = $this->loginView->getRequestPassword();
@@ -23,6 +23,7 @@ class LoginController {
         //Returns true or false
         $successLogin = $this->loginModel->validateLogin($username, $password);
         $cookie       = $this->loginView->keepMeLoggedIn();
+        
         if ($successLogin) {
             $isLoggedIn = true;
             $this->loginView->keepMeLoggedValidation($username, $password);
