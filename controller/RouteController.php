@@ -23,7 +23,6 @@ class RouteController {
 
 
     public function __construct() {
-
         // Model's folder initiation
         $this->registerModel    = new   \model\RegisterModel();
         $this->sessionModel     = new   \model\SessionModel();

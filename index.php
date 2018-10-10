@@ -25,6 +25,13 @@ ini_set('display_errors', 'On');
 session_start();
 
 
-$routerStarter = new \controller\RouteController();
+$sessionModel     = new   \model\SessionModel();
+$loginModel       = new   \model\LoginModel();
+
+$loginView  = new   \view\LoginView();
+
+
+$LoginRouter = new \controller\LoginController($loginView, $loginModel, $sessionModel);
+$routerStarter = new \controller\RouteController(LoginRouter);
 $routerStarter->start();
 
