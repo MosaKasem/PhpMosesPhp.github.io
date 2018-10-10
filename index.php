@@ -35,8 +35,8 @@ $lov    = new    \view\LayoutView();
 $rv     = new    \view\RegisterView();
 $dtv    = new    \view\DateTimeView();
 
-$lic            = new \controller\RegisterController($rv, $rm);
-$rlc            = new \controller\LoginController($lv, $lm, $sm);
-$mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $lic, $rlc);
+// $lic            = new \controller\RegisterController($rv, $rm);
+// $rlc            = new \controller\LoginController($lv, $lm, $sm);
+$mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv);
 $mainController->start();
 

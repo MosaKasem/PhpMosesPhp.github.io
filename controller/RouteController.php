@@ -22,7 +22,7 @@ class RouteController {
     private $registerController ; // Controller
 
 
-    public function __construct($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $lic, $rlc) {
+    public function __construct($rm, $sm, $lm, $lv, $lov, $rv, $dtv) {
         // Model's folder initiation
         $this->registerModel    = $rm;
         $this->sessionModel     = $sm;
@@ -35,8 +35,8 @@ class RouteController {
         $this->dateTimeView     = $dtv;
 
         // Controller's folder initiation
-        $this->loginController      = $lic;
-        $this->registerController   = $rlc;
+        $this->loginController      = new \controller\LoginController($lv, $lm, $sm);
+        $this->registerController   = new \controller\RegisterController($rv, $rm);
     }
     public function start() {
         $isLoggedIn = false;
@@ -80,7 +80,6 @@ class RouteController {
             } */
             // Event listener for register
             if ($this->registerView->userWantsToRegister()) {
-                var_dump($this->registerController);
                 $this->registerController->registerControl();
 
 /*                 $username = $this->registerView->getRequestUserName();

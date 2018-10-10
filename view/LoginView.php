@@ -85,7 +85,7 @@ class LoginView {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
 	public function userWantsToLogOut() {
-		if(isset($_POST[self::$logout])) return true;
+		if (isset($_POST[self::$logout])) return true;
 	}
 	public function keepMeLoggedIn() {
 		if (isset($_POST[self::$keep])) return $_POST[self::$keep];
@@ -98,7 +98,7 @@ class LoginView {
 		if (isset($_POST[self::$password])) return $_POST[self::$password];
 	}
 
-	public function setMessage ($msg) {
+	public function setMessage ($msg) : void {
 		$this->message = $msg;
 	}
 	public function getMessage () {
