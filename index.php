@@ -37,7 +37,7 @@ $registerView     = new    \view\RegisterView();
 $dateTimeView     = new    \view\DateTimeView();
 
 
-// $LoginRouter = new \controller\LoginController($loginView, $loginModel, $sessionModel);
-$routerStarter = new \controller\RouteController($registerModel, $sessionModel, $loginModel, $loginView, $layoutView, $registerView, $dateTimeView);
+$LoginRouter = new \controller\LoginController();
+$routerStarter = new \controller\RouteController($registerModel, $sessionModel, $loginModel, $loginView, $layoutView, $registerView, $dateTimeView, $LoginRouter);
 $routerStarter->start();
 
