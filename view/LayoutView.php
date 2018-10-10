@@ -4,11 +4,12 @@ namespace view;
 
 class LayoutView {
   
-  public function render($isLoggedIn, LoginView $loginView, DateTimeView $dtv, RegisterView $registerView) {
+  // public function render($isLoggedIn, LoginView $loginView, DateTimeView $dtv, RegisterView $registerView) {
+  public function render($isLoggedIn, $page, DateTimeView $dtv) {
 
-      $page = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
+/*       $page = isset($_GET['register']) ? $page = $registerView : $page = $loginView;
       $navLink = $page == $loginView ? $navLink = '<a href="?register">Register a new user</a>' : $navLink = '<a href="?">Back to login</a>';
-
+ */
     echo '<!DOCTYPE html>
       <html>
         <head>
@@ -17,11 +18,10 @@ class LayoutView {
         </head>
         <body>
           <h1>Assignment 2</h1>
-          ' . $navLink . '
+          ' . $this->renderLink() . '
           ' . $this->renderIsLoggedIn($isLoggedIn) . '
           <div class="container">
               ' . $page->response() . '
-
               ' . $dtv->show() . '
           </div>
          </body>
@@ -38,6 +38,13 @@ class LayoutView {
   }
   public function getRegisterView() : bool {
     return isset($_GET['register']);
+  }
+  private function renderLink() {
+    if (isset($_GET['register'])) {
+      return '<a href="?">Back to login</a>';
+    } else {
+      return '<a href="?register">Register a new user</a>';
+    }
   }
 
 }
