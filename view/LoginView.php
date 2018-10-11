@@ -31,7 +31,7 @@ class LoginView {
 	 */
 	public function response() {
 		$userIsLogged = $this->session->userIsLoggedIn();
-		// var_dump($this->message);
+
 		if ($userIsLogged) {
 			$response = $this->generateLogoutButtonHTML($this->message);
 		} else {
@@ -81,6 +81,7 @@ class LoginView {
 			</form>
 		';
 	}
+
 	public function userWantsToLogin() {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
@@ -135,9 +136,9 @@ class LoginView {
 		}
 	}
 	
-	public function saveCookie($username, $password) { // 8640 is equivalent to 24 hours.
-		setcookie(self::$cookieName, $username, time() + 8640, "/");
-		setcookie(self::$cookiePassword, $password, time() + 8640, "/");
+	public function saveCookie($username, $password) { // 86400 is equivalent to 24 hours.
+		setcookie(self::$cookieName, $username, time() + 86400, "/");
+		setcookie(self::$cookiePassword, $password, time() + 86400, "/");
 		// setcookie syntax : setcookie(name,value,expire,path,domain,secure,httponly)
 	}
 

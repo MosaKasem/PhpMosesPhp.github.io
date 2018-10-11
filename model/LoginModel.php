@@ -8,8 +8,8 @@ class LoginModel {
     private $username;
     private $password;
 
-    public function validateLogin($username, $password) {
-        if ($username == "Admin" && $password == "Password") {
+    public function validateLogin($userCredentials) {
+        if ($userCredentials->getUsername() == "Admin" && $userCredentials->getPassword() == "Password") {
             return true;
         } else {
             return false;

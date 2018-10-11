@@ -8,6 +8,7 @@ class LoginController {
 
     private $loginModel       ; // model
     private $sessionModel     ; // model
+    private $userCredentials  ; // model
 
     public function __construct(\view\LoginView $lv, \model\LoginModel $lm, \model\SessionModel $sm) {
         $this->loginView        = $lv;
@@ -20,8 +21,10 @@ class LoginController {
         $username     = $this->loginView->getRequestUserName();
         $password     = $this->loginView->getRequestPassword();
 
+        $userCredentials = new \model\UserCredentials($username, $password);
+
         //Returns true or false
-        $successLogin = $this->loginModel->validateLogin($username, $password);
+        $successLogin = $this->loginModel->validateLogin($userCredentials);
         $cookie       = $this->loginView->keepMeLoggedIn();
         
         if ($successLogin) {

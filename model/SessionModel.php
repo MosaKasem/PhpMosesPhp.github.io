@@ -4,8 +4,9 @@ namespace model;
 
 class SessionModel {
     
-    // private static $session = 'SessionModel::Session';
     private static $user = 'SessionModel::User';
+
+    private $isLoggedIn;
 
     public function storeUserToSession($username) {
         $_SESSION[self::$user] = $username;
@@ -25,5 +26,12 @@ class SessionModel {
     public function destroySession() {
         session_destroy();
         $_SESSION = [];
+    }
+    public function handleIsLoggedIn() {
+        if ($this->getUserSession()) {
+            return $isLoggedIn = true;
+        } else {
+            return $isLoggedIn = false;
+        }
     }
 }

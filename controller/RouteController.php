@@ -39,10 +39,10 @@ class RouteController {
         $this->registerController   = new \controller\RegisterController($this->registerView, $this->registerModel);
     }
     public function start() {
-        $isLoggedIn = false;
+/*         $isLoggedIn = false;
         if ($this->sessionModel->getUserSession()) {
             $isLoggedIn = true;
-        }
+        } */
 
         if ($this->loginView->userWantsToLogin()) {
             $this->loginController->loginControl();
@@ -58,9 +58,9 @@ class RouteController {
         // ?register ? true : false
         $registerView = $this->layoutView->getRegisterView();
         if ($registerView) {
-            $this->layoutView->render($isLoggedIn, $this->registerView, $this->dateTimeView);
+            $this->layoutView->render($this->sessionModel->handleIsLoggedIn(), $this->registerView, $this->dateTimeView);
         } else {
-            $this->layoutView->render($isLoggedIn, $this->loginView, $this->dateTimeView);
+            $this->layoutView->render($this->sessionModel->handleIsLoggedIn(), $this->loginView, $this->dateTimeView);
         }
     }
 }
