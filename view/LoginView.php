@@ -30,7 +30,7 @@ class LoginView {
 	 * @return void BUT writes to standard output and cookies!
 	 */
 	public function response() {
-		$userIsLogged = $this->session->loggedIn();
+		$userIsLogged = $this->session->userIsLoggedIn();
 		// var_dump($this->message);
 		if ($userIsLogged) {
 			$response = $this->generateLogoutButtonHTML($this->message);
@@ -85,17 +85,21 @@ class LoginView {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
 	public function userWantsToLogOut() {
-		if (isset($_POST[self::$logout])) return true;
+		if (isset($_POST[self::$logout])) 
+			return true;
 	}
 	public function keepMeLoggedIn() {
-		if (isset($_POST[self::$keep])) return $_POST[self::$keep];
+		if (isset($_POST[self::$keep])) 
+			return $_POST[self::$keep];
 	}
 
 	public function getRequestUserName() {
-		if (isset($_POST[self::$name])) return $_POST[self::$name];
+		if (isset($_POST[self::$name])) 
+			return $_POST[self::$name];
 	}
 	public function getRequestPassword() {
-		if (isset($_POST[self::$password])) return $_POST[self::$password];
+		if (isset($_POST[self::$password])) 
+			return $_POST[self::$password];
 	}
 
 	public function setMessage ($msg) : void {
@@ -108,7 +112,7 @@ class LoginView {
 	private function validateInput() {
 		$username = $this->getRequestUserName();
 		$password = $this->getRequestPassword();
-		if ($username == "" || empty($username)) {
+		if (empty($username)) {
 			$this->setMessage('Username is missing');
 			return false;
 		}
@@ -131,9 +135,10 @@ class LoginView {
 		}
 	}
 	
-	public function saveCookie($username, $password) { // 86400 is equivalent to 24 hours.
-		setcookie(self::$cookieName, $username, time() + 86400, "/");
-		setcookie(self::$cookiePassword, $password, time() + 86400, "/");
+	public function saveCookie($username, $password) { // 8640 is equivalent to 24 hours.
+		setcookie(self::$cookieName, $username, time() + 8640, "/");
+		setcookie(self::$cookiePassword, $password, time() + 8640, "/");
+		// setcookie syntax : setcookie(name,value,expire,path,domain,secure,httponly)
 	}
 
 	

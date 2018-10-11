@@ -16,7 +16,7 @@ class SessionModel {
         }
         return false;
     }
-    public function loggedIn() {
+    public function userIsLoggedIn() {
         if (isset($_SESSION[self::$user])) {
             return true;
         }

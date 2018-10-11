@@ -7,11 +7,12 @@ class RegisterController {
 
     private $registerModel   ; // model
 
-    public function __construct($rv, $rm) {
+    public function __construct(\view\RegisterView $rv, \model\RegisterModel $rm) {
         $this->registerView     = $rv;
         $this->registerModel    = $rm;
     }
     public function registerControl() {
+
         $username = $this->registerView->getRequestUserName();
         $password = $this->registerView->getRequestPassword();
 

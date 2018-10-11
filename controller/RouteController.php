@@ -43,6 +43,7 @@ class RouteController {
         if ($this->sessionModel->getUserSession()) {
             $isLoggedIn = true;
         }
+
         if ($this->loginView->userWantsToLogin()) {
             $this->loginController->loginControl();
         }
@@ -53,6 +54,8 @@ class RouteController {
         if ($this->registerView->userWantsToRegister()) {
             $this->registerController->registerControl();
         }
+
+        // ?register ? true : false
         $registerView = $this->layoutView->getRegisterView();
         if ($registerView) {
             $this->layoutView->render($isLoggedIn, $this->registerView, $this->dateTimeView);
