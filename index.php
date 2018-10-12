@@ -11,6 +11,7 @@ require_once('view/RegisterView.php');
 require_once('controller/RouteController.php');
 require_once('controller/LoginController.php');
 require_once('controller/RegisterController.php');
+require_once('controller/FileReaderController.php');
 
 // Models
 require_once('model/Database.php');
@@ -18,6 +19,7 @@ require_once('model/LoginModel.php');
 require_once('model/RegisterModel.php');
 require_once('model/SessionModel.php');
 require_once('model/UserCredentials.php');
+require_once('model/FileLoaderModel.php');
 
 //MAKE SURE ERRORS ARE SHOWN... MIGHT WANT TO TURN THIS OFF ON A PUBLIC SERVER
 error_reporting(E_ALL);

@@ -1,5 +1,8 @@
 <?php
-class File
+
+namespace model;
+
+class FileLoaderModel
 {
     private $file;
     function __construct(array $file)
