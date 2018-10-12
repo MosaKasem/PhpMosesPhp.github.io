@@ -17,15 +17,22 @@ class FileReaderView
         $this->file = null;
     }
 
-    public function generateUploadFormHTML()
+    public function generateUploadFormHTML($isLoggedIn)
     {
+        if ($isLoggedIn)
+        {
+            $this->setMessage("Now you can upload .txt files");
 		return '
 			<form  method="post" >
 				<p id="' . self::$messageId . '">' . $this->getMessage() .'</p>
                 <input type="file" name="' . self::$uploadedFile . '"/>
                 <input type"submit" name="' . self::$uploadFile . '" value="upload">
 			</form>
-		';
+        ';
+        } else 
+        {
+            return '<p>Login to upload file<p>';
+        }
     }
     public function getContent($file)
     {

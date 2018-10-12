@@ -4,7 +4,7 @@ namespace view;
 
 class LayoutView {
   
-  public function render($isLoggedIn, $page, DateTimeView $dtv) {
+  public function render($isLoggedIn, $pg, DateTimeView $dtv, FileReaderView $frv) {
 
     echo '<!DOCTYPE html>
       <html>
@@ -17,7 +17,8 @@ class LayoutView {
           ' . $this->renderLink() . '
           ' . $this->renderIsLoggedIn($isLoggedIn) . '
           <div class="container">
-              ' . $page->response() . '
+              ' . $frv->generateUploadFormHTML($isLoggedIn) . '
+              ' . $pg->response() . '
               ' . $dtv->show() . '
           </div>
          </body>
