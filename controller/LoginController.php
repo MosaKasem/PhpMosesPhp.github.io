@@ -28,7 +28,7 @@ class LoginController {
         $cookie       = $this->loginView->keepMeLoggedIn();
         
         if ($successLogin) {
-            $isLoggedIn = true;
+
             $this->loginView->keepMeLoggedValidation($username, $password);
             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');
@@ -40,9 +40,9 @@ class LoginController {
     }
     public function logoutControl() {
         $this->loginView->setMessage("Bye bye!");
-        $isLoggedIn = false;
+
         if (!$this->sessionModel->getUserSession()) {
-            $isLoggedIn = false;
+
             $this->loginView->setMessage("");
         }
         $this->sessionModel->destroySession();

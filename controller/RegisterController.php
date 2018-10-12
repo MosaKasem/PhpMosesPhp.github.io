@@ -16,7 +16,6 @@ class RegisterController {
         $username = $this->registerView->getRequestUserName();
         $password = $this->registerView->getRequestPassword();
 
-        $isLoggedIn = false;
         $unsuccessful = $this->registerModel->validateName($username);
         if ($unsuccessful) {
             $userNameTaken = $this->registerModel->userExists();

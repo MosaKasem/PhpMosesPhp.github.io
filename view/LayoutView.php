@@ -4,9 +4,7 @@ namespace view;
 
 class LayoutView {
   
-  // public function render($isLoggedIn, LoginView $loginView, DateTimeView $dtv, RegisterView $registerView) {
   public function render($isLoggedIn, $page, DateTimeView $dtv) {
-    var_dump($isLoggedIn);
 
     echo '<!DOCTYPE html>
       <html>
