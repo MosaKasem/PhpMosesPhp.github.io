@@ -13,8 +13,8 @@ class FileReaderView
 
     public function __construct()
     {
-        $this->$message = "";
-        $this->file = $file;
+        $this->message = "";
+        $this->file = null;
     }
 
     public function generateUploadFormHTML($content)

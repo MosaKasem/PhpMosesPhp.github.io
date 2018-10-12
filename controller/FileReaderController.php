@@ -4,7 +4,12 @@ namespace controller;
 
 class FileReaderController
 {
+    private $fileReader;
     public function __construct() {
-        // TODO: undecided...
+        $this->fileReader = new \view\FileReaderView();
+    }
+    public function initiateFileReader()
+    {
+        var_dump("HEEEEEEEEEEEEEEEEEEEEEEE");
     }
 }

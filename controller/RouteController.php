@@ -20,6 +20,7 @@ class RouteController {
 
     private $loginController    ; // Controller
     private $registerController ; // Controller
+    private $fileReadController ; // Controller
 
 
     public function __construct(\model\RegisterModel $rm, \model\SessionModel $sm, \model\LoginModel $lm, \view\LoginView $lv, \view\LayoutView $lov, \view\RegisterView $rv, \view\DateTimeView $dtv) {
@@ -35,14 +36,11 @@ class RouteController {
         $this->dateTimeView     = $dtv;
 
         // Controller's folder initiation
-        $this->loginController      = new \controller\LoginController($this->loginView, $this->loginModel, $this->sessionModel);
+        $this->fileReadController   = new \controller\FileReaderController();
+        $this->loginController      = new \controller\LoginController($this->loginView, $this->loginModel, $this->sessionModel, $this->fileReadController);
         $this->registerController   = new \controller\RegisterController($this->registerView, $this->registerModel);
     }
     public function start() {
-/*         $isLoggedIn = false;
-        if ($this->sessionModel->getUserSession()) {
-            $isLoggedIn = true;
-        } */
 
         if ($this->loginView->userWantsToLogin()) {
             $this->loginController->loginControl();
