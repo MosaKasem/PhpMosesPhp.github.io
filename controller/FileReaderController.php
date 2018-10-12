@@ -4,12 +4,17 @@ namespace controller;
 
 class FileReaderController
 {
+    private $sessionModel;
+
+
     private $fileReader;
-    public function __construct() {
-        $this->fileReader = new \view\FileReaderView();
+
+    public function __construct(\model\SessionModel $sm) {
+        $this->sessionModel = $sm;
     }
     public function initiateFileReader()
     {
-        var_dump("HEEEEEEEEEEEEEEEEEEEEEEE");
+        // $this->fileReader->generateUploadFormHTML();
     }
+    // public function userWants
 }

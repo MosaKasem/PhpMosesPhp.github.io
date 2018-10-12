@@ -20,6 +20,8 @@ class RegisterController {
         if ($unsuccessful) {
             $userNameTaken = $this->registerModel->userExists();
             $this->registerView->setMessage($userNameTaken);
+        } else {
+            header('location:?');
         }
     }
 }

@@ -36,7 +36,8 @@ $lv     = new    \view\LoginView();
 $lov    = new    \view\LayoutView();
 $rv     = new    \view\RegisterView();
 $dtv    = new    \view\DateTimeView();
+$fr     = new    \view\FileReaderView();
 
-$mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv);
+$mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $fr);
 $mainController->start();
 

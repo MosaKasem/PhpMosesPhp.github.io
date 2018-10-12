@@ -17,7 +17,7 @@ class FileReaderView
         $this->file = null;
     }
 
-    public function generateUploadFormHTML($content)
+    public function generateUploadFormHTML()
     {
 		return '
 			<form  method="post" >
@@ -42,5 +42,9 @@ class FileReaderView
     public function getMessage()
     {
         return $this->message;
+    }
+    public function userWantsToUploadFile()
+    {
+        if (isset($_POST[self::$uploadFile])) return true;
     }
 }

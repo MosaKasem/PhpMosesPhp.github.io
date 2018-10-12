@@ -20,7 +20,7 @@ class LoginController {
     }
 
     public function loginControl() {
-        
+
         //Get username // Get password
         $username     = $this->loginView->getRequestUserName();
         $password     = $this->loginView->getRequestPassword();
@@ -32,6 +32,7 @@ class LoginController {
         $cookie       = $this->loginView->keepMeLoggedIn();
         
         if ($successLogin) {
+            $this->fileController->initiateFileReader();
 
             $this->loginView->keepMeLoggedValidation($username, $password);
             if ($this->sessionModel->getUserSession()) {
