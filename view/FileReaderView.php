@@ -54,4 +54,20 @@ class FileReaderView
     {
         if (isset($_POST[self::$uploadFile])) return true;
     }
+/*     public function renderFile() 
+    {
+        return new \model\FileLoaderModel($file);
+    } */
+    public function getUploadedFile()
+    {
+        if (!empty($_FILES[self::$uploadedFile]))
+        {
+            $path = "_temp/uploaded.php";
+            if (!move_uploaded_file($_FILES[self::$uploadedFile]["temp_file"], $path)) {
+                $this->setMessage("An error has occured, please make sure the file is .txt");
+            }
+            $file = file($path);
+            return new \model\FileLoaderModel("hello");
+        }
+    }
 }

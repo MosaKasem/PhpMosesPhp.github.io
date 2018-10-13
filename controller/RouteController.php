@@ -38,7 +38,7 @@ class RouteController {
         $this->fileReaderView   = $fr;
 
         // Controller's folder initiation
-        $this->fileReadController   = new \controller\FileReaderController($this->sessionModel);
+        $this->fileReadController   = new \controller\FileReaderController($this->sessionModel, $this->fileReaderView);
         $this->loginController      = new \controller\LoginController($this->loginView, $this->loginModel, $this->sessionModel, $this->fileReadController);
         $this->registerController   = new \controller\RegisterController($this->registerView, $this->registerModel);
     }
@@ -55,7 +55,7 @@ class RouteController {
             $this->registerController->registerControl();
         }
         if ($this->fileReaderView->userWantsToUploadFile()) {
-            echo "bla";
+            $this->fileReadController->initiateFileReader();
         }
 
         // ?register ? true : false
