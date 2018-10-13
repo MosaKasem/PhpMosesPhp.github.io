@@ -54,20 +54,24 @@ class FileReaderView
     {
         if (isset($_POST[self::$uploadFile])) return true;
     }
-/*     public function renderFile() 
-    {
-        return new \model\FileLoaderModel($file);
-    } */
     public function getUploadedFile()
     {
-        if (!empty($_FILES[self::$uploadedFile]))
-        {
-            $path = "_temp/uploaded.php";
-            if (!move_uploaded_file($_FILES[self::$uploadedFile]["temp_file"], $path)) {
-                $this->setMessage("An error has occured, please make sure the file is .txt");
-            }
-            $file = file($path);
-            return new \model\FileLoaderModel("hello");
+        $file = "uploadedContent.txt";
+        $filecontent = file_get_contents($file);
+        if (isset(self::$uploadedFile)) {
+            // $path = "/_temp_" . self::$uploadedFile;
+/*             if (!move_uploaded_file($_FILES[self::$uploadedFile]["tmp_name"], $path)) {
+                $this->setMessage("Can't find file");
+            } */
+            // $file = file($path);
+            // $newModule = new \model\FileLoaderModel();
+            var_dump($_FILES["uploadedfile"]["tmp_name"]);
+            var_dump($newModule);
         }
+        
+        return $filecontent;
+       // if (!empty($_FILES[self::$uploadedFile]))
+
+
     }
 }
