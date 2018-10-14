@@ -4,9 +4,9 @@ namespace view;
 
 class FileReaderView
 {
-    private static $messageId 		=	'LoginView::Message';
-    private static $uploadedFile 	= 	'LoginView::UploadedFile';
-    private static $uploadFile  	= 	'LoginView::UploadFile';
+    private static $messageId 		=	'FileReaderView::Message';
+    private static $uploadedFile	= 	'FileReaderView::Text';
+    private static $uploadFile  	= 	'FileReaderView::UploadFile';
 
     private $message;
     private $file;
@@ -25,8 +25,8 @@ class FileReaderView
 		return '
 			<form  method="post" >
 				<p id="' . self::$messageId . '">' . $this->getMessage() .'</p>
-                <input type="file" name="' . self::$uploadedFile . '"/>
-                <input type"submit" name="' . self::$uploadFile . '" value="upload">
+                <input type="file" name="' . self::$uploadedFile . '"></input>
+                <input type="submit" name="' . self::$uploadFile . '" value="Click" />
 			</form>
         ';
         } else 
@@ -56,26 +56,13 @@ class FileReaderView
     }
     public function getUploadedFile()
     {
+        if (isset($_POST[self::$uploadedFile])) {
+/*             if (!empty($_FILES[self::$uploadedFile])) {
+                echo "haghahaha";
+            } */
+            echo $_FILES[self::$uploadedFile];
+        }
         $file = "uploadedContent.txt";
         $filecontent = file_get_contents($file);
-        if (isset(self::$uploadedFile)) {
-            // $path = "/_temp_" . self::$uploadedFile;
-/*             if (!move_uploaded_file($_FILES[self::$uploadedFile]["tmp_name"], $path)) {
-                $this->setMessage("Can't find file");
-            } */
-            // $file = file($path);
-            $newModule = new \model\FileLoaderModel(array("bla", "yoo", "pluck"));
-
-            var_dump($newModule);
-            foreach ($newModule as $key) {
-                echo gettype($key) ;
-                echo "niFFFFFFFFFFF2";
-            }
-        }
-        
-        return $filecontent;
-       // if (!empty($_FILES[self::$uploadedFile]))
-
-
     }
 }

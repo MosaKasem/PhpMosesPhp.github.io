@@ -17,7 +17,7 @@ class FileReaderController
     public function initiateFileReader()
     {
         $getuploadedFile = $this->fileReaderView->getUploadedFile();
-        var_dump($getuploadedFile);
+        var_dump(gettype($getuploadedFile));
     }
     // public function userWants
 }
