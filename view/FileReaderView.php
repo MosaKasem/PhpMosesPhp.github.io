@@ -49,13 +49,10 @@ class FileReaderView
     }
     public function getTextInput() 
     {
-        var_dump($_POST[self::$text]);
         if (isset($_POST[self::$text]))  
         {
             return $_POST[self::$text];
-         } else {
-             $this->setMessage("Can't be empty!");
-         } 
+        }
     }
 
     public function showFileContent()
@@ -66,11 +63,12 @@ class FileReaderView
     public function insertTextInTag()
     {
         $getText = $this->getTextInput();
-        var_dump($getText);
         if (empty($getText))
         {
-            return false;
-        } else {
+            $this->setMessage("Can't be empty!");
+        } else if (preg_match('/[^A-Za-z0-9]/', $getText)) {
+            $this->setMessage("Only characters and numbers allowed!");
+         }else {
             return "<p>" . $getText . "</p>";
         }
     }
