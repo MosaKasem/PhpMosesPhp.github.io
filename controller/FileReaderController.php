@@ -23,6 +23,7 @@ class FileReaderController
             $text = $this->fileReaderView->getTextInput();
             $file = $this->fileReaderView->showFileContent();
             $this->fileModule->addTextToFile($text);
+            // $this->fileModule->addTextToFile($text);
             // $this->fileModule->addTextToFile(text);
         }
     }
