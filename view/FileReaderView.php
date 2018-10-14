@@ -49,7 +49,13 @@ class FileReaderView
     }
     public function getTextInput() 
     {
-        empty(isset($_POST[self::$text])) ? $_POST[self::$text] : $this->setMessage("Can't be empty!");
+        var_dump($_POST[self::$text]);
+        if (isset($_POST[self::$text]))  
+        {
+            return $_POST[self::$text];
+         } else {
+             $this->setMessage("Can't be empty!");
+         } 
     }
 
     public function showFileContent()
@@ -59,7 +65,14 @@ class FileReaderView
     }
     public function insertTextInTag()
     {
-        return "<p>" . $this->getTextInput() . "</p>";
+        $getText = $this->getTextInput();
+        var_dump($getText);
+        if (empty($getText))
+        {
+            return false;
+        } else {
+            return "<p>" . $getText . "</p>";
+        }
     }
     
 /*     public function getContent()
