@@ -6,7 +6,9 @@ class FileReaderView
 {
     private static $messageId 		=	'FileReaderView::Message';
     private static $text        	= 	'FileReaderView::Text';
-    private static $submitBtn  	= 	'FileReaderView::SubmitBtn';
+    private static $submitBtn   	= 	'FileReaderView::SubmitBtn';
+
+    private $FileReaderUrl          =   "text";
 
     private $message;
     private $file;
@@ -26,14 +28,19 @@ class FileReaderView
 				<p id="' . self::$messageId . '">' . $this->getMessage() .'</p>
                 <input type="text" name="' . self::$text . '" value="" ></input>
                 <input type="submit" name="' . self::$submitBtn . '" value="Click" />
-                <div>"' . $this->showFileContent() . '"</div>
+                <div>' . trim($this->showFileContent()) . '</div>
 			</form>
         ';
-        } else 
+        }
         {
             return '<p>Login to add text<p>';
         }
     }
+    public function showContent()
+    {
+        return '<div>' . trim($this->showFileContent()) . '</div>';
+    }
+
     public function setMessage($msg)
     {
         $this->message = $msg;
@@ -71,6 +78,9 @@ class FileReaderView
          }else {
             return "<p>" . $getText . "</p>";
         }
+    }
+    public function getUrl() {
+        return $this->FileReaderUrl;
     }
     
 /*     public function getContent()

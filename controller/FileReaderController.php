@@ -4,9 +4,9 @@ namespace controller;
 
 class FileReaderController
 {
-    private $sessionModel;
-    private $fileReaderView;
-    private $fileModule;
+    private $sessionModel       ; // Model
+    private $fileReaderView     ; // View
+    private $fileModule         ; // Model
 
 
     private $fileReader;
@@ -23,9 +23,6 @@ class FileReaderController
             $text = $this->fileReaderView->insertTextInTag();
             $file = $this->fileReaderView->showFileContent();
             $this->fileModule->addTextToFile($file, $text);
-            // $this->fileModule->addTextToFile($text);
-            // $this->fileModule->addTextToFile(text);
         }
     }
-    // public function userWants
 }
