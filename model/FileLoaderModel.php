@@ -4,13 +4,12 @@ namespace model;
 
 class FileLoaderModel
 {
-    private $file;
-    private $testFile;
-    function __construct($file)
+    // private $file;
+    function __construct()
     {
-        $this->file = $file;
+        // $this->file = $file;
     }
-    public function addTextToFile($text)
+    public function addTextToFile($file, $text)
     {
         $thisFile = "uploadedContent.txt";
         $Currentfile = file_get_contents($thisFile);

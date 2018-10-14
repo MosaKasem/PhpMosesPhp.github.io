@@ -32,7 +32,7 @@ class FileReaderView
         ';
         } else 
         {
-            return '<p>Login to add to text<p>';
+            return '<p>Login to add text<p>';
         }
     }
     public function setMessage($msg)
@@ -57,6 +57,10 @@ class FileReaderView
     {
         $file = file_get_contents("uploadedContent.txt");
         return $file;
+    }
+    public function insertTextInTag()
+    {
+        return "<p>" . $this->getTextInput() . "</p>";
     }
 /*     public function getContent()
     {
