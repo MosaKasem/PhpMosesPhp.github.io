@@ -21,7 +21,6 @@ class FileReaderView
     {
         if ($isLoggedIn)
         {
-            $this->setMessage("Now you can upload .txt files");
 		return '
 			<form  method="post" >
 				<p id="' . self::$messageId . '">' . $this->getMessage() .'</p>
@@ -50,7 +49,7 @@ class FileReaderView
     }
     public function getTextInput() 
     {
-        return isset($_POST[self::$text]) ? $_POST[self::$text] : null;
+        empty(isset($_POST[self::$text])) ? $_POST[self::$text] : $this->setMessage("Can't be empty!");
     }
 
     public function showFileContent()
@@ -62,6 +61,7 @@ class FileReaderView
     {
         return "<p>" . $this->getTextInput() . "</p>";
     }
+    
 /*     public function getContent()
     {
         $newText = $this->showFileContent();

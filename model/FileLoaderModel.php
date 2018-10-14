@@ -14,7 +14,6 @@ class FileLoaderModel
         $thisFile = "uploadedContent.txt";
         $Currentfile = file_get_contents($thisFile);
         $Currentfile .= $text;
-        // echo $this->file;
         file_put_contents($thisFile, $Currentfile);
     }
 }
