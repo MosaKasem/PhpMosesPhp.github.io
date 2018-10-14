@@ -6,7 +6,7 @@ class FileReaderView
 {
     private static $messageId 		=	'FileReaderView::Message';
     private static $text        	= 	'FileReaderView::Text';
-    private static $uploadFile  	= 	'FileReaderView::UploadFile';
+    private static $submitBtn  	= 	'FileReaderView::SubmitBtn';
 
     private $message;
     private $file;
@@ -26,23 +26,23 @@ class FileReaderView
 			<form  method="post" >
 				<p id="' . self::$messageId . '">' . $this->getMessage() .'</p>
                 <input type="text" name="' . self::$text . '" value="" ></input>
-                <input type="submit" name="' . self::$uploadFile . '" value="Click" />
+                <input type="submit" name="' . self::$submitBtn . '" value="Click" />
                 <div>"' . $this->showFileContent() . '"</div>
 			</form>
         ';
         } else 
         {
-            return '<p>Login to upload file<p>';
+            return '<p>Login to add to text<p>';
         }
     }
-    public function getContent($file)
+/*     public function getContent($file)
     {
         if (!$file)
         {
             $this->setMessage("Must provide a file!");
         }
         return file_get_contents($file);
-    }
+    } */
     public function setMessage($msg)
     {
         $this->message = $msg;
@@ -53,11 +53,15 @@ class FileReaderView
     }
     public function textFileManage()
     {
-        if (isset($_POST[self::$uploadFile])) return true;
+        if (isset($_POST[self::$submitBtn])) return true;
     }
     public function showFileContent()
     {
         $file = file_get_contents("uploadedContent.txt");
         return $file;
+    }
+    public function getTextInput() 
+    {
+        return isset($_POST[self::$text]) ? $_POST[self::$text] : null;
     }
 }

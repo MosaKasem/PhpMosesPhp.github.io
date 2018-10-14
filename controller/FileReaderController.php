@@ -18,7 +18,7 @@ class FileReaderController
     {
         if ($this->fileReaderView->textFileManage());
         {
-            echo "hello";
+            echo $this->fileReaderView->getTextInput();
         }
     }
     // public function userWants
