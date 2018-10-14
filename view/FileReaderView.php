@@ -64,9 +64,13 @@ class FileReaderView
                 $this->setMessage("Can't find file");
             } */
             // $file = file($path);
-            // $newModule = new \model\FileLoaderModel();
-            var_dump($_FILES["uploadedfile"]["tmp_name"]);
+            $newModule = new \model\FileLoaderModel(array("bla", "yoo", "pluck"));
+
             var_dump($newModule);
+            foreach ($newModule as $key) {
+                echo gettype($key) ;
+                echo "niFFFFFFFFFFF2";
+            }
         }
         
         return $filecontent;
