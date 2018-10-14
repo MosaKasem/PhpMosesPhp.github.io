@@ -9,8 +9,9 @@ class FileLoaderModel
     {
         $this->file = $file;
     }
-    public function readFile()
+    public function addTextToFile($text)
     {
-        echo $this->file;
+        echo $text;
+        file_put_contents($this->file, $text);
     }
 }

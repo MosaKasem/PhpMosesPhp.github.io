@@ -21,7 +21,9 @@ class FileReaderController
         if ($this->fileReaderView->textFileManage());
         {
             $text = $this->fileReaderView->getTextInput();
-            $this->fileModule->readFile();
+            $file = $this->fileReaderView->showFileContent();
+            $this->fileModule->addTextToFile($text);
+            // $this->fileModule->addTextToFile(text);
         }
     }
     // public function userWants

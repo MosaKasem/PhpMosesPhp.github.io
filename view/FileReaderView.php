@@ -58,6 +58,11 @@ class FileReaderView
         $file = file_get_contents("uploadedContent.txt");
         return $file;
     }
+/*     public function getContent()
+    {
+        $newText = $this->showFileContent();
+        return $newText;
+    } */
 
 
 }
