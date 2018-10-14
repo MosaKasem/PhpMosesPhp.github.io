@@ -5,7 +5,7 @@ namespace view;
 class FileReaderView
 {
     private static $messageId 		=	'FileReaderView::Message';
-    private static $uploadedFile	= 	'FileReaderView::Text';
+    private static $text        	= 	'FileReaderView::Text';
     private static $uploadFile  	= 	'FileReaderView::UploadFile';
 
     private $message;
@@ -25,8 +25,9 @@ class FileReaderView
 		return '
 			<form  method="post" >
 				<p id="' . self::$messageId . '">' . $this->getMessage() .'</p>
-                <input type="file" name="' . self::$uploadedFile . '"></input>
+                <input type="text" name="' . self::$text . '" value="" ></input>
                 <input type="submit" name="' . self::$uploadFile . '" value="Click" />
+                <div>"' . $this->showFileContent() . '"</div>
 			</form>
         ';
         } else 
@@ -50,19 +51,13 @@ class FileReaderView
     {
         return $this->message;
     }
-    public function userWantsToUploadFile()
+    public function textFileManage()
     {
         if (isset($_POST[self::$uploadFile])) return true;
     }
-    public function getUploadedFile()
+    public function showFileContent()
     {
-        if (isset($_POST[self::$uploadedFile])) {
-/*             if (!empty($_FILES[self::$uploadedFile])) {
-                echo "haghahaha";
-            } */
-            echo $_FILES[self::$uploadedFile];
-        }
-        $file = "uploadedContent.txt";
-        $filecontent = file_get_contents($file);
+        $file = file_get_contents("uploadedContent.txt");
+        return $file;
     }
 }

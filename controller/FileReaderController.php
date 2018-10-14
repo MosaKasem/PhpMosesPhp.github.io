@@ -16,8 +16,10 @@ class FileReaderController
     }
     public function initiateFileReader()
     {
-        $getuploadedFile = $this->fileReaderView->getUploadedFile();
-        var_dump(gettype($getuploadedFile));
+        if ($this->fileReaderView->textFileManage());
+        {
+            echo "hello";
+        }
     }
     // public function userWants
 }
