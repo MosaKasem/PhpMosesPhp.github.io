@@ -35,14 +35,6 @@ class FileReaderView
             return '<p>Login to add to text<p>';
         }
     }
-/*     public function getContent($file)
-    {
-        if (!$file)
-        {
-            $this->setMessage("Must provide a file!");
-        }
-        return file_get_contents($file);
-    } */
     public function setMessage($msg)
     {
         $this->message = $msg;
@@ -51,17 +43,21 @@ class FileReaderView
     {
         return $this->message;
     }
+
     public function textFileManage()
     {
-        if (isset($_POST[self::$submitBtn])) return true;
-    }
-    public function showFileContent()
-    {
-        $file = file_get_contents("uploadedContent.txt");
-        return $file;
+        return isset($_POST[self::$submitBtn]) ? true : false;
     }
     public function getTextInput() 
     {
         return isset($_POST[self::$text]) ? $_POST[self::$text] : null;
     }
+
+    public function showFileContent()
+    {
+        $file = file_get_contents("uploadedContent.txt");
+        return $file;
+    }
+
+
 }
