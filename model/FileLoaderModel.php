@@ -7,13 +7,15 @@ class FileLoaderModel
     // private $file;
     function __construct()
     {
-        // $this->file = $file;
+        // $this->file = 'uploadedContent.txt';
     }
     public function addTextToFile($file, $text)
     {
-        $thisFile = "uploadedContent.txt";
-        $Currentfile = file_get_contents($thisFile);
+        $file = "uploadedContent.txt";
+        $Currentfile = file_get_contents($file);
         $Currentfile .= $text;
-        file_put_contents($thisFile, $Currentfile);
+        file_put_contents($file, $Currentfile);
     }
+    // public function
+    // public function resetText()
 }

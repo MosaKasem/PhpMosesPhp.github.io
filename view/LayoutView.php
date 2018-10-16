@@ -25,12 +25,12 @@ class LayoutView {
       </html>
     ';
   }
-  
+  // 
   private function renderIsLoggedIn($isLoggedIn) : string {
     if ($isLoggedIn) {
       return '<h2>Logged in</h2>';
     } else {
-      return '<h2>Not logged in</h2>' . '<a href="?text"> view todo text</a>';
+      return '<h2>Not logged in</h2>';
     }
   }
   public function getRegisterView() : bool {

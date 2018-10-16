@@ -36,10 +36,6 @@ class FileReaderView
             return '<p>Login to add text<p>';
         }
     }
-    public function showContent()
-    {
-        return '<div>' . trim($this->showFileContent()) . '</div>';
-    }
 
     public function setMessage($msg)
     {
@@ -79,15 +75,7 @@ class FileReaderView
             return "<p>" . $getText . "</p>";
         }
     }
-    public function getUrl() {
-        return $this->FileReaderUrl;
-    }
-    
-/*     public function getContent()
-    {
-        $newText = $this->showFileContent();
-        return $newText;
-    } */
+
 
 
 }

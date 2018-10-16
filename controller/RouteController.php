@@ -57,11 +57,8 @@ class RouteController {
         if ($this->sessionModel->handleIsLoggedIn()) {
             $this->fileReadController->initiateFileReader();
         }
-        if (isset($_GET[$this->fileReaderView->getUrl()])) {
-            $this->fileReaderView->showContent();
-        }
 
-        // ?register ? true : false
+        //?register ? true : false
         $registerView = $this->layoutView->getRegisterView();
         if ($registerView) {
             $this->layoutView->render($this->sessionModel->handleIsLoggedIn(), $this->registerView, $this->dateTimeView, $this->fileReaderView);

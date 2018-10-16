@@ -94,13 +94,19 @@ class LoginView {
 			return $_POST[self::$keep];
 	}
 
-	public function getRequestUserName() {
-		if (isset($_POST[self::$name])) 
+	public function getRequestUserName() : string {
+		if (isset($_POST[self::$name])) {
 			return $_POST[self::$name];
+		} else {
+			return "";
+		}
 	}
-	public function getRequestPassword() {
-		if (isset($_POST[self::$password])) 
+	public function getRequestPassword() : string {
+		if (isset($_POST[self::$password])) {
 			return $_POST[self::$password];
+		} else {
+			return "";
+		}
 	}
 
 	public function setMessage ($msg) : void {
@@ -111,18 +117,21 @@ class LoginView {
 	}
 
 	private function validateInput() {
-		$username = $this->getRequestUserName();
-		$password = $this->getRequestPassword();
-		if (empty($username)) {
+		if (empty($this->getRequestUserName())) {
 			$this->setMessage('Username is missing');
 			return false;
 		}
-		if ($password == "") {
+		if (empty($this->getRequestPassword())) {
 			$this->setMessage('Password is missing');
 			return false;
 		}
 		return true;
-		
+	}
+	public function returnUserCredentials() {
+		if ($this->validateInput() == true) 
+		{
+			return new \model\UserCredentials($this->getRequestUserName(), $this->getRequestPassword());
+		}
 	}
 
 	public function keepMeLoggedValidation($username, $password)
