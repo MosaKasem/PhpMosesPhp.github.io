@@ -22,10 +22,15 @@ class LoginController {
     public function loginControl() {
 
         //Get username // Get password
-        $username     = $this->loginView->getRequestUserName();
-        $password     = $this->loginView->getRequestPassword();
+        // $username     = $this->loginView->getRequestUserName();
+        // $password     = $this->loginView->getRequestPassword();
 
-        $userCredentials = new \model\UserCredentials($username, $password);
+        $userCredentials = $this->loginView->returnUserCredentials();
+
+        var_dump($userCredentials->getUsername());
+        var_dump($userCredentials->getPassword());
+
+        
 
         //Returns true or false
         $successLogin = $this->loginModel->validateLogin($userCredentials);
@@ -34,7 +39,7 @@ class LoginController {
         if ($successLogin) {
             $this->fileController->initiateFileReader();
 
-            $this->loginView->keepMeLoggedValidation($username, $password);
+            $this->loginView->keepMeLoggedValidation($userCredentials->getUsername(), $userCredentials->getPassword());
             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');
             }
