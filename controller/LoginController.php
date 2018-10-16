@@ -21,16 +21,7 @@ class LoginController {
 
     public function loginControl() {
 
-        //Get username // Get password
-        // $username     = $this->loginView->getRequestUserName();
-        // $password     = $this->loginView->getRequestPassword();
-
         $userCredentials = $this->loginView->returnUserCredentials();
-
-        var_dump($userCredentials->getUsername());
-        var_dump($userCredentials->getPassword());
-
-        
 
         //Returns true or false
         $successLogin = $this->loginModel->validateLogin($userCredentials);
@@ -43,7 +34,7 @@ class LoginController {
             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');
             }
-            $this->sessionModel->storeUserToSession($username);
+            $this->sessionModel->storeUserToSession($userCredentials->getUsername());
         } else {
             $this->loginView->setMessage('Wrong name or password');
         }
