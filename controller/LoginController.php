@@ -4,7 +4,7 @@ namespace controller;
 
 class LoginController {
 
-    private $fileController   ; // controller
+    // private $fileController   ; // controller
 
     private $loginView        ; // view
 
@@ -12,11 +12,11 @@ class LoginController {
     private $sessionModel     ; // model
     private $userCredentials  ; // model
 
-    public function __construct(\view\LoginView $lv, \model\LoginModel $lm, \model\SessionModel $sm, \controller\UsersTextSnippetController $frc) {
+    public function __construct(\view\LoginView $lv, \model\LoginModel $lm, \model\SessionModel $sm /*, \controller\UsersTextSnippetController $frc*/) {
         $this->loginView        = $lv;
         $this->loginModel       = $lm;
         $this->sessionModel     = $sm;
-        $this->fileController   = $frc;
+        // $this->fileController   = $frc;
     }
 
     public function loginControl() {
@@ -28,7 +28,7 @@ class LoginController {
         $cookie       = $this->loginView->keepMeLoggedIn();
         
         if ($successLogin) {
-            $this->fileController->initiateFileReader();
+            // $this->fileController->initiateFileReader();
 
             $this->loginView->keepMeLoggedValidation($userCredentials->getUsername(), $userCredentials->getPassword());
             if ($this->sessionModel->getUserSession()) {

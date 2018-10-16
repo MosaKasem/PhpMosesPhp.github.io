@@ -6,43 +6,39 @@ namespace controller;
 
 class RouteController {
 
-    private $isLoggedIn      ; // Variable
+    private $isLoggedIn         ; // Variable
 
-    private $register        ; // Model
-    private $database        ; // Model
-    private $sessionModel    ; // Model
-    private $loginModel      ; // Model
-    private $textSnippetModel; // Model
+    private $register           ; // Model
+    private $database           ; // Model
+    private $sessionModel       ; // Model
 
-    private $loginView       ; // View
-    private $layoutView      ; // View
-    private $registerView    ; // View
-    private $dateTimeView    ; // View
-    private $fileReaderView  ; // View
+    private $loginView          ; // View
+    private $layoutView         ; // View
+    private $registerView       ; // View
+    private $dateTimeView       ; // View
+    private $userTextSnippView  ; // View
 
     private $loginController    ; // Controller
     private $registerController ; // Controller
     private $fileReadController ; // Controller
 
 
-    public function __construct(\model\RegisterModel $rm, \model\SessionModel $sm, \model\LoginModel $lm, \view\LoginView $lv, \view\LayoutView $lov, \view\RegisterView $rv, \view\DateTimeView $dtv, \view\UsersTextSnippetsView $fr, \model\UsersTextSnippetModel $utsm) {
+    public function __construct( \model\SessionModel $sm, \view\LoginView $lv, \view\LayoutView $lov, \view\RegisterView $rv, \view\DateTimeView $dtv, \view\UsersTextSnippetsView $utsv, UsersTextSnippetController $utsc, LoginController $lc, RegisterController $rc) {
         // Model's folder initiation
-        $this->registerModel    = $rm;
+        // $this->registerModel    = $rm;
         $this->sessionModel     = $sm;
-        $this->loginModel       = $lm;
-        $this->textSnippetModel = $utsm;
 
         // View's Folder initiation
         $this->loginView        = $lv;
         $this->layoutView       = $lov;
         $this->registerView     = $rv;
         $this->dateTimeView     = $dtv;
-        $this->fileReaderView   = $fr;
+        $this->fileReaderView   = $utsv;
 
         // Controller's folder initiation
-        $this->fileReadController   = new \controller\UsersTextSnippetController($this->sessionModel, $this->fileReaderView, $this->textSnippetModel);
-        $this->loginController      = new \controller\LoginController($this->loginView, $this->loginModel, $this->sessionModel, $this->fileReadController);
-        $this->registerController   = new \controller\RegisterController($this->registerView, $this->registerModel);
+        $this->UsersTextSnippetController    = $utsc;
+        $this->loginController               = $lc;
+        $this->registerController            = $rc;
     }
     public function start() {
 
@@ -56,9 +52,9 @@ class RouteController {
         if ($this->registerView->userWantsToRegister()) {
             $this->registerController->registerControl();
         }
-        
+
         if ($this->sessionModel->handleIsLoggedIn()) {
-            $this->fileReadController->initiateFileReader();
+            $this->UsersTextSnippetController->initiateFileReader();
         }
 
         //?register ? true : false

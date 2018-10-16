@@ -61,6 +61,7 @@ class UsersTextSnippetsView
         $file = file_get_contents($this->filename);
         return $file;
     }
+
     public function insertTextInTag()
     {
         $getText = $this->getTextInput();
@@ -68,7 +69,7 @@ class UsersTextSnippetsView
         {
             $this->setMessage("Can't be empty!");
         } else if (preg_match('/[^A-Za-z0-9]/', $getText)) {
-            $this->setMessage("Only characters and numbers allowed!");
+            $this->setMessage("Only letters-numbers allowed!");
          }else {
             return "<p>" . $getText . "</p>";
         }

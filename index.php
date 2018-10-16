@@ -36,7 +36,11 @@ $lv     = new    \view\LoginView($sm);
 $lov    = new    \view\LayoutView();
 $rv     = new    \view\RegisterView();
 $dtv    = new    \view\DateTimeView();
-$fr     = new    \view\UsersTextSnippetsView($utsm->getFileName());
+$utsv   = new    \view\UsersTextSnippetsView($utsm->getFileName());
 
-$mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $fr, $utsm);
+$utsc   = new   \controller\UsersTextSnippetController($sm, $utsv, $utsm);
+$lc     = new   \controller\LoginController($lv, $lm, $sm/*,$utsc*/);
+$rc     = new   \controller\RegisterController($rv, $rm);
+
+$mainController = new \controller\RouteController( $sm,  $lv, $lov, $rv, $dtv, $utsv, $utsc, $lc, $rc );
 $mainController->start();
