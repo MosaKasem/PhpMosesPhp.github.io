@@ -12,7 +12,7 @@ class LoginController {
     private $sessionModel     ; // model
     private $userCredentials  ; // model
 
-    public function __construct(\view\LoginView $lv, \model\LoginModel $lm, \model\SessionModel $sm, \controller\FileReaderController $frc) {
+    public function __construct(\view\LoginView $lv, \model\LoginModel $lm, \model\SessionModel $sm, \controller\UsersTextSnippetController $frc) {
         $this->loginView        = $lv;
         $this->loginModel       = $lm;
         $this->sessionModel     = $sm;

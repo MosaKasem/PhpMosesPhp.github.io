@@ -2,11 +2,11 @@
 
 namespace view;
 
-class FileReaderView
+class UsersTextSnippetsView
 {
-    private static $messageId 		=	'FileReaderView::Message';
-    private static $text        	= 	'FileReaderView::Text';
-    private static $submitBtn   	= 	'FileReaderView::SubmitBtn';
+    private static $messageId 		=	'UsersTextSnippetsView::Message';
+    private static $text        	= 	'UsersTextSnippetsView::Text';
+    private static $submitBtn   	= 	'UsersTextSnippetsView::SubmitBtn';
 
     private $FileReaderUrl          =   "text";
 

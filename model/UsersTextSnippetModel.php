@@ -2,7 +2,7 @@
 
 namespace model;
 
-class FileLoaderModel
+class UsersTextSnippetModel
 {
     // private $file;
     function __construct()
@@ -11,7 +11,7 @@ class FileLoaderModel
     }
     public function addTextToFile($file, $text)
     {
-        $file = "uploadedContent.txt";
+        // $file = "uploadedContent.txt";
         $Currentfile = file_get_contents($file);
         $Currentfile .= $text;
         file_put_contents($file, $Currentfile);

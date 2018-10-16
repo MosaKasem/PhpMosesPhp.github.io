@@ -4,7 +4,7 @@ namespace view;
 
 class LayoutView {
   
-  public function render($isLoggedIn, $pg, DateTimeView $dtv, FileReaderView $frv) {
+  public function render($isLoggedIn, $pg, DateTimeView $dtv, UsersTextSnippetsView $frv) {
 
     echo '<!DOCTYPE html>
       <html>

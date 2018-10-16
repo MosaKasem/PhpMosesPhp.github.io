@@ -24,7 +24,7 @@ class RouteController {
     private $fileReadController ; // Controller
 
 
-    public function __construct(\model\RegisterModel $rm, \model\SessionModel $sm, \model\LoginModel $lm, \view\LoginView $lv, \view\LayoutView $lov, \view\RegisterView $rv, \view\DateTimeView $dtv, \view\FileReaderView $fr) {
+    public function __construct(\model\RegisterModel $rm, \model\SessionModel $sm, \model\LoginModel $lm, \view\LoginView $lv, \view\LayoutView $lov, \view\RegisterView $rv, \view\DateTimeView $dtv, \view\UsersTextSnippetsView $fr) {
         // Model's folder initiation
         $this->registerModel    = $rm;
         $this->sessionModel     = $sm;
@@ -38,7 +38,7 @@ class RouteController {
         $this->fileReaderView   = $fr;
 
         // Controller's folder initiation
-        $this->fileReadController   = new \controller\FileReaderController($this->sessionModel, $this->fileReaderView);
+        $this->fileReadController   = new \controller\UsersTextSnippetController($this->sessionModel, $this->fileReaderView);
         $this->loginController      = new \controller\LoginController($this->loginView, $this->loginModel, $this->sessionModel, $this->fileReadController);
         $this->registerController   = new \controller\RegisterController($this->registerView, $this->registerModel);
     }

@@ -2,19 +2,20 @@
 
 namespace controller;
 
-class FileReaderController
+class UsersTextSnippetController
 {
     private $sessionModel       ; // Model
-    private $fileReaderView     ; // View
     private $fileModule         ; // Model
+
+    private $fileReaderView     ; // View
 
 
     private $fileReader;
 
-    public function __construct(\model\SessionModel $sm, \view\FileReaderView $frv) {
+    public function __construct(\model\SessionModel $sm, \view\UsersTextSnippetsView $frv) {
         $this->sessionModel   = $sm;
         $this->fileReaderView = $frv;
-        $this->fileModule     = new \model\FileLoaderModel();
+        $this->fileModule     = new \model\UsersTextSnippetModel();
     }
     public function initiateFileReader()
     {
