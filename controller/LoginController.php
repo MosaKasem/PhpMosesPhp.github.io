@@ -3,9 +3,6 @@
 namespace controller;
 
 class LoginController {
-
-    // private $fileController   ; // controller
-
     private $loginView        ; // view
 
     private $loginModel       ; // model
@@ -16,7 +13,6 @@ class LoginController {
         $this->loginView        = $lv;
         $this->loginModel       = $lm;
         $this->sessionModel     = $sm;
-        // $this->fileController   = $frc;
     }
 
     public function loginControl() {
