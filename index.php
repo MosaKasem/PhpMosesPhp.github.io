@@ -30,13 +30,13 @@ session_start();
 $rm     = new    \model\RegisterModel();
 $sm     = new    \model\SessionModel();
 $lm     = new    \model\LoginModel();
-$fm     = new    \model\UsersTextSnippetModel();
+$utsm   = new    \model\UsersTextSnippetModel();
 
-$lv     = new    \view\LoginView();
+$lv     = new    \view\LoginView($sm);
 $lov    = new    \view\LayoutView();
 $rv     = new    \view\RegisterView();
 $dtv    = new    \view\DateTimeView();
-$fr     = new    \view\UsersTextSnippetsView($fm->getFileName());
+$fr     = new    \view\UsersTextSnippetsView($utsm->getFileName());
 
-$mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $fr);
+$mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $fr, $utsm);
 $mainController->start();

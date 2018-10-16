@@ -12,6 +12,7 @@ class RouteController {
     private $database        ; // Model
     private $sessionModel    ; // Model
     private $loginModel      ; // Model
+    private $textSnippetModel; // Model
 
     private $loginView       ; // View
     private $layoutView      ; // View
@@ -24,11 +25,12 @@ class RouteController {
     private $fileReadController ; // Controller
 
 
-    public function __construct(\model\RegisterModel $rm, \model\SessionModel $sm, \model\LoginModel $lm, \view\LoginView $lv, \view\LayoutView $lov, \view\RegisterView $rv, \view\DateTimeView $dtv, \view\UsersTextSnippetsView $fr) {
+    public function __construct(\model\RegisterModel $rm, \model\SessionModel $sm, \model\LoginModel $lm, \view\LoginView $lv, \view\LayoutView $lov, \view\RegisterView $rv, \view\DateTimeView $dtv, \view\UsersTextSnippetsView $fr, \model\UsersTextSnippetModel $utsm) {
         // Model's folder initiation
         $this->registerModel    = $rm;
         $this->sessionModel     = $sm;
         $this->loginModel       = $lm;
+        $this->textSnippetModel = $utsm;
 
         // View's Folder initiation
         $this->loginView        = $lv;
@@ -38,7 +40,7 @@ class RouteController {
         $this->fileReaderView   = $fr;
 
         // Controller's folder initiation
-        $this->fileReadController   = new \controller\UsersTextSnippetController($this->sessionModel, $this->fileReaderView);
+        $this->fileReadController   = new \controller\UsersTextSnippetController($this->sessionModel, $this->fileReaderView, $this->textSnippetModel);
         $this->loginController      = new \controller\LoginController($this->loginView, $this->loginModel, $this->sessionModel, $this->fileReadController);
         $this->registerController   = new \controller\RegisterController($this->registerView, $this->registerModel);
     }

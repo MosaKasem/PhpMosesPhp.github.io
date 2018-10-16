@@ -11,11 +11,6 @@ class UsersTextSnippetModel
     }
     public function addTextToFile($file, $text)
     {
-        // $file = "uploadedContent.txt";
-        // $file2 = "uploadedContent.txt";
-        // $Currentfile = file_get_contents($filename);
-        // var_dump($file);
-
         $file .= $text;
         file_put_contents($this->filename, $file);
     }
@@ -23,6 +18,4 @@ class UsersTextSnippetModel
     {
         return $this->filename;
     }
-    // public function
-    // public function resetText()
 }

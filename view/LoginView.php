@@ -19,9 +19,9 @@ class LoginView {
 	private $message;
 	private $session;
 
-	public function __construct() {
+	public function __construct($sm) {
 		$this->message = "";
-		$this->session = new \model\SessionModel();
+		$this->session = $sm;
 	}
 
 	/**
