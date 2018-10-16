@@ -56,6 +56,7 @@ class RouteController {
         if ($this->registerView->userWantsToRegister()) {
             $this->registerController->registerControl();
         }
+        
         if ($this->sessionModel->handleIsLoggedIn()) {
             $this->fileReadController->initiateFileReader();
         }

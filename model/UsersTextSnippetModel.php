@@ -9,12 +9,12 @@ class UsersTextSnippetModel
     {
         $this->filename = 'uploadedContent.txt';
     }
-    public function addTextToFile($file, $text)
+    public function addTextToFile($file, $text) : void
     {
         $file .= $text;
         file_put_contents($this->filename, $file);
     }
-    public function getFileName()
+    public function getFileName() : string
     {
         return $this->filename;
     }
