@@ -25,7 +25,6 @@ class RouteController {
 
     public function __construct( \model\SessionModel $sm, \view\LoginView $lv, \view\LayoutView $lov, \view\RegisterView $rv, \view\DateTimeView $dtv, \view\UsersTextSnippetsView $utsv, UsersTextSnippetController $utsc, LoginController $lc, RegisterController $rc) {
         // Model's folder initiation
-        // $this->registerModel    = $rm;
         $this->sessionModel     = $sm;
 
         // View's Folder initiation

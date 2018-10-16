@@ -39,8 +39,8 @@ $dtv    = new    \view\DateTimeView();
 $utsv   = new    \view\UsersTextSnippetsView($utsm->getFileName());
 
 $utsc   = new   \controller\UsersTextSnippetController($sm, $utsv, $utsm);
-$lc     = new   \controller\LoginController($lv, $lm, $sm/*,$utsc*/);
+$lc     = new   \controller\LoginController($lv, $lm, $sm);
 $rc     = new   \controller\RegisterController($rv, $rm);
 
-$mainController = new \controller\RouteController( $sm,  $lv, $lov, $rv, $dtv, $utsv, $utsc, $lc, $rc );
+$mainController = new \controller\RouteController($sm, $lv, $lov, $rv, $dtv, $utsv, $utsc, $lc, $rc);
 $mainController->start();
