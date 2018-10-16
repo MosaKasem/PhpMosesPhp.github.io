@@ -1,5 +1,4 @@
 <?php
-// require_once("model/init.php"); // LOCAL DATABASE
 
 // View
 require_once('view/LoginView.php');
@@ -31,13 +30,14 @@ session_start();
 $rm     = new    \model\RegisterModel();
 $sm     = new    \model\SessionModel();
 $lm     = new    \model\LoginModel();
+$fm     = new    \model\UsersTextSnippetModel();
 
 $lv     = new    \view\LoginView();
 $lov    = new    \view\LayoutView();
 $rv     = new    \view\RegisterView();
 $dtv    = new    \view\DateTimeView();
-$fr     = new    \view\UsersTextSnippetsView();
+$fr     = new    \view\UsersTextSnippetsView($fm->getFileName());
+var_dump($fm->getFileName());
 
 $mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $fr);
 $mainController->start();
-

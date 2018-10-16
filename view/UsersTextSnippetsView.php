@@ -8,15 +8,13 @@ class UsersTextSnippetsView
     private static $text        	= 	'UsersTextSnippetsView::Text';
     private static $submitBtn   	= 	'UsersTextSnippetsView::SubmitBtn';
 
-    private $FileReaderUrl          =   "text";
-
     private $message;
-    private $file;
+    private $filename;
 
-    public function __construct()
+    public function __construct($fn)
     {
         $this->message = "";
-        $this->file = null;
+        $this->filename = fn;
     }
 
     public function generateUploadFormHTML($isLoggedIn)
@@ -60,6 +58,7 @@ class UsersTextSnippetsView
 
     public function getFileContent()
     {
+        echo ($this->filename);
         $file = file_get_contents("uploadedContent.txt");
         return $file;
     }
