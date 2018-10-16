@@ -14,7 +14,7 @@ class UsersTextSnippetsView
     public function __construct($fn)
     {
         $this->message = "";
-        $this->filename = fn;
+        $this->filename = $fn;
     }
 
     public function generateUploadFormHTML($isLoggedIn)
@@ -58,8 +58,7 @@ class UsersTextSnippetsView
 
     public function getFileContent()
     {
-        echo ($this->filename);
-        $file = file_get_contents("uploadedContent.txt");
+        $file = file_get_contents($this->filename);
         return $file;
     }
     public function insertTextInTag()

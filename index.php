@@ -37,7 +37,6 @@ $lov    = new    \view\LayoutView();
 $rv     = new    \view\RegisterView();
 $dtv    = new    \view\DateTimeView();
 $fr     = new    \view\UsersTextSnippetsView($fm->getFileName());
-var_dump($fm->getFileName());
 
 $mainController = new \controller\RouteController($rm, $sm, $lm, $lv, $lov, $rv, $dtv, $fr);
 $mainController->start();
