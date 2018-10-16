@@ -2,7 +2,7 @@
 
 namespace model;
 
-// We'll pretend this is the database.
+// "Database"
 
 class LoginModel {
     private $username;

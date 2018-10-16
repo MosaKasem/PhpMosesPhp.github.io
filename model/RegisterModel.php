@@ -8,8 +8,8 @@ class RegisterModel {
     private $username;
     private $password;
 
-    public function validateName($username) {
-        if ($username == "Admin") {
+    public function validateName($userCredentials) {
+        if ($userCredentials->getUsername() == "Admin") {
             return true;
         } else {
             return false;

@@ -79,6 +79,13 @@ class RegisterView {
 		return true;
 	}
 
+	public function returnRegisteredUser() {
+		if ($this->validateInput()) 
+		{
+			return new \model\UserCredentials($this->getRequestUserName(), $this->getRequestPassword());
+		}
+	}
+
 	public function setMessage($message) {
 		$this->message = $message;
 	}

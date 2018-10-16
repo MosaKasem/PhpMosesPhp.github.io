@@ -28,7 +28,7 @@ class FileReaderView
 				<p id="' . self::$messageId . '">' . $this->getMessage() .'</p>
                 <input type="text" name="' . self::$text . '" value="" ></input>
                 <input type="submit" name="' . self::$submitBtn . '" value="Click" />
-                <div>' . trim($this->showFileContent()) . '</div>
+                <div>' . trim($this->getFileContent()) . '</div>
 			</form>
         ';
         }
@@ -58,7 +58,7 @@ class FileReaderView
         }
     }
 
-    public function showFileContent()
+    public function getFileContent()
     {
         $file = file_get_contents("uploadedContent.txt");
         return $file;
