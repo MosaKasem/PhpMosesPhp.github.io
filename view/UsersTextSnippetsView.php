@@ -75,6 +75,10 @@ class UsersTextSnippetsView
         }
     }
 
-
+    public function textSnippetMaxLimit()
+    {
+        $file = $this->getFileContent();
+        echo strlen($file);
+    }
 
 }

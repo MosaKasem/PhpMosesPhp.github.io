@@ -4,18 +4,21 @@ namespace model;
 
 class UsersTextSnippetModel
 {
-    private $filename;
+    private $filenameForTextSnippets;
     function __construct()
     {
-        $this->filename = 'uploadedContent.txt';
+        $this->filenameForTextSnippets = 'uploadedContent.txt';
     }
+
     public function addTextToFile($file, $text) : void
     {
         $file .= $text;
-        file_put_contents($this->filename, $file);
+        file_put_contents($this->filenameForTextSnippets, $file);
     }
+
     public function getFileName() : string
     {
-        return $this->filename;
+        return $this->filenameForTextSnippets;
     }
+    
 }

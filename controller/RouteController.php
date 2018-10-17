@@ -9,14 +9,12 @@ class RouteController {
     private $isLoggedIn         ; // Variable
 
     private $register           ; // Model
-    private $database           ; // Model
     private $sessionModel       ; // Model
 
     private $loginView          ; // View
     private $layoutView         ; // View
     private $registerView       ; // View
     private $dateTimeView       ; // View
-    private $userTextSnippView  ; // View
 
     private $loginController    ; // Controller
     private $registerController ; // Controller
@@ -40,7 +38,7 @@ class RouteController {
         $this->registerController            = $rc;
     }
     public function start() {
-
+        
         if ($this->loginView->userWantsToLogin()) {
             $this->loginController->loginControl();
         }
@@ -56,7 +54,7 @@ class RouteController {
             $this->UsersTextSnippetController->initiateFileReader();
         }
 
-        //?register ? true : false
+        // ?register ? true : false
         $registerView = $this->layoutView->getRegisterView();
         if ($registerView) {
             $this->layoutView->render($this->sessionModel->handleIsLoggedIn(), $this->registerView, $this->dateTimeView, $this->fileReaderView);

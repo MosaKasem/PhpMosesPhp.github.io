@@ -13,8 +13,6 @@ class RegisterController {
         $this->registerModel    = $rm;
     }
     public function registerControl() {
-        $this->registerModel->readFromDatabase();
-
         $userCredentials = $this->registerView->returnRegisteredUser();
 
         $unsuccessful = $this->registerModel->validateName($userCredentials);
