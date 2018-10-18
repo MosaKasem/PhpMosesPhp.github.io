@@ -17,20 +17,19 @@ class UsersTextSnippetController
 
     public function initiateFileReader()
     {
-        $textLength = $this->userTextSnippView->getTextSnippetLength();
-        
         if($this->userTextSnippView->textSnippetMaxLimit())
         {
             $this->UserSnippetsModel->resetFile();
-        } /* else {
-            $this->userTextSnippView->setMessage($this->userTextSnippView->getMaxLimitValue() - $textLength . '');
-        } */
+        }
 
         if ($this->userTextSnippView->formTextSubmit());
         {
-                $text = $this->userTextSnippView->insertTextInTag();
-                $this->UserSnippetsModel->addTextToFile($this->userTextSnippView->getFileContent(), $text);
-            
+            $text = $this->userTextSnippView->insertTextInTag();
+            if ($text == false)
+            {
+                $this->UserSnippetsModel->resetFile();
+            }
+            $this->UserSnippetsModel->addTextToFile($this->userTextSnippView->getFileContent(), $text);
         }
 
     }

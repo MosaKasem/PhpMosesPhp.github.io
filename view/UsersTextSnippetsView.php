@@ -26,7 +26,7 @@ class UsersTextSnippetsView
 		return '
 			<form  method="post" >
                 <p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
-                <p id="' . self::$textLength . '">' . $this->getTextSnippetLength() - $MAX_TEXT_SNIPPETS . '</p>
+                <p id="' . self::$textLength . '">Theres still room for ' . $this->getTextSnippetLength() . ' more characters</p>
                 <input type="text" name="' . self::$text . '" value="" />
                 <input type="submit" name="' . self::$submitBtn . '" value="Click" />
                 <div>' . trim($this->getFileContent()) . '</div>
@@ -55,7 +55,6 @@ class UsersTextSnippetsView
     {
         if (isset($_POST[self::$text]))  
         {
-            var_dump($_POST[self::$text]);
             return $_POST[self::$text];
         } else {
             return "";
@@ -80,7 +79,10 @@ class UsersTextSnippetsView
             $this->setMessage("Can't be empty!");
         } else if (preg_match('/[^A-Za-z0-9]/', $input)) {
             $this->setMessage("Only letters-numbers allowed!");
-         }else {
+         } else if (strlen($input) >= $this->getTextSnippetLength()) {
+             $this->setMessage("You'v gone past the limit of max characters! Reseting!");
+            return $this->textSnippetMaxLimit();
+         } else {
             return "<p>" . $input . "</p>";
         }
     }
@@ -89,12 +91,12 @@ class UsersTextSnippetsView
     {
         $file = strip_tags($this->getFileContent());
         if ($file) {
-            return strlen($file) > $this->MAX_TEXT_SNIPPETS;
+            return strlen($file) >= $this->MAX_TEXT_SNIPPETS;
         }
     }
     public function getTextSnippetLength()
     {
-        return strlen(strip_tags($this->getFileContent()));
+        return $this->MAX_TEXT_SNIPPETS - strlen(strip_tags($this->getFileContent()));
     }
     public function getMaxLimitValue()
     {
