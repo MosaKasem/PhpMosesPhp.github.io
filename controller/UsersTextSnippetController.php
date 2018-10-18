@@ -18,19 +18,18 @@ class UsersTextSnippetController
     public function initiateFileReader()
     {
         $textLength = $this->userTextSnippView->getTextSnippetLength();
-        if($this->userTextSnippView->textSnippetMaxLimit())
-        {
-            $this->UserSnippetsModel->resetFile();
-        } else {
-            // $this->userTextSnippView->setMessage($this->userTextSnippView->getMaxLimitValue() - $textLength . '');
-        }
-
         if ($this->userTextSnippView->textFileManage());
         {
             if ($this->userTextSnippView->getTextInput()) {
                 $text = $this->userTextSnippView->insertTextInTag();
                 $this->UserSnippetsModel->addTextToFile($this->userTextSnippView->getFileContent(), $text);
             }
+        }
+        if($this->userTextSnippView->textSnippetMaxLimit())
+        {
+            $this->UserSnippetsModel->resetFile();
+        } else {
+            // $this->userTextSnippView->setMessage($this->userTextSnippView->getMaxLimitValue() - $textLength . '');
         }
     }
 }

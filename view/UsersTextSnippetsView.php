@@ -54,6 +54,8 @@ class UsersTextSnippetsView
         if (isset($_POST[self::$text]))  
         {
             return $_POST[self::$text];
+        } else {
+            return "";
         }
     }
 
@@ -65,12 +67,13 @@ class UsersTextSnippetsView
 
     public function insertTextInTag()
     {
+        var_dump($this->getTextInput() != "");
         return $this->validateInput($this->getTextInput());
     }
 
     public function validateInput($input)
     {
-        if (empty($input))
+        if (empty($input) || $input == "")
         {
             $this->setMessage("Can't be empty!");
         } else if (preg_match('/[^A-Za-z0-9]/', $input)) {
