@@ -27,10 +27,10 @@ class UsersTextSnippetController
 
         if ($this->userTextSnippView->textFileManage());
         {
-            // if ($this->userTextSnippView->getTextInput()) {
+            if ($this->userTextSnippView->getTextInput()) {
                 $text = $this->userTextSnippView->insertTextInTag();
                 $this->UserSnippetsModel->addTextToFile($this->userTextSnippView->getFileContent(), $text);
-            // }
+            }
         }
     }
 }

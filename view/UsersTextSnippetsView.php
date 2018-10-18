@@ -65,16 +65,18 @@ class UsersTextSnippetsView
 
     public function insertTextInTag()
     {
-        if ($this->getTextInput())
+        return $this->validateInput($this->getTextInput());
+    }
+
+    public function validateInput($input)
+    {
+        if (empty($input))
         {
-            if (empty($this->getTextInput()))
-            {
-                $this->setMessage("Can't be empty!");
-            } else if (preg_match('/[^A-Za-z0-9]/', $this->getTextInput())) {
-                $this->setMessage("Only letters-numbers allowed!");
-             }else {
-                return "<p>" . $this->getTextInput() . "</p>";
-            }
+            $this->setMessage("Can't be empty!");
+        } else if (preg_match('/[^A-Za-z0-9]/', $input)) {
+            $this->setMessage("Only letters-numbers allowed!");
+         }else {
+            return "<p>" . $input . "</p>";
         }
     }
 
