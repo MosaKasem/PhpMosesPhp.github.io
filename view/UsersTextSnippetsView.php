@@ -24,7 +24,7 @@ class UsersTextSnippetsView
         {
 		return '
 			<form  method="post" >
-				<p id="' . self::$messageId . '">' . $this->getMessage() .'</p>
+				<p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
                 <input type="text" name="' . self::$text . '" value="" ></input>
                 <input type="submit" name="' . self::$submitBtn . '" value="Click" />
                 <div>' . trim($this->getFileContent()) . '</div>
@@ -54,8 +54,9 @@ class UsersTextSnippetsView
         if (isset($_POST[self::$text]))  
         {
             return $_POST[self::$text];
+        } else {
+            return false;
         }
-        return false;
     }
 
     public function getFileContent()
@@ -79,16 +80,14 @@ class UsersTextSnippetsView
 
     public function textSnippetMaxLimit()
     {
-        $file = $this->getFileContent();
+        $file = strip_tags($this->getFileContent());
         if ($file) {
-            $filterElement = preg_split('/[^<p><\/p>]/', $file);
-            var_dump($filterElement);
             return strlen($file) > $this->MAX_TEXT_SNIPPETS;
         }
     }
     public function getTextSnippetLength()
     {
-        return strlen($this->getFileContent());
+        return strlen(strip_tags($this->getFileContent()));
     }
 
 }
