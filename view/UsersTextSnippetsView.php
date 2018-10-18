@@ -26,7 +26,7 @@ class UsersTextSnippetsView
 		return '
 			<form  method="post" >
                 <p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
-                <p id="' . self::$textLength . '">Theres still room for ' . $this->getTextSnippetLength() . ' more characters</p>
+                <p id="' . self::$textLength . '">Theres still room for ' . $this->getTextSnippetLength() . ' more letters</p>
                 <input type="text" name="' . self::$text . '" value="" />
                 <input type="submit" name="' . self::$submitBtn . '" value="Click" />
                 <div>' . trim($this->getFileContent()) . '</div>
@@ -79,9 +79,8 @@ class UsersTextSnippetsView
             $this->setMessage("Can't be empty!");
         } else if (preg_match('/[^A-Za-z0-9]/', $input)) {
             $this->setMessage("Only letters-numbers allowed!");
-         } else if (strlen($input) >= $this->getTextSnippetLength()) {
-             $this->setMessage("You'v gone past the limit of max characters! Reseting!");
-            return $this->textSnippetMaxLimit();
+         } else if (strlen($input) > $this->getTextSnippetLength()) {
+            $this->setMessage("You Wrote " . strlen($this->getTextInput()) . " letters . Can't exceed the limit of " . $this->getTextSnippetLength() . " letters");
          } else {
             return "<p>" . $input . "</p>";
         }
