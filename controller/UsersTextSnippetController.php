@@ -17,12 +17,11 @@ class UsersTextSnippetController
 
     public function initiateFileReader()
     {
-        var_dump($this->userTextSnippView->textSnippetMaxLimit());
         if($this->userTextSnippView->textSnippetMaxLimit())
         {
             $this->UserSnippetsModel->resetFile();
         } else {
-            $this->userTextSnippView->setMessage("");
+            $this->userTextSnippView->setMessage('' . $this->userTextSnippView->getTextSnippetLength() . '');
         }
 
         if ($this->userTextSnippView->textFileManage());

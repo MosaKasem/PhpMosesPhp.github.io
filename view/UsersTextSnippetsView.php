@@ -55,6 +55,7 @@ class UsersTextSnippetsView
         {
             return $_POST[self::$text];
         }
+        return false;
     }
 
     public function getFileContent()
@@ -66,7 +67,7 @@ class UsersTextSnippetsView
     public function insertTextInTag()
     {
         $getText = $this->getTextInput();
-        if (empty($getText))
+        if (empty($getText) && $getText)
         {
             $this->setMessage("Can't be empty!");
         } else if (preg_match('/[^A-Za-z0-9]/', $getText)) {
@@ -80,8 +81,14 @@ class UsersTextSnippetsView
     {
         $file = $this->getFileContent();
         if ($file) {
-            return strlen($file) > 150;
+            $filterElement = preg_split('/[^<p><\/p>]/', $file);
+            var_dump($filterElement);
+            return strlen($file) > $this->MAX_TEXT_SNIPPETS;
         }
+    }
+    public function getTextSnippetLength()
+    {
+        return strlen($this->getFileContent());
     }
 
 }
