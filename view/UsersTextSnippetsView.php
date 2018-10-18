@@ -4,6 +4,7 @@ namespace view;
 
 class UsersTextSnippetsView
 {
+    private static $textLength 		=	'UsersTextSnippetsView::TextLength';
     private static $messageId 		=	'UsersTextSnippetsView::Message';
     private static $text        	= 	'UsersTextSnippetsView::Text';
     private static $submitBtn   	= 	'UsersTextSnippetsView::SubmitBtn';
@@ -24,8 +25,9 @@ class UsersTextSnippetsView
         {
 		return '
 			<form  method="post" >
-				<p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
-                <input type="text" name="' . self::$text . '" value="" ></input>
+                <p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
+                <p id="' . self::$textLength . '">' . $this->getTextSnippetLength() - $MAX_TEXT_SNIPPETS . '</p>
+                <input type="text" name="' . self::$text . '" value="" />
                 <input type="submit" name="' . self::$submitBtn . '" value="Click" />
                 <div>' . trim($this->getFileContent()) . '</div>
 			</form>
@@ -45,7 +47,7 @@ class UsersTextSnippetsView
         return $this->message;
     }
 
-    public function textFileManage()
+    public function formTextSubmit()
     {
         return isset($_POST[self::$submitBtn]) ? true : false;
     }
@@ -53,6 +55,7 @@ class UsersTextSnippetsView
     {
         if (isset($_POST[self::$text]))  
         {
+            var_dump($_POST[self::$text]);
             return $_POST[self::$text];
         } else {
             return "";
@@ -67,7 +70,6 @@ class UsersTextSnippetsView
 
     public function insertTextInTag()
     {
-        var_dump($this->getTextInput() != "");
         return $this->validateInput($this->getTextInput());
     }
 
