@@ -10,7 +10,7 @@ class UsersTextSnippetsView
 
     private $message;
     private $filename;
-    private $MAX_TEXT_SNIPPETS = 150;
+    private $MAX_TEXT_SNIPPETS = 30;
 
     public function __construct($fn)
     {
@@ -54,8 +54,6 @@ class UsersTextSnippetsView
         if (isset($_POST[self::$text]))  
         {
             return $_POST[self::$text];
-        } else {
-            return false;
         }
     }
 
@@ -67,14 +65,16 @@ class UsersTextSnippetsView
 
     public function insertTextInTag()
     {
-        $getText = $this->getTextInput();
-        if (empty($getText) && $getText)
+        if ($this->getTextInput())
         {
-            $this->setMessage("Can't be empty!");
-        } else if (preg_match('/[^A-Za-z0-9]/', $getText)) {
-            $this->setMessage("Only letters-numbers allowed!");
-         }else {
-            return "<p>" . $getText . "</p>";
+            if (empty($this->getTextInput()))
+            {
+                $this->setMessage("Can't be empty!");
+            } else if (preg_match('/[^A-Za-z0-9]/', $this->getTextInput())) {
+                $this->setMessage("Only letters-numbers allowed!");
+             }else {
+                return "<p>" . $this->getTextInput() . "</p>";
+            }
         }
     }
 
@@ -88,6 +88,10 @@ class UsersTextSnippetsView
     public function getTextSnippetLength()
     {
         return strlen(strip_tags($this->getFileContent()));
+    }
+    public function getMaxLimitValue()
+    {
+        return $this->MAX_TEXT_SNIPPETS;
     }
 
 }
