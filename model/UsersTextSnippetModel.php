@@ -20,5 +20,8 @@ class UsersTextSnippetModel
     {
         return $this->filenameForTextSnippets;
     }
-    
+    public function resetFile() : void
+    {
+        file_put_contents($this->filenameForTextSnippets, '');
+    }
 }

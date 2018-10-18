@@ -17,7 +17,14 @@ class UsersTextSnippetController
 
     public function initiateFileReader()
     {
-        $this->userTextSnippView->textSnippetMaxLimit();
+        var_dump($this->userTextSnippView->textSnippetMaxLimit());
+        if($this->userTextSnippView->textSnippetMaxLimit())
+        {
+            $this->UserSnippetsModel->resetFile();
+        } else {
+            $this->userTextSnippView->setMessage("");
+        }
+
         if ($this->userTextSnippView->textFileManage());
         {
             $text = $this->userTextSnippView->insertTextInTag();

@@ -10,6 +10,7 @@ class UsersTextSnippetsView
 
     private $message;
     private $filename;
+    private $MAX_TEXT_SNIPPETS = 150;
 
     public function __construct($fn)
     {
@@ -78,7 +79,9 @@ class UsersTextSnippetsView
     public function textSnippetMaxLimit()
     {
         $file = $this->getFileContent();
-        echo strlen($file);
+        if ($file) {
+            return strlen($file) > 150;
+        }
     }
 
 }
