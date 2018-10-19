@@ -31,7 +31,7 @@ $sm     = new    \model\SessionModel();
 $lm     = new    \model\LoginModel();
 $utsm   = new    \model\UsersTextSnippetModel();
 
-$lv     = new    \view\LoginView($sm->userIsLoggedIn());
+$lv     = new    \view\LoginView($sm);
 $lov    = new    \view\LayoutView();
 $rv     = new    \view\RegisterView();
 $dtv    = new    \view\DateTimeView();

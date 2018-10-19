@@ -17,15 +17,17 @@ class LoginView {
 	
 
 	private $message;
-	private $userIsLoggedIn;
+	private $session;
 
-	public function __construct($uili) {
+	public function __construct($sm) {
 		$this->message = "";
-		$this->userIsLoggedIn = $uili;
+		$this->session = $sm;
 	}
 
 	public function response() {
-		if ($this->userIsLoggedIn) {
+		$userIsLogged = $this->session->userIsLoggedIn();
+
+		if ($userIsLogged) {
 			$response = $this->generateLogoutButtonHTML($this->message);
 		} else {
 			$response = $this->generateLoginFormHTML($this->message);
@@ -88,11 +90,7 @@ class LoginView {
 	}
 
 	public function getRequestUserName() : string {
-		if (isset($_POST[self::$name])) {
-			return $_POST[self::$name];
-		} else {
-			return "";
-		}
+		return isset($_POST[self::$name]) ? $_POST[self::$name] : "";
 	}
 	public function getRequestPassword() : string {
 		if (isset($_POST[self::$password])) {
