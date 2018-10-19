@@ -17,15 +17,13 @@ class LoginController {
 
     public function loginControl() {
 
-        $userCredentials = $this->loginView->returnUserCredentials();
+        $userCredentials = $this->loginView->getUserCredentials();
 
         //Returns true or false
         $successLogin = $this->loginModel->validateLogin($userCredentials);
         $cookie       = $this->loginView->keepMeLoggedIn();
         
         if ($successLogin) {
-            // $this->fileController->initiateFileReader();
-
             $this->loginView->keepMeLoggedValidation($userCredentials->getUsername(), $userCredentials->getPassword());
             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');

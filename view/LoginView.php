@@ -127,7 +127,7 @@ class LoginView {
 		}
 		return true;
 	}
-	public function returnUserCredentials() {
+	public function getUserCredentials() {
 		if ($this->validateInput() == true) 
 		{
 			return new \model\UserCredentials($this->getRequestUserName(), $this->getRequestPassword());

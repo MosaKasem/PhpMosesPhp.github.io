@@ -4,6 +4,7 @@ namespace view;
 
 class UsersTextSnippetsView
 {
+    private static $userWrote 		=	'UsersTextSnippetsView::UserTextLength';
     private static $textLength 		=	'UsersTextSnippetsView::TextLength';
     private static $messageId 		=	'UsersTextSnippetsView::Message';
     private static $text        	= 	'UsersTextSnippetsView::Text';
@@ -11,7 +12,7 @@ class UsersTextSnippetsView
 
     private $message;
     private $filename;
-    private $MAX_TEXT_SNIPPETS = 30;
+    private $MAX_TEXT_SNIPPETS = 50;
 
     public function __construct($fn)
     {
@@ -25,6 +26,7 @@ class UsersTextSnippetsView
         {
 		return '
 			<form  method="post" >
+                <p id="' . self::$userWrote . '">' . $this->userWrote() . '</p>
                 <p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
                 <p id="' . self::$textLength . '">Theres still room for ' . $this->getTextSnippetLength() . ' more letters</p>
                 <input type="text" name="' . self::$text . '" value="" />
@@ -34,7 +36,7 @@ class UsersTextSnippetsView
         ';
         }
         {
-            return '<p>Login to add text<p>';
+            return '<p>Login to join the 50 letters words game!<p>';
         }
     }
 
@@ -78,9 +80,9 @@ class UsersTextSnippetsView
         {
             $this->setMessage("Can't be empty!");
         } else if (preg_match('/[^A-Za-z0-9]/', $input)) {
-            $this->setMessage("Only letters-numbers allowed!");
+            $this->setMessage("Only letters-numbers, no spaces allowed!");
          } else if (strlen($input) > $this->getTextSnippetLength()) {
-            $this->setMessage("You Wrote " . strlen($this->getTextInput()) . " letters . Can't exceed the limit of " . $this->getTextSnippetLength() . " letters");
+            $this->setMessage("You Wrote " . strlen($this->getTextInput()) . " letters, exceeding the limit of " . $this->getTextSnippetLength() . " letters left");
          } else {
             return "<p>" . $input . "</p>";
         }
@@ -100,6 +102,10 @@ class UsersTextSnippetsView
     public function getMaxLimitValue()
     {
         return $this->MAX_TEXT_SNIPPETS;
+    }
+    public function userWrote()
+    {
+        return strlen($this->getTextInput());
     }
 
 }
