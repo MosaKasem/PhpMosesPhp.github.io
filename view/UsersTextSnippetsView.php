@@ -19,9 +19,12 @@ class UsersTextSnippetsView
         $this->filename = $fn;
     }
 
-    public function generateUploadFormHTML($isLoggedIn, $register)
+    public function generateUploadFormHTML($isLoggedIn, $registerUrl)
     {
-        $register ? var_dump("hello") : var_dump("byebye");
+        if ($registerUrl)
+        {
+            return '';
+        }
         if ($isLoggedIn)
         {
 		return '

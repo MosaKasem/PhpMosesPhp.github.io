@@ -17,22 +17,15 @@ class LoginView {
 	
 
 	private $message;
-	private $session;
+	private $userIsLoggedIn;
 
-	public function __construct($sm) {
+	public function __construct($uili) {
 		$this->message = "";
-		$this->session = $sm;
+		$this->userIsLoggedIn = $uili;
 	}
 
-	/**
-	 * Create HTTP response
-	 * Should be called after a login attempt has been determined
-	 * @return void BUT writes to standard output and cookies!
-	 */
 	public function response() {
-		$userIsLogged = $this->session->userIsLoggedIn();
-
-		if ($userIsLogged) {
+		if ($this->userIsLoggedIn) {
 			$response = $this->generateLogoutButtonHTML($this->message);
 		} else {
 			$response = $this->generateLoginFormHTML($this->message);

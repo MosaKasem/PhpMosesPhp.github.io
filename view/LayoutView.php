@@ -5,7 +5,6 @@ namespace view;
 class LayoutView {
   
   public function render($isLoggedIn, $pg, DateTimeView $dtv, UsersTextSnippetsView $frv) {
-
     echo '<!DOCTYPE html>
       <html>
         <head>
@@ -25,7 +24,7 @@ class LayoutView {
       </html>
     ';
   }
-  // 
+
   private function renderIsLoggedIn($isLoggedIn) : string {
     if ($isLoggedIn) {
       return '<h2>Logged in</h2>';
@@ -33,11 +32,12 @@ class LayoutView {
       return '<h2>Not logged in</h2>';
     }
   }
+
   public function getRegisterView() : bool {
     return isset($_GET['register']);
   }
   private function renderLink() {
-    if (isset($_GET['register'])) {
+    if ($this->getRegisterView()) {
       return '<a href="?">Back to login</a>';
     } else {
       return '<a href="?register">Register a new user</a>';
