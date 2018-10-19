@@ -21,12 +21,15 @@ class LoginController {
 
         //Returns true or false
         $successLogin = $this->loginModel->validateLogin($userCredentials);
-
+        
+        if ($successLogin && $this->sessionModel->getUserSession()) {
+            $this->loginView->setMessage('');
+        }
         if ($successLogin) {
             $this->loginView->keepMeLoggedValidation($userCredentials->getUsername(), $userCredentials->getPassword());
-            if ($this->sessionModel->getUserSession()) {
+/*             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');
-            }
+            } */
             $this->sessionModel->storeUserToSession($userCredentials->getUsername());
         } else {
             $this->loginView->setMessage('Wrong name or password');
@@ -35,8 +38,8 @@ class LoginController {
     public function logoutControl() {
         $this->loginView->setMessage("Bye bye!");
 
-        if (!$this->sessionModel->getUserSession()) {
-
+        if (!$this->sessionModel->getUserSession()) 
+        {
             $this->loginView->setMessage("");
         }
         $this->sessionModel->destroySession();

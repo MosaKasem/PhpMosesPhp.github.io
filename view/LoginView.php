@@ -76,10 +76,22 @@ class LoginView {
 			</form>
 		';
 	}
-	
+
 	private function keepMeLoggedIn() {
 		return isset($_POST[self::$keep]) ? $_POST[self::$keep] : false;
 	}
+	private function validateInput() {
+		if (empty($this->getRequestUserName())) {
+			$this->setMessage('Username is missing');
+			return false;
+		}
+		if (empty($this->getRequestPassword())) {
+			$this->setMessage('Password is missing');
+			return false;
+		}
+		return true;
+	}
+	
 	public function userWantsToLogin() {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
@@ -102,17 +114,7 @@ class LoginView {
 		return $this->message;
 	}
 
-	private function validateInput() {
-		if (empty($this->getRequestUserName())) {
-			$this->setMessage('Username is missing');
-			return false;
-		}
-		if (empty($this->getRequestPassword())) {
-			$this->setMessage('Password is missing');
-			return false;
-		}
-		return true;
-	}
+
 	public function getUserCredentials() {
 		if ($this->validateInput() == true) 
 		{
