@@ -21,8 +21,7 @@ class LoginController {
 
         //Returns true or false
         $successLogin = $this->loginModel->validateLogin($userCredentials);
-        $cookie       = $this->loginView->keepMeLoggedIn();
-        
+
         if ($successLogin) {
             $this->loginView->keepMeLoggedValidation($userCredentials->getUsername(), $userCredentials->getPassword());
             if ($this->sessionModel->getUserSession()) {

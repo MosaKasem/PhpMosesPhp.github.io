@@ -76,16 +76,17 @@ class LoginView {
 			</form>
 		';
 	}
-
+	
+	private function keepMeLoggedIn() {
+		return isset($_POST[self::$keep]) ? $_POST[self::$keep] : false;
+	}
 	public function userWantsToLogin() {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
 	public function userWantsToLogOut() {
 		return isset($_POST[self::$logout]) ? true : false;
 	}
-	public function keepMeLoggedIn() {
-		return isset($_POST[self::$keep]) ? $_POST[self::$keep] : false;
-	}
+
 
 	public function getRequestUserName() : string {
 		return isset($_POST[self::$name]) ? $_POST[self::$name] : "";
@@ -124,14 +125,13 @@ class LoginView {
 		if ($this->keepMeLoggedIn()) {
 			$this->saveCookie($username, $password);
 			$this->setMessage('Welcome and you will be remembered');
-
 		} else {
 			$this->setMessage("Welcome");
 		}
 	}
 	
-	public function saveCookie($username, $password) { // 86400 is equivalent to 24 hours.
-		setcookie(self::$cookieName, $username, time() + 86400, "/");
+	public function saveCookie($username, $password) {
+		setcookie(self::$cookieName, $username, time() + 86400, "/"); // 86400 is equivalent to 24 hours.
 		setcookie(self::$cookiePassword, $password, time() + 86400, "/");
 		// setcookie syntax : setcookie(name,value,expire,path,domain,secure,httponly)
 	}
