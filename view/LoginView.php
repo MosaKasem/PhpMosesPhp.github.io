@@ -77,9 +77,6 @@ class LoginView {
 		';
 	}
 
-	private function keepMeLoggedIn() {
-		return isset($_POST[self::$keep]) ? $_POST[self::$keep] : false;
-	}
 	private function validateInput() {
 		if (empty($this->getRequestUserName())) {
 			$this->setMessage('Username is missing');
@@ -91,12 +88,15 @@ class LoginView {
 		}
 		return true;
 	}
-	
+
 	public function userWantsToLogin() {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
 	public function userWantsToLogOut() {
 		return isset($_POST[self::$logout]) ? true : false;
+	}
+	public function keepMeLoggedIn() {
+		return isset($_POST[self::$keep]) ? $_POST[self::$keep] : false;
 	}
 
 
@@ -122,13 +122,16 @@ class LoginView {
 		}
 	}
 
-	public function keepMeLoggedValidation($username, $password)
+	public function keepMeLoggedValidation($username, $password, $session)
 	{
+		var_dump($session);
 		if ($this->keepMeLoggedIn()) {
 			$this->saveCookie($username, $password);
 			$this->setMessage('Welcome and you will be remembered');
-		} else {
+		} else if (!$session) {
 			$this->setMessage("Welcome");
+		} else {
+			$this->setMessage("");
 		}
 	}
 	

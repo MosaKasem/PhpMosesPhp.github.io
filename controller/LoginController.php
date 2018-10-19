@@ -21,12 +21,10 @@ class LoginController {
 
         //Returns true or false
         $successLogin = $this->loginModel->validateLogin($userCredentials);
-        
-        if ($successLogin && $this->sessionModel->getUserSession()) {
-            $this->loginView->setMessage('');
-        }
+        $session      = $this->sessionModel->getUserSession();
+
         if ($successLogin) {
-            $this->loginView->keepMeLoggedValidation($userCredentials->getUsername(), $userCredentials->getPassword());
+            $this->loginView->keepMeLoggedValidation($userCredentials->getUsername(), $userCredentials->getPassword(), $session);
 /*             if ($this->sessionModel->getUserSession()) {
                 $this->loginView->setMessage('');
             } */
