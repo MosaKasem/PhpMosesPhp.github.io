@@ -81,23 +81,17 @@ class LoginView {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
 	public function userWantsToLogOut() {
-		if (isset($_POST[self::$logout])) 
-			return true;
+		return isset($_POST[self::$logout]) ? true : false;
 	}
 	public function keepMeLoggedIn() {
-		if (isset($_POST[self::$keep])) 
-			return $_POST[self::$keep];
+		return isset($_POST[self::$keep]) ? $_POST[self::$keep] : false;
 	}
 
 	public function getRequestUserName() : string {
 		return isset($_POST[self::$name]) ? $_POST[self::$name] : "";
 	}
 	public function getRequestPassword() : string {
-		if (isset($_POST[self::$password])) {
-			return $_POST[self::$password];
-		} else {
-			return "";
-		}
+		return isset($_POST[self::$password]) ? $_POST[self::$password] : "";
 	}
 
 	public function setMessage ($msg) : void {
