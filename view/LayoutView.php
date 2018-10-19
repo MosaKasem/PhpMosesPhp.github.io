@@ -17,7 +17,7 @@ class LayoutView {
           ' . $this->renderLink() . '
           ' . $this->renderIsLoggedIn($isLoggedIn) . '
           <div class="container">
-              ' . $frv->generateUploadFormHTML($isLoggedIn) . '
+              ' . $frv->generateUploadFormHTML($isLoggedIn, $this->getRegisterView()) . '
               ' . $pg->response() . '
               ' . $dtv->show() . '
           </div>

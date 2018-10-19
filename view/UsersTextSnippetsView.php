@@ -4,7 +4,6 @@ namespace view;
 
 class UsersTextSnippetsView
 {
-    private static $userWrote 		=	'UsersTextSnippetsView::UserTextLength';
     private static $textLength 		=	'UsersTextSnippetsView::TextLength';
     private static $messageId 		=	'UsersTextSnippetsView::Message';
     private static $text        	= 	'UsersTextSnippetsView::Text';
@@ -20,13 +19,13 @@ class UsersTextSnippetsView
         $this->filename = $fn;
     }
 
-    public function generateUploadFormHTML($isLoggedIn)
+    public function generateUploadFormHTML($isLoggedIn, $register)
     {
+        $register ? var_dump("hello") : var_dump("byebye");
         if ($isLoggedIn)
         {
 		return '
 			<form  method="post" >
-                <p id="' . self::$userWrote . '">' . $this->userWrote() . '</p>
                 <p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
                 <p id="' . self::$textLength . '">Theres still room for ' . $this->getTextSnippetLength() . ' more letters</p>
                 <input type="text" name="' . self::$text . '" value="" />
@@ -102,10 +101,6 @@ class UsersTextSnippetsView
     public function getMaxLimitValue()
     {
         return $this->MAX_TEXT_SNIPPETS;
-    }
-    public function userWrote()
-    {
-        return strlen($this->getTextInput());
     }
 
 }
