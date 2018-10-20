@@ -9,9 +9,9 @@ class UsersTextSnippetController
 
     private $userTextSnippView  ; // View
 
-    public function __construct(\model\SessionModel $sm, \view\UsersTextSnippetsView $frv, \model\UsersTextSnippetModel $utxm) {
+    public function __construct(\model\SessionModel $sm, \view\UsersTextSnippetsView $utsv, \model\UsersTextSnippetModel $utxm) {
         $this->sessionModel         = $sm;
-        $this->userTextSnippView    = $frv;
+        $this->userTextSnippView    = $utsv;
         $this->UserSnippetsModel    = $utxm;
     }
 

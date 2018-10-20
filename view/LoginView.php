@@ -124,8 +124,7 @@ class LoginView {
 
 	public function keepMeLoggedValidation($username, $password, $session)
 	{
-		var_dump($session);
-		if ($this->keepMeLoggedIn()) {
+		if ($this->keepMeLoggedIn() && !$session) {
 			$this->saveCookie($username, $password);
 			$this->setMessage('Welcome and you will be remembered');
 		} else if (!$session) {

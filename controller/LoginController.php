@@ -9,7 +9,7 @@ class LoginController {
     private $sessionModel     ; // model
     private $userCredentials  ; // model
 
-    public function __construct(\view\LoginView $lv, \model\LoginModel $lm, \model\SessionModel $sm /*, \controller\UsersTextSnippetController $frc*/) {
+    public function __construct(\view\LoginView $lv, \model\LoginModel $lm, \model\SessionModel $sm) {
         $this->loginView        = $lv;
         $this->loginModel       = $lm;
         $this->sessionModel     = $sm;
@@ -25,9 +25,6 @@ class LoginController {
 
         if ($successLogin) {
             $this->loginView->keepMeLoggedValidation($userCredentials->getUsername(), $userCredentials->getPassword(), $session);
-/*             if ($this->sessionModel->getUserSession()) {
-                $this->loginView->setMessage('');
-            } */
             $this->sessionModel->storeUserToSession($userCredentials->getUsername());
         } else {
             $this->loginView->setMessage('Wrong name or password');

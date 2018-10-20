@@ -30,7 +30,7 @@ class UsersTextSnippetsView
 		return '
 			<form  method="post" >
                 <p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
-                <p id="' . self::$textLength . '">Theres still room for ' . $this->getTextSnippetLength() . ' more letters</p>
+                <p id="' . self::$textLength . '">Theres room for ' . $this->getTextSnippetLength() . ' more letters</p>
                 <input type="text" name="' . self::$text . '" value="" />
                 <input type="submit" name="' . self::$submitBtn . '" value="Click" />
                 <div>' . trim($this->getFileContent()) . '</div>
@@ -38,24 +38,24 @@ class UsersTextSnippetsView
         ';
         }
         {
-            return '<p>Login to join the 50 letters words game!<p>';
+            return '<p>Login to leave your text-snippet on the wall!<p>';
         }
     }
 
-    public function setMessage($msg)
+    public function setMessage($msg) : void
     {
         $this->message = $msg;
     }
-    public function getMessage()
+    public function getMessage() : string
     {
         return $this->message;
     }
 
-    public function formTextSubmit()
+    public function formTextSubmit() : bool
     {
         return isset($_POST[self::$submitBtn]) ? true : false;
     }
-    public function getTextInput() 
+    public function getTextInput() : string
     {
         if (isset($_POST[self::$text]))  
         {
@@ -65,7 +65,7 @@ class UsersTextSnippetsView
         }
     }
 
-    public function getFileContent()
+    public function getFileContent() : string
     {
         $file = file_get_contents($this->filename);
         return $file;

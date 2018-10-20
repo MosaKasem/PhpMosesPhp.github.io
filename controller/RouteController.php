@@ -37,8 +37,8 @@ class RouteController {
         $this->loginController               = $lc;
         $this->registerController            = $rc;
     }
+    
     public function start() {
-        
         if ($this->loginView->userWantsToLogin()) {
             $this->loginController->loginControl();
         }

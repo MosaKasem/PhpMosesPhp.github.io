@@ -60,29 +60,29 @@ class RegisterView {
 	}
 
 	private function validateInput() {
-		$userName = $this->getRequestUserName();
-		$passWord = $this->getRequestPassword();
-		$PassRepeat = $this->getReqPasswordRepeat();
+		$userName	= $this->getRequestUserName();
+		$passWord 	= $this->getRequestPassword();
+		$passRepeat = $this->getReqPasswordRepeat();
 
 		if (preg_match('/[^A-Za-z0-9]/', trim($userName))) {
 			$this->setMessage("Username contains invalid characters.");
 			return false;
-		} 
+		}
 		if (empty($userName) && empty($passWord)) {
 			$this->setMessage('Username has too few characters, at least 3 characters. Password has too few characters, at least 6 characters.');
 			return false;
-		} 
+		}
 		if (empty($userName) || strlen($userName) < 3) {
 			$this->setMessage('Username has too few characters, at least 3 characters.');
 			return false;
-		} 
+		}
 		if (strlen($passWord) < 6) {
 			$this->setMessage('Password has too few characters, at least 6 characters.');
 			return false;
-		}  else if ($passWord !== $PassRepeat) {
+		}  else if ($passWord !== $passRepeat) {
 			$this->setMessage('Passwords do not match.');
 			return false;
-		} 
+		}
 		return true;
 	}
 
