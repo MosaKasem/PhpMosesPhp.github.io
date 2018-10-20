@@ -138,7 +138,7 @@ class LoginView {
 	public function saveCookie($username, $password) {
 		setcookie(self::$cookieName, $username, time() + 86400, "/"); // 86400 is equivalent to 24 hours.
 		setcookie(self::$cookiePassword, $password, time() + 86400, "/");
-		// setcookie syntax : setcookie(name,value,expire,path,domain,secure,httponly)
+		// syntax for setcookie : setcookie(name,value,expire,path,domain,secure,httponly)
 	}
 
 	

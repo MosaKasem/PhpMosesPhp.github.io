@@ -50,29 +50,36 @@ class RegisterView {
 	}
 	
 	public function getRequestUserName() {
-		if (isset($_POST[self::$username])) return trim($_POST[self::$username]);
+		return isset($_POST[self::$username]) ? trim($_POST[self::$username]) : "";
 	}
 	public function getRequestPassword() {
-		if (isset($_POST[self::$password])) return trim($_POST[self::$password]);
+		return isset($_POST[self::$password]) ? trim($_POST[self::$password]) : "";
+	}
+	public function getReqPasswordRepeat() {
+		return isset($_POST[self::$passwordRepeat]) ? trim($_POST[self::$passwordRepeat]) : "";
 	}
 
 	private function validateInput() {
 		$userName = $this->getRequestUserName();
 		$passWord = $this->getRequestPassword();
+		$PassRepeat = $this->getReqPasswordRepeat();
 
 		if (preg_match('/[^A-Za-z0-9]/', trim($userName))) {
 			$this->setMessage("Username contains invalid characters.");
 			return false;
-		} if (empty($userName) && empty($passWord)) {
+		} 
+		if (empty($userName) && empty($passWord)) {
 			$this->setMessage('Username has too few characters, at least 3 characters. Password has too few characters, at least 6 characters.');
 			return false;
-		} if (empty($userName) || strlen($userName) < 3) {
+		} 
+		if (empty($userName) || strlen($userName) < 3) {
 			$this->setMessage('Username has too few characters, at least 3 characters.');
 			return false;
-		} if (strlen($passWord) < 6) {
+		} 
+		if (strlen($passWord) < 6) {
 			$this->setMessage('Password has too few characters, at least 6 characters.');
 			return false;
-		}  else if ($passWord !== $_POST[self::$passwordRepeat]) {
+		}  else if ($passWord !== $PassRepeat) {
 			$this->setMessage('Passwords do not match.');
 			return false;
 		} 
