@@ -16,7 +16,6 @@ class LoginController {
     }
 
     public function loginControl() {
-
         $userCredentials = $this->loginView->getUserCredentials();
 
         //Returns true or false
@@ -27,15 +26,15 @@ class LoginController {
             $this->loginView->keepMeLoggedValidation($userCredentials->getUsername(), $userCredentials->getPassword(), $session);
             $this->sessionModel->storeUserToSession($userCredentials->getUsername());
         } else {
-            $this->loginView->setMessage('Wrong name or password');
+            $this->loginView->incorrectUserCredentials();
         }
     }
     public function logoutControl() {
-        $this->loginView->setMessage("Bye bye!");
+        $this->loginView->userLoggedOut();
 
         if (!$this->sessionModel->getUserSession()) 
         {
-            $this->loginView->setMessage("");
+            $this->loginView->resetMessage();
         }
         $this->sessionModel->destroySession();
     }

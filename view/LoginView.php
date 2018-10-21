@@ -35,11 +35,6 @@ class LoginView {
 		return $response;
 	}
 
-	/**
-	* Generate HTML code on the output buffer for the logout button
-	* @param $message, String output message
-	* @return  void, BUT writes to standard output!
-	*/
 	private function generateLogoutButtonHTML() : string {
 		return '
 			<form  method="post" >
@@ -49,11 +44,6 @@ class LoginView {
 		';
 	}
 	
-	/**
-	* Generate HTML code on the output buffer for the logout button
-	* @param $message, String output message
-	* @return  void, BUT writes to standard output!
-	*/
 	private function generateLoginFormHTML() : string {
 
 		return '
@@ -89,6 +79,16 @@ class LoginView {
 		return true;
 	}
 
+	public function incorrectUserCredentials() : void {
+		$this->message = 'Wrong name or password';
+	}
+	public function userLoggedOut() : void {
+		$this->message = 'Bye bye!';
+	}
+	public function resetMessage() : void {
+		$this->message = "";
+	}
+
 	public function userWantsToLogin() {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
@@ -98,7 +98,6 @@ class LoginView {
 	public function keepMeLoggedIn() : bool {
 		return isset($_POST[self::$keep]) ? $_POST[self::$keep] : false;
 	}
-
 
 	public function getRequestUserName() : string {
 		return isset($_POST[self::$name]) ? $_POST[self::$name] : "";
