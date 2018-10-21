@@ -5,7 +5,7 @@ namespace controller;
 class UsersTextSnippetController
 {
     private $sessionModel       ; // Model
-    private $fileModule         ; // Model
+    private $UserSnippetsModel  ; // Model
 
     private $userTextSnippView  ; // View
 
@@ -20,8 +20,8 @@ class UsersTextSnippetController
     {
         if($this->userTextSnippView->textSnippetMaxLimit())
         {
-            $this->UserSnippetsModel->resetFile();
             $this->userTextSnippView->resettingTextSnippetWall();
+            $this->UserSnippetsModel->resetFile();
         }
 
         if ($this->userTextSnippView->formTextSubmit());

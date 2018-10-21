@@ -2,12 +2,9 @@
 
 namespace model;
 
-// "Database"
+//  We'll pretend this is the database.
 
 class LoginModel {
-    private $username;
-    private $password;
-
     public function validateLogin($userCredentials) : bool {
         if ($userCredentials->getUsername() == "Admin" && $userCredentials->getPassword() == "Password") {
             return true;

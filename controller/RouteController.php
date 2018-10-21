@@ -4,19 +4,20 @@ namespace controller;
 
 class RouteController {
 
-    private $isLoggedIn         ; // Variable
+    private $isLoggedIn                 ; // Variable
 
-    private $register           ; // Model
-    private $sessionModel       ; // Model
+    private $register                   ; // Model
+    private $sessionModel               ; // Model
 
-    private $loginView          ; // View
-    private $layoutView         ; // View
-    private $registerView       ; // View
-    private $dateTimeView       ; // View
+    private $loginView                  ; // View
+    private $layoutView                 ; // View
+    private $registerView               ; // View
+    private $dateTimeView               ; // View
+    private $usersTextSnippetsView      ; // View     
 
-    private $loginController    ; // Controller
-    private $registerController ; // Controller
-    private $fileReadController ; // Controller
+    private $loginController            ; // Controller
+    private $registerController         ; // Controller
+    private $UsersTextSnippetController ; // Controller
 
 
     public function __construct(
@@ -34,11 +35,11 @@ class RouteController {
         $this->sessionModel     = $sm;
 
         // View's Folder initiation
-        $this->loginView        = $lv;
-        $this->layoutView       = $lov;
-        $this->registerView     = $rv;
-        $this->dateTimeView     = $dtv;
-        $this->fileReaderView   = $utsv;
+        $this->loginView               = $lv;
+        $this->layoutView              = $lov;
+        $this->registerView            = $rv;
+        $this->dateTimeView            = $dtv;
+        $this->usersTextSnippetsView   = $utsv;
 
         // Controller's folder initiation
         $this->UsersTextSnippetController    = $utsc;
@@ -65,9 +66,9 @@ class RouteController {
         // ?register ? true : false
         $registerView = $this->layoutView->getRegisterView();
         if ($registerView) {
-            $this->layoutView->render($this->sessionModel->handleIsLoggedIn(), $this->registerView, $this->dateTimeView, $this->fileReaderView);
+            $this->layoutView->render($this->sessionModel->handleIsLoggedIn(), $this->registerView, $this->dateTimeView, $this->usersTextSnippetsView);
         } else {
-            $this->layoutView->render($this->sessionModel->handleIsLoggedIn(), $this->loginView, $this->dateTimeView, $this->fileReaderView);
+            $this->layoutView->render($this->sessionModel->handleIsLoggedIn(), $this->loginView, $this->dateTimeView, $this->usersTextSnippetsView);
         }
     }
 }
