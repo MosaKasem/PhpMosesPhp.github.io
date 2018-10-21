@@ -81,7 +81,7 @@ class UsersTextSnippetsView
     {
         if (empty($input) || $input == "")
         {
-            $this->setMessage("The field doesn't accept empty space!");
+            $this->setMessage("Can't submit an empty field! Write something!");
         } else if (preg_match('/[^A-Za-z0-9]/', $input)) {
             $this->setMessage("The field only accepts word or numbers!");
          } else if (strlen($input) > $this->getTextSnippetLength()) {

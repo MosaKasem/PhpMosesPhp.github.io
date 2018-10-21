@@ -9,5 +9,5 @@ To login:
 
 ***
 
-* [TestCases](https://github.com/MosaKasem/PhpMosesPhp.github.io/wiki/TestCases)
-* [ManualTesting](https://github.com/MosaKasem/PhpMosesPhp.github.io/wiki/Manual-testing)
+* [Test-Cases](https://github.com/MosaKasem/PhpMosesPhp.github.io/wiki/TestCases)
+* [Manual-Testing](https://github.com/MosaKasem/PhpMosesPhp.github.io/wiki/Manual-testing)
