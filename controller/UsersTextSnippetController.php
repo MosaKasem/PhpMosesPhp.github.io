@@ -24,7 +24,6 @@ class UsersTextSnippetController
 
         if ($this->userTextSnippView->formTextSubmit());
         {
-            $this->userTextSnippView->textSnippetOwner($this->sessionModel->getUserSession());
             $text = $this->userTextSnippView->insertTextInTag();
             $this->UserSnippetsModel->addTextToFile($this->userTextSnippView->getFileContent(), $text);
         }

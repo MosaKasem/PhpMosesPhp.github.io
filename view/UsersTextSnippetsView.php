@@ -9,7 +9,6 @@ class UsersTextSnippetsView
     private static $text        	= 	'UsersTextSnippetsView::Text';
     private static $submitBtn   	= 	'UsersTextSnippetsView::SubmitBtn';
 
-    private $snippetOwner;
     private $message;
     private $filename;
     private $MAX_TEXT_SNIPPETS = 50;
@@ -29,11 +28,12 @@ class UsersTextSnippetsView
         if ($isLoggedIn)
         {
 		return '
-			<form  method="post" >
+            <form  method="post" >
                 <p id="' . self::$messageId . '">' . $this->getMessage() . '</p>
                 <p id="' . self::$textLength . '">Theres room for ' . $this->getTextSnippetLength() . ' more letters</p>
                 <input type="text" name="' . self::$text . '" value="" />
                 <input type="submit" name="' . self::$submitBtn . '" value="Click" />
+                <h3>text-snippet wall!</h3>
                 <div>' . trim($this->getFileContent()) . '</div>
 			</form>
         ';
@@ -81,13 +81,13 @@ class UsersTextSnippetsView
     {
         if (empty($input) || $input == "")
         {
-            $this->setMessage("Can't be empty!");
+            $this->setMessage("The field doesn't accept empty space!");
         } else if (preg_match('/[^A-Za-z0-9]/', $input)) {
-            $this->setMessage("Only letters-numbers, no spaces allowed!");
+            $this->setMessage("The field only accepts word or numbers!");
          } else if (strlen($input) > $this->getTextSnippetLength()) {
             $this->setMessage("You Wrote " . strlen($this->getTextInput()) . " letters, exceeding the limit of " . $this->getTextSnippetLength() . " letters left");
          } else {
-            return "<p>" . $input . '. By ' . $this->snippetOwner . "</p>";
+            return "<p>" . $input . "</p>";
         }
     }
 
@@ -98,12 +98,6 @@ class UsersTextSnippetsView
             return strlen($file) >= $this->MAX_TEXT_SNIPPETS;
         }
     }
-
-    public function textSnippetOwner($username)
-    {
-       $this->snippetOwner = $username;
-    }
-
     public function getTextSnippetLength() : int
     {
         return $this->MAX_TEXT_SNIPPETS - strlen(strip_tags($this->getFileContent()));
