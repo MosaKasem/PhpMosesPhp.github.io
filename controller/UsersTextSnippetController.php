@@ -9,6 +9,7 @@ class UsersTextSnippetController
 
     private $userTextSnippView  ; // View
 
+
     public function __construct(\model\SessionModel $sm, \view\UsersTextSnippetsView $utsv, \model\UsersTextSnippetModel $utxm) {
         $this->sessionModel         = $sm;
         $this->userTextSnippView    = $utsv;
@@ -28,6 +29,5 @@ class UsersTextSnippetController
             $text = $this->userTextSnippView->insertTextInTag();
             $this->UserSnippetsModel->addTextToFile($this->userTextSnippView->getFileContent(), $text);
         }
-
     }
 }

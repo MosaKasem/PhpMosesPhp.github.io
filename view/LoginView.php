@@ -88,7 +88,7 @@ class LoginView {
 	public function resetMessage() : void {
 		$this->message = "";
 	}
-	
+
 	public function setMessage ($msg) : void {
 		$this->message = $msg;
 	}
@@ -133,9 +133,8 @@ class LoginView {
 	}
 	
 	public function saveCookie($username, $password) : void {
-		setcookie(self::$cookieName, $username, time() + 86400, "/"); // 86400 is equivalent to 24 hours.
+		setcookie(self::$cookieName, $username, time() + 86400, "/");
 		setcookie(self::$cookiePassword, $password, time() + 86400, "/");
-		// syntax for setcookie : setcookie(name,value,expire,path,domain,secure,httponly)
 	}
 
 	

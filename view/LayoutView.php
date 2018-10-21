@@ -36,6 +36,7 @@ class LayoutView {
   public function getRegisterView() : bool {
     return isset($_GET['register']);
   }
+  
   private function renderLink() {
     if ($this->getRegisterView()) {
       return '<a href="?">Back to login</a>';

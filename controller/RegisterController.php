@@ -7,6 +7,7 @@ class RegisterController {
 
     private $registerModel   ; // model
     private $userCredentials ; // model
+    
 
     public function __construct(\view\RegisterView $rv, \model\RegisterModel $rm) {
         $this->registerView     = $rv;

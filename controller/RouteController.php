@@ -1,7 +1,5 @@
 <?php
 
-// TODO: write to self != writing to reader
-
 namespace controller;
 
 class RouteController {

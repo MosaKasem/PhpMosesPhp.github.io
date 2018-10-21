@@ -8,6 +8,7 @@ class LoginController {
     private $loginModel       ; // model
     private $sessionModel     ; // model
     private $userCredentials  ; // model
+    
 
     public function __construct(\view\LoginView $lv, \model\LoginModel $lm, \model\SessionModel $sm) {
         $this->loginView        = $lv;

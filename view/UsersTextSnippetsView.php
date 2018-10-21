@@ -60,6 +60,7 @@ class UsersTextSnippetsView
     {
         return isset($_POST[self::$submitBtn]) ? true : false;
     }
+    
     public function getTextInput() : string
     {
         if (isset($_POST[self::$text]))  
