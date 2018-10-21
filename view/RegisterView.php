@@ -16,14 +16,12 @@ class RegisterView {
 		$this->message = '';
 	}
 	
-	public function response() {
-
-		$response =	$this->generateRegisterFormHTML($this->message);
-
+	public function response() : string {
+		$response =	$this->generateRegisterFormHTML();
 		return $response;
 	}
     
-	private function generateRegisterFormHTML($message) {
+	private function generateRegisterFormHTML() : string {
 		return '
 			<form method="post">
 				<fieldset>
@@ -45,21 +43,21 @@ class RegisterView {
 			</form>
 		';
 	}
-	public function userWantsToRegister() {
-		return isset($_POST[self::$register]) && $this->validateInput();
-	}
 	
-	public function getRequestUserName() {
+	public function getRequestUserName() : string {
 		return isset($_POST[self::$username]) ? trim($_POST[self::$username]) : "";
 	}
-	public function getRequestPassword() {
+	public function getRequestPassword() : string {
 		return isset($_POST[self::$password]) ? trim($_POST[self::$password]) : "";
 	}
-	public function getReqPasswordRepeat() {
+	public function getReqPasswordRepeat() : string {
 		return isset($_POST[self::$passwordRepeat]) ? trim($_POST[self::$passwordRepeat]) : "";
 	}
 
-	private function validateInput() {
+	public function userWantsToRegister() : bool {
+		return isset($_POST[self::$register]) && $this->validateInput();
+	}
+	private function validateInput() : bool {
 		$userName	= $this->getRequestUserName();
 		$passWord 	= $this->getRequestPassword();
 		$passRepeat = $this->getReqPasswordRepeat();
@@ -93,10 +91,10 @@ class RegisterView {
 		}
 	}
 
-	public function setMessage($message) {
+	public function setMessage($message) : void {
 		$this->message = $message;
 	}
-	public function getMessage() {
+	public function getMessage() : string {
 		return $this->message;
 	}
 

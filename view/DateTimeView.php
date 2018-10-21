@@ -5,7 +5,7 @@ namespace view;
 class DateTimeView {
 
 
-	public function show() {
+	public function show() : string {
 		// configuring date settings
 		date_default_timezone_set('Europe/Stockholm');
 

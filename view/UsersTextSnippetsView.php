@@ -9,6 +9,7 @@ class UsersTextSnippetsView
     private static $text        	= 	'UsersTextSnippetsView::Text';
     private static $submitBtn   	= 	'UsersTextSnippetsView::SubmitBtn';
 
+    private $snippetOwner;
     private $message;
     private $filename;
     private $MAX_TEXT_SNIPPETS = 50;
@@ -19,7 +20,7 @@ class UsersTextSnippetsView
         $this->filename = $fn;
     }
 
-    public function generateUploadFormHTML($isLoggedIn, $registerUrl)
+    public function generateUploadFormHTML($isLoggedIn, $registerUrl) : string
     {
         if ($registerUrl)
         {
@@ -86,7 +87,7 @@ class UsersTextSnippetsView
          } else if (strlen($input) > $this->getTextSnippetLength()) {
             $this->setMessage("You Wrote " . strlen($this->getTextInput()) . " letters, exceeding the limit of " . $this->getTextSnippetLength() . " letters left");
          } else {
-            return "<p>" . $input . "</p>";
+            return "<p>" . $input . '. By ' . $this->snippetOwner . "</p>";
         }
     }
 
@@ -97,11 +98,17 @@ class UsersTextSnippetsView
             return strlen($file) >= $this->MAX_TEXT_SNIPPETS;
         }
     }
-    public function getTextSnippetLength()
+
+    public function textSnippetOwner($username)
+    {
+       $this->snippetOwner = $username;
+    }
+
+    public function getTextSnippetLength() : int
     {
         return $this->MAX_TEXT_SNIPPETS - strlen(strip_tags($this->getFileContent()));
     }
-    public function getMaxLimitValue()
+    public function getMaxLimitValue() : int
     {
         return $this->MAX_TEXT_SNIPPETS;
     }

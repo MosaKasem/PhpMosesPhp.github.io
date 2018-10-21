@@ -24,13 +24,13 @@ class LoginView {
 		$this->session = $sm;
 	}
 
-	public function response() {
+	public function response() : string {
 		$userIsLogged = $this->session->userIsLoggedIn();
 
 		if ($userIsLogged) {
-			$response = $this->generateLogoutButtonHTML($this->message);
+			$response = $this->generateLogoutButtonHTML();
 		} else {
-			$response = $this->generateLoginFormHTML($this->message);
+			$response = $this->generateLoginFormHTML();
 		}
 		return $response;
 	}
@@ -40,7 +40,7 @@ class LoginView {
 	* @param $message, String output message
 	* @return  void, BUT writes to standard output!
 	*/
-	private function generateLogoutButtonHTML() {
+	private function generateLogoutButtonHTML() : string {
 		return '
 			<form  method="post" >
 				<p id="' . self::$messageId . '">' . $this->getMessage() .'</p>
@@ -54,7 +54,7 @@ class LoginView {
 	* @param $message, String output message
 	* @return  void, BUT writes to standard output!
 	*/
-	private function generateLoginFormHTML($message) {
+	private function generateLoginFormHTML() : string {
 
 		return '
 			<form method="post" > 
@@ -77,7 +77,7 @@ class LoginView {
 		';
 	}
 
-	private function validateInput() {
+	private function validateInput() : bool {
 		if (empty($this->getRequestUserName())) {
 			$this->setMessage('Username is missing');
 			return false;
@@ -92,10 +92,10 @@ class LoginView {
 	public function userWantsToLogin() {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
-	public function userWantsToLogOut() {
+	public function userWantsToLogOut() : bool {
 		return isset($_POST[self::$logout]) ? true : false;
 	}
-	public function keepMeLoggedIn() {
+	public function keepMeLoggedIn() : bool {
 		return isset($_POST[self::$keep]) ? $_POST[self::$keep] : false;
 	}
 
@@ -110,7 +110,7 @@ class LoginView {
 	public function setMessage ($msg) : void {
 		$this->message = $msg;
 	}
-	public function getMessage () {
+	public function getMessage () : string {
 		return $this->message;
 	}
 
@@ -122,7 +122,7 @@ class LoginView {
 		}
 	}
 
-	public function keepMeLoggedValidation($username, $password, $session)
+	public function keepMeLoggedValidation($username, $password, $session) : void
 	{
 		if ($this->keepMeLoggedIn() && !$session) {
 			$this->saveCookie($username, $password);
@@ -134,7 +134,7 @@ class LoginView {
 		}
 	}
 	
-	public function saveCookie($username, $password) {
+	public function saveCookie($username, $password) : void {
 		setcookie(self::$cookieName, $username, time() + 86400, "/"); // 86400 is equivalent to 24 hours.
 		setcookie(self::$cookiePassword, $password, time() + 86400, "/");
 		// syntax for setcookie : setcookie(name,value,expire,path,domain,secure,httponly)
