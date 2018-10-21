@@ -7,7 +7,7 @@ To login:
 * Username is Admin
 * Password is Password
 
-* Test cases
-[TestCases](https://github.com/MosaKasem/PhpMosesPhp.github.io/wiki/TestCases)
-* Manual testing
-[Result](https://github.com/MosaKasem/PhpMosesPhp.github.io/wiki/Manual-testing)
+***
+
+* [TestCases](https://github.com/MosaKasem/PhpMosesPhp.github.io/wiki/TestCases)
+* [ManualTesting](https://github.com/MosaKasem/PhpMosesPhp.github.io/wiki/Manual-testing)
