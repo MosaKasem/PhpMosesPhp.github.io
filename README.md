@@ -14,4 +14,4 @@ To login:
 
 *** 
 
-* [Application](http://167.99.47.160)
+* [Public server](http://167.99.47.160)
