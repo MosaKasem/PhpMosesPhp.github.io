@@ -84,7 +84,7 @@ class RegisterView {
 		return true;
 	}
 
-	public function returnRegisteredUser() {
+	public function returnRegisteredUser() : \model\UserCredentials {
 		if ($this->validateInput()) 
 		{
 			return new \model\UserCredentials($this->getRequestUserName(), $this->getRequestPassword());

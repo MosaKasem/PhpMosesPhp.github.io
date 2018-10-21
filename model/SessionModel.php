@@ -8,10 +8,10 @@ class SessionModel {
 
     private $isLoggedIn;
 
-    public function storeUserToSession($username) {
+    public function storeUserToSession($username) : void {
         $_SESSION[self::$user] = $username;
     }
-    public function getUserSession() {
+    public function getUserSession() : string {
         if (isset($_SESSION[self::$user])) {
             return $_SESSION[self::$user];
         }
@@ -23,11 +23,11 @@ class SessionModel {
         }
         return false;
     }
-    public function destroySession() {
+    public function destroySession() : void {
         session_destroy();
         $_SESSION = [];
     }
-    public function handleIsLoggedIn() {
+    public function handleIsLoggedIn() : bool {
         if ($this->getUserSession()) {
             return $isLoggedIn = true;
         } else {

@@ -14,10 +14,10 @@ class LoginView {
 	private static $keep 			= 	'LoginView::KeepMeLoggedIn';
 
 	private static $messageId 		=	'LoginView::Message';
-	
 
 	private $message;
 	private $session;
+
 
 	public function __construct($sm) {
 		$this->message = "";
@@ -88,8 +88,15 @@ class LoginView {
 	public function resetMessage() : void {
 		$this->message = "";
 	}
+	
+	public function setMessage ($msg) : void {
+		$this->message = $msg;
+	}
+	public function getMessage () : string {
+		return $this->message;
+	}
 
-	public function userWantsToLogin() {
+	public function userWantsToLogin() : bool {
 		return isset($_POST[self::$login]) && $this->validateInput();
 	}
 	public function userWantsToLogOut() : bool {
@@ -105,14 +112,6 @@ class LoginView {
 	public function getRequestPassword() : string {
 		return isset($_POST[self::$password]) ? $_POST[self::$password] : "";
 	}
-
-	public function setMessage ($msg) : void {
-		$this->message = $msg;
-	}
-	public function getMessage () : string {
-		return $this->message;
-	}
-
 
 	public function getUserCredentials() {
 		if ($this->validateInput() == true) 

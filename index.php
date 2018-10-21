@@ -26,6 +26,7 @@ ini_set('display_errors', 'On');
 
 session_start();
 
+
 $rm     = new    \model\RegisterModel();
 $sm     = new    \model\SessionModel();
 $lm     = new    \model\LoginModel();

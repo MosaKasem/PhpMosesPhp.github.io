@@ -20,6 +20,7 @@ class UsersTextSnippetController
         if($this->userTextSnippView->textSnippetMaxLimit())
         {
             $this->UserSnippetsModel->resetFile();
+            $this->userTextSnippView->resettingTextSnippetWall();
         }
 
         if ($this->userTextSnippView->formTextSubmit());

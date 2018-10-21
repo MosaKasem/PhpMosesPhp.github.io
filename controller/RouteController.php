@@ -21,7 +21,17 @@ class RouteController {
     private $fileReadController ; // Controller
 
 
-    public function __construct( \model\SessionModel $sm, \view\LoginView $lv, \view\LayoutView $lov, \view\RegisterView $rv, \view\DateTimeView $dtv, \view\UsersTextSnippetsView $utsv, UsersTextSnippetController $utsc, LoginController $lc, RegisterController $rc) {
+    public function __construct(
+    \model\SessionModel $sm,
+    \view\LoginView $lv,
+    \view\LayoutView $lov,
+    \view\RegisterView $rv,
+    \view\DateTimeView $dtv,
+    \view\UsersTextSnippetsView $utsv,
+    UsersTextSnippetController $utsc,
+    LoginController $lc,
+    RegisterController $rc)
+    {
         // Model's folder initiation
         $this->sessionModel     = $sm;
 
@@ -37,7 +47,7 @@ class RouteController {
         $this->loginController               = $lc;
         $this->registerController            = $rc;
     }
-    
+
     public function start() {
         if ($this->loginView->userWantsToLogin()) {
             $this->loginController->loginControl();

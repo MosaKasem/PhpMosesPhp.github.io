@@ -34,7 +34,7 @@ class UsersTextSnippetsView
                 <input type="text" name="' . self::$text . '" value="" />
                 <input type="submit" name="' . self::$submitBtn . '" value="Click" />
                 <h3>text-snippet wall!</h3>
-                <div>' . trim($this->getFileContent()) . '</div>
+                <div>' . '<ul>' . trim($this->getFileContent()) . '</ul>' . '</div>
 			</form>
         ';
         }
@@ -43,6 +43,10 @@ class UsersTextSnippetsView
         }
     }
 
+    public function resettingTextSnippetWall() : void
+    {
+        $this->message = "Resetting text-snippet wall!";
+    }
     public function setMessage($msg) : void
     {
         $this->message = $msg;
@@ -87,7 +91,7 @@ class UsersTextSnippetsView
          } else if (strlen($input) > $this->getTextSnippetLength()) {
             $this->setMessage("You Wrote " . strlen($this->getTextInput()) . " letters, exceeding the limit of " . $this->getTextSnippetLength() . " letters left");
          } else {
-            return "<p>" . $input . "</p>";
+            return "<li>" . $input . "</li>";
         }
     }
 
