@@ -2,6 +2,7 @@
 
 To get the application running:
 1. git clone https://github.com/MosaKasem/PhpMosesPhp.github.io.git
+2. navigate to: localhost:(default)80/PhpMosesPhp.github.io
 
 To login:
 * Username is Admin
